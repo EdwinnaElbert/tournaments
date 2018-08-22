@@ -50,27 +50,38 @@
       </div>
 
       <!--begin::Form-->
-      <form class="m-login__form m-form" action="">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "m-login__form m-form") do |f| %>
+        <%= devise_error_messages! %>
         <div class="form-group m-form__group">
-          <input class="form-control m-input" type="text" placeholder="Username" name="username" autocomplete="off">
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "First Name" %>
         </div>
         <div class="form-group m-form__group">
-          <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Last Name" %>
         </div>
-      </form>
-      <!--end::Form-->
+        <div class="form-group m-form__group">
+          <%= f.text_field :patronymic, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Patronymic" %>
+        </div>
+        <div class="form-group m-form__group">
+          <%= f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Email" %>
+        </div>
+        <div class="form-group m-form__group">
+          <%= f.text_field :phone, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Phone Number" %>
+        </div>
+        <div class="form-group m-form__group">
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password" %>
+        </div>
+        <%= f.submit "Sign up", {id: "m_login_signin_submit", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary"} %><br />
 
       <!--begin::Action-->
       <div class="m-login__action">
         <a href="#" class="m-link">
           <span>Forgot Password ?</span>
         </a>
-        <a href="#">
-          <button id="m_login_signin_submit" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">Sign In</button>
-        </a>
       </div>
       <!--end::Action-->
-
       <!--begin::Divider-->
       <div class="m-login__form-divider">
         <div class="m-divider">
@@ -111,7 +122,7 @@
   <!--end::Body-->
 
 </div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 <script>
   WebFont.load({
     google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
@@ -119,12 +130,12 @@
         sessionStorage.fonts = true;
     }
   });
-</script> -->
-<%= javascript_include_tag 'login6' %>
+</script>
+<!-- <%= javascript_include_tag 'login6' %> -->
 <!--
 <h2>Sign up ghjgjhgjhgjhg</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
   <%= devise_error_messages! %>
 
   <div class="field">
