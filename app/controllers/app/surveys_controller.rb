@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class App::SurveysController < AppController
   # # before_action -> { can_action('surveys') }
   # # before_action -> { can_action('surveys_add') }, only: [:new, :create, :edit, :update, :destroy]

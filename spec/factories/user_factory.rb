@@ -7,6 +7,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     phone { Faker::PhoneNumber.phone_number }
     password { Faker::Internet.password }
-    confirmed_at Time.now
+    confirmed_at { Time.now }
   end
 end

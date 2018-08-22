@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SurveyQuestionAnswer, type: :model do
   let!(:user) { FactoryBot.create :user }
@@ -11,12 +12,12 @@ RSpec.describe SurveyQuestionAnswer, type: :model do
   #                                               survey_question_answer_id: survey_question_answer.id,
   #                                               user_id: user.id }
 
-  describe 'Associations' do
+  describe "Associations" do
     it { is_expected.to belong_to(:survey_question) }
     it { is_expected.to have_many(:survey_user_answers) }
   end
 
-  describe 'Validations' do
+  describe "Validations" do
     it { should validate_presence_of(:answer) }
     it { should validate_presence_of(:weight) }
   end

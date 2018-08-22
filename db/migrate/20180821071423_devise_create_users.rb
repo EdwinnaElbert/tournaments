@@ -3,11 +3,11 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def up
     execute('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
-    create_table :users, id: :uuid, default: 'uuid_generate_v1()' do |t|
-      t.string :phone, null: false, default: ''
+    create_table :users, id: :uuid, default: "uuid_generate_v1()" do |t|
+      t.string :phone, null: false, default: ""
       ## Database authenticatable
-      t.string :email,              null: false, default: ''
-      t.string :encrypted_password, null: false, default: ''
+      t.string :email,              null: false, default: ""
+      t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token
