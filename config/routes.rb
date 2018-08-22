@@ -9,5 +9,9 @@ Rails.application.routes.draw do
       get :export_excel, on: :collection
     end
   end
-  root to: "welcome#show"
+  authenticated :user do
+   root :to => "my_surveys#index"
+   # Rails 4 users must specify the 'as' option to give it a unique name
+   # root :to => "main#dashboard", :as => "authenticated_root"
+ end
 end

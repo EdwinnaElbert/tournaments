@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'b6003794a29efe6d8f03d7b4f68df285694ca6e1a253f7d1c59cb3c015d2f67fa717d2cddb1e8ed989ecfd4fe462b77306a88a05ebb5a64e94b099f51fc8e89c'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -112,7 +112,7 @@ Devise.setup do |config|
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 11
-
+  config.scoped_views = true
   # Set up a pepper to generate the hashed password.
   # config.pepper = '6707a4f8b9cac1218f30187f0cb49fdc7d633a720cbc82d051121ca77af2498f17445d671af08cbd8fd37c1cbab1fe6d3d6997d18aeab043a95ca96fb693b61b'
 
