@@ -7,7 +7,7 @@ RSpec.describe SurveyUserAnswer, type: :model do
   let!(:survey) { FactoryBot.create :survey, user: user, is_anonymous: true }
   let!(:survey_question) { FactoryBot.create :survey_question, survey: survey }
   let!(:survey_question_answer) { FactoryBot.create :survey_question_answer, survey_question: survey_question }
-  let!(:survey_user_answer) { FactoryBot.create :survey_user_answer, survey_question: survey_question, survey: survey, user: user, survey_question_ids: [survey_question.id] }
+  let!(:survey_user_answer) { FactoryBot.create :survey_user_answer, survey_question: survey_question, survey: survey, user: user, survey_question_answer_ids: [survey_question.id] }
 
   # FactoryBot.create :survey_user_answer, survey_question_id: surv_quest.id, survey: survey, user_id: us.id
   describe "Associations" do
