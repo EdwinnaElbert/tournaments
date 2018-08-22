@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CreateSurveyUserAnswers < ActiveRecord::Migration[5.2]
   def up
-    create_table :survey_user_answers, id: :uuid, default: 'uuid_generate_v1()' do |t|
+    create_table :survey_user_answers, id: :uuid, default: "uuid_generate_v1()" do |t|
       t.string  :answer
       t.integer :weight
       t.text    :survey_question_answer_ids, array: true, default: []

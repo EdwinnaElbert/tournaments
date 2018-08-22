@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CreateSurveys < ActiveRecord::Migration[5.2]
   def up
-    create_table :surveys, id: :uuid, default: 'uuid_generate_v1()' do |t|
+    create_table :surveys, id: :uuid, default: "uuid_generate_v1()" do |t|
       t.string :title
       t.string :description
       t.boolean :is_anonymous

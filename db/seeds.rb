@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -18,7 +20,7 @@ Survey.create!(title: Faker::Company.name,
                start_datetime: Date.today,
                end_datetime: Date.today + 1.month,
                user_id: User.first.id)
-SurveyQuestion.create!(question: 'Name smth',
+SurveyQuestion.create!(question: "Name smth",
                        weight: Faker::Number.number(1),
                        question_type: Faker::Number.between(0, 2),
                        survey_id: Survey.first.id)
