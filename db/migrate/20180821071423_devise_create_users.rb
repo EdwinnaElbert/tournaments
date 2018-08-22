@@ -2,11 +2,12 @@
 
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def up
-    create_table :users do |t|
-      t.string :phone, null: false, default: ""
+    execute('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
+    create_table :users, id: :uuid, default: 'uuid_generate_v1()' do |t|
+      t.string :phone, null: false, default: ''
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -38,6 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     end
 
     add_index :users, :email,                unique: true
+    add_index :users, :phone,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
