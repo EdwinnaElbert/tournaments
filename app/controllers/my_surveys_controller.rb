@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class App::SurveysController < AppController
-  # # before_action -> { can_action('surveys') }
-  # # before_action -> { can_action('surveys_add') }, only: [:new, :create, :edit, :update, :destroy]
-  #
-  # def index
-  #   @page_title = 'Surveys'
-  #   @surveys = Survey.order_by('start_datetime' => 'asc')
-  #   @surveys = @surveys.page(params[:page]).per(@per_page)
-  # end
+class MySurveysController < AppController
+  before_action :authenticate_user!
+
+  def index
+    @page_title = 'My Surveys'
+    @surveys = current_user.surveys.order('start_datetime asc')
+    binding.pry
+    # @surveys = @surveys.page(params[:page]).per(@per_page)
+  end
   #
   # def new
   #   @page_title = 'Add Surveys'

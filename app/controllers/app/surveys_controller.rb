@@ -3,12 +3,11 @@
 class App::SurveysController < AppController
   # # before_action -> { can_action('surveys') }
   # # before_action -> { can_action('surveys_add') }, only: [:new, :create, :edit, :update, :destroy]
-  #
-  # def index
-  #   @page_title = 'Surveys'
-  #   @surveys = Survey.order_by('start_datetime' => 'asc')
-  #   @surveys = @surveys.page(params[:page]).per(@per_page)
-  # end
+  def index
+    @page_title = 'Surveys'
+    @surveys = Survey.order('start_datetime asc')
+    # @surveys = @surveys.page(params[:page]).per(@per_page)
+  end
   #
   # def new
   #   @page_title = 'Add Surveys'
