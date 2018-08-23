@@ -6,5 +6,5 @@ class SurveyUserAnswer < ApplicationRecord
   belongs_to :survey_question
   belongs_to :survey_question_answer, optional: true
 
-  validates_presence_of :user_id, :survey_question_id
+  validates :user_id, :survey_question_id, presence: :true
 end

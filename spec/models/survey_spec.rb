@@ -15,7 +15,7 @@ RSpec.describe Survey, type: :model do
 
   describe "Validations" do
     it { should validate_presence_of(:title) }
-    it { should validate_presence_of(:is_anonymous) }
+    it { should validate_inclusion_of(:is_anonymous).in?([true, false]) }
     it { should validate_presence_of(:start_datetime) }
     it { should validate_presence_of(:user_id) }
   end

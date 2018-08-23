@@ -10,6 +10,20 @@
   </head>
 
   <body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
-    <%= yield %>
+    <!-- <div class="m-grid m-grid--hor m-grid--root m-page"> -->
+    <%- unless controller._prefixes.include?('devise') %>
+      <%= render '/shared/header' %>
+      <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+        <%= render '/shared/left_aside' %>
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+          <%= render '/shared/sub_header' %>
+          <div class="m-content">
+            <%= yield %>
+        </div>
+      </div>
+    <%- else %>
+      <%= yield %>
+    <% end %>
+
   </body>
 </html>

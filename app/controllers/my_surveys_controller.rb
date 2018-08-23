@@ -6,14 +6,13 @@ class MySurveysController < AppController
   def index
     @page_title = 'My Surveys'
     @surveys = current_user.surveys.order('start_datetime asc')
-    binding.pry
     # @surveys = @surveys.page(params[:page]).per(@per_page)
   end
-  #
-  # def new
-  #   @page_title = 'Add Surveys'
-  #   @survey = Survey.new(start_datetime: DateTime.now.in_time_zone('Moscow'))
-  # end
+
+  def new
+    @page_title = 'Add Surveys'
+    @survey = Survey.new(start_datetime: DateTime.now.in_time_zone('Moscow'))
+  end
   #
   # def create
   #   @survey = Survey.new(survey_params)

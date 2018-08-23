@@ -1,0 +1,18 @@
+/ BEGIN: Subheader
+.m-subheader
+  .d-flex.align-items-center
+    .mr-auto
+      %h3.m-subheader__title Surveys
+    %div
+      %span#m_dashboard_daterangepicker.m-subheader__daterange
+        %span.m-subheader__daterange-label
+          %span.m-subheader__daterange-title
+          %span.m-subheader__daterange-date.m--font-brand
+        - if current_user
+          = link_to new_my_survey_path do
+            %button.btn.btn-brand.m-btn
+              Add Survey
+        - else
+          = link_to new_user_session_path do
+            %button.btn.btn-brand.m-btn
+              Add Survey

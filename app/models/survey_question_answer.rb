@@ -5,5 +5,5 @@ class SurveyQuestionAnswer < ApplicationRecord
 
   has_many :survey_user_answers
 
-  validates_presence_of :answer, :weight
+  validates :answer, :weight, presence: :true
 end

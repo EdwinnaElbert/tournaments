@@ -6,5 +6,6 @@ class Survey < ApplicationRecord
   has_many :survey_questions
   has_many :survey_user_answers
 
-  validates_presence_of :title, :start_datetime, :user_id
+  validates :title, :start_datetime, :user_id, presence: :true
+  validates :is_anonymous, inclusion: { in: [true, false], message: "Anonymous should be set to true or false" }
 end
