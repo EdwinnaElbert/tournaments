@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+#login_background {
+  background-image: url('bg-4.jpg');
+}
