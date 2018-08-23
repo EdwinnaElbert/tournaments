@@ -7,7 +7,7 @@
         .m-stack.m-stack--ver.m-stack--general
           .m-stack__item.m-stack__item--middle.m-brand__logo
             %a.m-brand__logo-wrapper{:href => "index.html"}
-              %img{:alt => "", :src => "assets/demo/default/media/img/logo/logo_default_dark.png"}/
+              = image_tag "logo/logo_default_dark.png"
           .m-stack__item.m-stack__item--middle.m-brand__tools
             / BEGIN: Left Aside Minimize Toggle
             %a#m_aside_left_minimize_toggle.m-brand__icon.m-brand__toggler.m-brand__toggler--left.m--visible-desktop-inline-block{:href => "javascript:;"}
@@ -353,7 +353,7 @@
                   .m-dropdown__wrapper
                     %span.m-dropdown__arrow.m-dropdown__arrow--center
                     .m-dropdown__inner
-                      .m-dropdown__header.m--align-center{:style => "background: url(assets/app/media/img/misc/notification_bg.jpg); background-size: cover;"}
+                      .m-dropdown__header.m--align-center#notification_bg_tag
                         %span.m-dropdown__header-title 9 New
                         %span.m-dropdown__header-subtitle User Notifications
                       .m-dropdown__body
@@ -453,7 +453,7 @@
                     .m-dropdown__wrapper
                       %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                       .m-dropdown__inner
-                        .m-dropdown__header.m--align-center{:style => "background: url(assets/app/media/img/misc/quick_actions_bg.jpg); background-size: cover;"}
+                        .m-dropdown__header.m--align-center#quick_actions_container
                           %span.m-dropdown__header-title Quick Actions
                           %span.m-dropdown__header-subtitle Shortcuts
                         .m-dropdown__body.m-dropdown__body--paddingless
@@ -477,11 +477,12 @@
                   %li.m-nav__item.m-topbar__languages.m-dropdown.m-dropdown--small.m-dropdown--arrow.m-dropdown--align-right.m-dropdown--mobile-full-width{"m-dropdown-toggle" => "click"}
                     %a.m-nav__link.m-dropdown__toggle{:href => "#"}
                       %span.m-nav__link-text
-                        %img.m-topbar__language-selected-img{:src => "assets/app/media/img/flags/020-flag.svg"}
+                        = image_tag "flags/020-flag.svg", class: "m-topbar__language-selected-img"
+                        -# %img.m-topbar__language-selected-img{:src => "flags/020-flag.svg"}
                       .m-dropdown__wrapper
                         %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                         .m-dropdown__inner
-                          .m-dropdown__header.m--align-center{:style => "background: url(assets/app/media/img/misc/flagsquick_actions_bg.jpg); background-size: cover;"}
+                          .m-dropdown__header.m--align-center#flagstick_container
                             %span.m-dropdown__header-subtitle Select your language
                           .m-dropdown__body
                             .m-dropdown__content
@@ -489,40 +490,47 @@
                                 %li.m-nav__item.m-nav__item--active
                                   %a.m-nav__link.m-nav__link--active{:href => "#"}
                                     %span.m-nav__link-icon
-                                      %img.m-topbar__language-img{:src => "assets/app/media/img/flags/020-flag.svg"}/
+                                      = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                      -# %img.m-topbar__language-img{:src => "/app/assets/images/flags/020-flag.svg"}/
                                       %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text USA
                                   %li.m-nav__item
                                     %a.m-nav__link{:href => "#"}
                                       %span.m-nav__link-icon
-                                        %img.m-topbar__language-img{:src => "assets/app/media/img/flags/015-china.svg"}/
+                                        = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                        -# %img.m-topbar__language-img{:src => "flags/015-china.svg"}/
                                         %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text China
                                     %li.m-nav__item
                                       %a.m-nav__link{:href => "#"}
                                         %span.m-nav__link-icon
-                                          %img.m-topbar__language-img{:src => "assets/app/media/img/flags/016-spain.svg"}/
+                                          = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                          -# %img.m-topbar__language-img{:src => "flags/016-spain.svg"}/
                                           %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Spain
                                       %li.m-nav__item
                                         %a.m-nav__link{:href => "#"}
                                           %span.m-nav__link-icon
-                                            %img.m-topbar__language-img{:src => "assets/app/media/img/flags/014-japan.svg"}/
+                                            = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                            -# %img.m-topbar__language-img{:src => "flags/014-japan.svg"}/
                                             %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Japan
                                         %li.m-nav__item
                                           %a.m-nav__link{:href => "#"}
                                             %span.m-nav__link-icon
-                                              %img.m-topbar__language-img{:src => "assets/app/media/img/flags/017-germany.svg"}/
+                                              = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                              -# %img.m-topbar__language-img{:src => "flags/017-germany.svg"}/
                                               %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Germany
                               %li.m-nav__item.m-topbar__user-profile.m-topbar__user-profile--img.m-dropdown.m-dropdown--medium.m-dropdown--arrow.m-dropdown--header-bg-fill.m-dropdown--align-right.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
                                 %a.m-nav__link.m-dropdown__toggle{:href => "#"}
                                   %span.m-topbar__userpic
-                                    %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
+                                    = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
+                                    -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
                                   %span.m-topbar__username.m--hide Nick
                                 .m-dropdown__wrapper
                                   %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                                   .m-dropdown__inner
-                                    .m-dropdown__header.m--align-center{:style => "background: url(assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;"}
+                                    .m-dropdown__header.m--align-center#user_profile_container
                                       .m-card-user.m-card-user--skin-dark
                                         .m-card-user__pic
-                                          %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
+                                          = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
+                                          -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
                                           /
                                             <span class="m-type m-type--lg m--bg-danger"><span class="m--font-light">S<span><span>
                                         .m-card-user__details

@@ -29,7 +29,7 @@ function add_multiple_choice(){
                   <span>" + count + "<span>\
                   (Only answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_title' data-validate='true'>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=1>\
                 <input class='delete_" + uuid + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][_delete]' value=0>\
                 <div class='answers col-lg-10' id='answers_" + uuid + "'>\
@@ -38,7 +38,7 @@ function add_multiple_choice(){
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_title' data-validate='true'>\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
                         </div>\
                       </div>\
                     </div>\
@@ -68,7 +68,7 @@ function add_checkboxes_choice(){
                   <span>" + count + "<span>\
                   (Multiple answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_title' data-validate='true'>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=2>\
                 <div class='answers col-lg-10' id='answers_" + uuid + "'>\
                   <h6 class='m--font-brand'>Answers</h6>\
@@ -76,7 +76,7 @@ function add_checkboxes_choice(){
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_title' data-validate='true'>\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
                         </div>\
                       </div>\
                     </div>\
@@ -106,7 +106,7 @@ function add_paragraph_choice(){
                   <span>" + count + "<span>\
                   (Free answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_title' data-validate='true'>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_question_title_" + count + " data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=3>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
@@ -134,7 +134,7 @@ function add_multiple_option(uuid){
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_title' data-validate='true'>\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][title]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
                           <input  class='delete_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][_delete]' value=0>\
                         </div>\
                       </div>\

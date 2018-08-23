@@ -16,3 +16,19 @@
 #login_background {
   background-image: url('bg-4.jpg');
 }
+#notification_bg_tag {
+  background: url('notification_bg.jpg');
+  background-size: cover;
+}
+#quick_actions_container {
+  background: url('quick_actions_bg.jpg');
+  background-size: cover;
+}
+#flagstick_container {
+  background: url('flagsquick_actions_bg.jpg');
+  background-size: cover;
+}
+#user_profile_container {
+  background: url('user_profile_bg.jpg');
+  background-size: cover;
+}

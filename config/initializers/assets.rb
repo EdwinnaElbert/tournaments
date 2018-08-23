@@ -15,6 +15,10 @@ Rails.application.config.assets.precompile += %w( vendors.bundle.js )
 
 Rails.application.config.assets.precompile += %w( vendors.bundle.css )
 Rails.application.config.assets.paths << Rails.root.join('fonts')
+Rails.application.config.assets.paths << Rails.root.join('images')
+Rails.application.config.assets.paths << Rails.root.join('logo')
+Rails.application.config.assets.paths << Rails.root.join('users')
+Rails.application.config.assets.paths << Rails.root.join('misc')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
