@@ -1,3 +1,4 @@
+- binding.pry
 / begin::Portlet
 .m-portlet
   .m-portlet__head
@@ -47,7 +48,7 @@
                     = link_to edit_my_survey_path(s), class: "m-portlet__nav-link btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" do
                       %i.la.la-edit
         - else
-          = button_to 'Create survey', new_my_survey_path, class: 'btn btn-lg btn-primary'
+          = button_to 'Add Survey', new_my_survey_path, class: 'btn btn-lg btn-primary', html: { id: 'add_survey' }
     / end::Section
   / end::Form
 / end::Portlet
