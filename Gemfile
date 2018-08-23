@@ -51,12 +51,13 @@ group :development do
   gem "shoulda-matchers"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "capistrano", "~> 3.11", require: false
 end
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15"
-  gem 'capybara-webkit'
+  # gem "capybara-webkit"
   gem "factory_bot_rails"
   gem "rspec-rails"
   # gem 'selenium-webdriver'
@@ -65,7 +66,7 @@ group :development, :test do
 
   gem "faker"
   gem "rubocop"
-  gem 'rubocop-rspec'
+  gem "rubocop-rspec"
   gem "pry-rails"
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

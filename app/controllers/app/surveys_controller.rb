@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class App::SurveysController < AppController
-
   # # before_action -> { can_action('surveys') }
   # # before_action -> { can_action('surveys_add') }, only: [:new, :create, :edit, :update, :destroy]
   def index
-    @page_title = 'Surveys'
-    @surveys = Survey.order('start_datetime asc')
+    @page_title = "Surveys"
+    @surveys = Survey.order("start_datetime asc")
     # @surveys = @surveys.page(params[:page]).per(@per_page)
   end
   #
