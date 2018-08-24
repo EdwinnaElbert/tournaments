@@ -15,6 +15,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require scripts.bundle.js
+//= require bootstrap-datepicker.js
 
 function add_multiple_choice(){
   var uuid = generateUUID();
@@ -106,7 +108,7 @@ function add_paragraph_choice(){
                   <span>" + count + "<span>\
                   (Free answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_question_title_" + count + " data-validate='true'>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][title]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=3>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\

@@ -14,35 +14,35 @@ class MySurveysController < AppController
     @survey = Survey.new(start_datetime: DateTime.now.in_time_zone('Moscow'))
   end
   #
-  # def create
-  #   @survey = Survey.new(survey_params)
-  #   @survey.user_id = current_user.id
-  #   if @survey.save
-  #     params[:survey][:survey_questions_attributes].to_h.each_with_index do |pq, i|
-  #       q = pq[1]
-  #       question = SurveyQuestion.new
-  #       question.survey_id = @survey.id
-  #       question.question = q[:title]
-  #       question.question_type = q[:question_type]
-  #       question.weight = i
-  #       if question.save!
-  #         q[:survey_question_answers_attributes].to_h.each_with_index do |an, k|
-  #           a = an[1]
-  #           answer = SurveyQuestionAnswer.new
-  #           answer.survey_question_id = question.id
-  #           answer.answer = a[:title]
-  #           answer.weight = k
-  #           answer.save!
-  #         end
-  #       end
-  #     end
-  #     # @survey.send_create_push
-  #     # SurveyToFileWorker.perform_async(@survey.id.to_s)
-  #   else
-  #     redirect_to app_surveys_path(), flash: { alert: 'Survey not created!' }
-  #   end
-  #   redirect_to app_surveys_path(), flash: { notice: 'Survey successfully created!' }
-  # end
+  def create
+    @survey = Survey.new(survey_params)
+    @survey.user_id = current_user.id
+    if @survey.save
+      params[:survey][:survey_questions_attributes].to_h.each_with_index do |pq, i|
+        q = pq[1]
+        question = SurveyQuestion.new
+        question.survey_id = @survey.id
+        question.question = q[:title]
+        question.question_type = q[:question_type]
+        question.weight = i
+        if question.save!
+          q[:survey_question_answers_attributes].to_h.each_with_index do |an, k|
+            a = an[1]
+            answer = SurveyQuestionAnswer.new
+            answer.survey_question_id = question.id
+            answer.answer = a[:title]
+            answer.weight = k
+            answer.save!
+          end
+        end
+      end
+      # @survey.send_create_push
+      # SurveyToFileWorker.perform_async(@survey.id.to_s)
+    else
+      redirect_to app_surveys_path(), flash: { alert: 'Survey not created!' }
+    end
+    redirect_to app_surveys_path(), flash: { notice: 'Survey successfully created!' }
+  end
   #
   # def edit
   #   @page_title = 'Edit Surveys'
@@ -124,7 +124,7 @@ class MySurveysController < AppController
   # private
   #
   #
-  #   def survey_params
-  #     params.require(:survey).permit!
-  #   end
+    def survey_params
+      params.require(:survey).permit!
+    end
 end

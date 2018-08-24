@@ -5,11 +5,21 @@
         %i.la.la-gear
       %h3.m-portlet__head-text
         Add New Survey
-= form_for @survey, url: app_surveys_path, validate: true,
+= form_for @survey, url: my_surveys_path, validate: true,
   html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
   .m-portlet__body
     -# = error_messages_for(@survey)
     -# = render "main_form", f: f
+    .form-group.m-form__group
+      %label Date start
+      .col-lg-4.col-md-9.col-sm-12
+        .input-group.date
+          -#= f.text_field :start_datetime, @start_datetime.strftime("%Y-%m-%d %H:%M"), class: "form-control m-input"
+          -#= f.text_field :start_datetime, class: "form-control m-input", id: "m_datepicker_2", placeholder: "Select date", :readonly => "readonly", :type => "text"
+          %input#m_datepicker_2.form-control.m-input{:placeholder => "Select date", :readonly => "readonly", :type => "text"}/
+          .input-group-append
+            %span.input-group-text
+              %i.la.la-calendar-check-o
     .form-group.m-form__group
       %label{:for => "example-text-input"}= 'Title'
       = f.text_field :title, class: "form-control m-input"
