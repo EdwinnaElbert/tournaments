@@ -4,14 +4,14 @@ class MySurveysController < AppController
   before_action :authenticate_user!
 
   def index
-    @page_title = 'My Surveys'
-    @surveys = current_user.surveys.order('start_datetime asc')
+    @page_title = "My Surveys"
+    @surveys = current_user.surveys.order("start_datetime asc")
     # @surveys = @surveys.page(params[:page]).per(@per_page)
   end
 
   def new
-    @page_title = 'Add Surveys'
-    @survey = Survey.new(start_datetime: DateTime.now.in_time_zone('Moscow'))
+    @page_title = "Add Surveys"
+    @survey = Survey.new(start_datetime: DateTime.now.in_time_zone("Moscow"))
   end
   #
   def create
