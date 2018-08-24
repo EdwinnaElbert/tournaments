@@ -39,6 +39,7 @@ gem "nexmo"
 gem "phonelib"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
+gem "unicorn"
 
 group :development do
   # Access an interactive console on exception pages or by calling "console" anywhere in the code.
@@ -73,9 +74,6 @@ group :development, :test do
   gem "rubocop-rspec"
   gem "selenium-webdriver"
   gem "pry-rails"
-end
-group :production do
-  gem "unicorn"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
