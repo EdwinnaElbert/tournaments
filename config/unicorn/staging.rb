@@ -4,7 +4,7 @@ app_path =        "/data/survey"
 pid               "#{app_path}/shared/tmp/pids/unicorn.pid"
 
 # listen
-listen            "#{app_path}/shared/socket/.unicorn.sock", backlog: 64
+listen            "#{app_path}/shared/unicorn.socket", backlog: 64
 
 # logging
 stderr_path       "log/unicorn.stderr.log"
