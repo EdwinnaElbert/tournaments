@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery/dist/jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require scripts.bundle.js
-//= require bootstrap-datepicker.js
+//= require scripts.bundle
+//= require bootstrap-datepicker
 
 function add_multiple_choice(){
   var uuid = generateUUID();
