@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require "feature_helper"
 
@@ -7,6 +8,8 @@ feature "Signed in user who has already one survey creates a survey" do
 
   scenario "with valid email and password", :js => true do
     sign_in(user)
+    expect(page).to have_content("Create Survey")
+    # find('#add_survey').click # не работает кнопка в тестах
 
     expect(page).to have_content('Create Survey')
     find('#add_survey').click

@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :users do
-     # созданные юзером
+    # созданные юзером
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     resources :my_surveys
-    root :to => "my_surveys#index"
+    root to: "my_surveys#index"
   end
   root "app/surveys#index"
 end
