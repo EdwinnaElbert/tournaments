@@ -15,39 +15,42 @@ class MySurveysController < AppController
   end
   #
   def create
+    binding.pry
     @survey = Survey.new(survey_params)
     @survey.user_id = current_user.id
     if @survey.save
-      params[:survey][:survey_questions_attributes].to_h.each_with_index do |pq, i|
-        q = pq[1]
-        question = SurveyQuestion.new
-        question.survey_id = @survey.id
-        question.question = q[:title]
-        question.question_type = q[:question_type]
-        question.weight = i
-        if question.save!
-          q[:survey_question_answers_attributes].to_h.each_with_index do |an, k|
-            a = an[1]
-            answer = SurveyQuestionAnswer.new
-            answer.survey_question_id = question.id
-            answer.answer = a[:title]
-            answer.weight = k
-            answer.save!
-          end
-        end
-      end
+      # params[:survey][:survey_questions_attributes].to_h.each_with_index do |pq, i|
+      #   q = pq[1]
+      #   question = SurveyQuestion.new
+      #   question.survey_id = @survey.id
+      #   question.question = q[:question]
+      #   binding.pry
+      #   question.question_type = q[:question_type]
+      #   question.weight = i
+      #   if question.save!
+      #     q[:survey_question_answers_attributes].to_h.each_with_index do |an, k|
+      #       a = an[1]
+      #       answer = SurveyQuestionAnswer.new
+      #       answer.survey_question_id = question.id
+      #       answer.answer = a[:title]
+      #       answer.weight = k
+      #       answer.save!
+      #     end
+      #   end
+      # end
       # @survey.send_create_push
       # SurveyToFileWorker.perform_async(@survey.id.to_s)
+      redirect_to my_surveys_path(), flash: { notice: 'Survey successfully created!' }
     else
-      redirect_to app_surveys_path(), flash: { alert: 'Survey not created!' }
+      redirect_to new_my_surveys_path(), flash: { alert: 'Survey not created!' }
     end
-    redirect_to app_surveys_path(), flash: { notice: 'Survey successfully created!' }
   end
+
   #
-  # def edit
-  #   @page_title = 'Edit Surveys'
-  #   @survey = Survey.find(params[:id])
-  # end
+  def edit
+    @page_title = 'Edit Surveys'
+    @survey = Survey.find(params[:id])
+  end
   #
   # def update
   #   @survey = Survey.find(params[:id])
@@ -125,6 +128,11 @@ class MySurveysController < AppController
   #
   #
     def survey_params
+      params["survey"]["start_datetime"] = Date.strptime(params["survey"]["start_datetime"], "%m/%d/%Y") unless params["survey"]["start_datetime"].respond_to?(:to_date)
+      params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%m/%d/%Y") unless params["survey"]["end_datetime"].respond_to?(:to_date)
+      #params["survey"]["survey_questions_attributes"].values.each { |q| q.delete("_delete") } if params["survey"]["survey_questions_attributes"].present?
+      #binding.pry
+      #params["survey"]["survey_question_answers_attributes"].values.each { |a| a.delete("_delete") } if params["survey"]["survey_question_answers_attributes"].present?
       params.require(:survey).permit!
     end
 end

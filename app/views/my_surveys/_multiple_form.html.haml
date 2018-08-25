@@ -1,0 +1,38 @@
+- uuid = SecureRandom.uuid
+.col-lg-12{ class: "question_#{uuid}" }
+  %h5.m--font-primary
+    Question #
+    %span= i
+    - if question.question_type == 1
+      (Only answer)
+    - else
+      (Multiple answer)
+
+  %input.form-control.m-input{ required: 'required', type: 'text', name: "survey[survey_questions_attributes][#{uuid}][title]", "data-validate" => true, value: question.question }
+  %input{ type: "hidden", name: "survey[survey_questions_attributes][#{uuid}][question_type]", value: question.question_type }
+  - if question.id.present?
+    %input{ type: "hidden", name: "survey[survey_questions_attributes][#{uuid}][id]", value: question.id.to_s }
+    %input{ type: "hidden", class: "delete_#{uuid}", name: "survey[survey_questions_attributes][#{uuid}][_delete]", value: 0 }
+  .answers.col-lg-10{ id: "answers_#{uuid}" }
+    %h6.m--font-brand Answers
+    - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+      - uuid2 = SecureRandom.uuid
+      - if a.id.present?
+        %input{ type: "hidden", name: "survey[survey_questions_attributes][#{uuid}][survey_question_answers_attributes][#{uuid2}][id]", value: a.id.to_s }
+        %input{ type: "hidden", class: "delete_#{uuid2}", name: "survey[survey_questions_attributes][#{uuid}][survey_question_answers_attributes][#{uuid2}][_delete]", value: 0 }
+      .form-group.m-form__group.row.align-items-center{ class: "option_#{uuid2}" }
+        .col-md-10
+          %div
+            %div
+              %input.form-control.m-input{ required: "required", type: "text", name: "survey[survey_questions_attributes][#{uuid}][survey_question_answers_attributes][#{uuid2}][title]", "data-validate" => true, value: a.answer }
+        - if k > 0
+          .col-md-2
+            %a.m-portlet__nav-link.btn.m-btn.m-btn--hover-danger.m-btn--icon.m-btn--icon-only.m-btn--pill{ href: 'js:', onclick: "remove_option('#{uuid2}');" }
+              %i.la.la-trash.m--font-danger
+
+  .m-form__group.form-group.row
+    .col-lg-10
+      %a.m-link.m-link--state.m-link--success{ href: 'js:', onclick: "add_multiple_option('#{uuid}');" } Add option
+      &nbsp;&nbsp;
+      %a.m-link.m-link--state.m-link--danger{ href: 'js:', onclick: "remove_question('#{uuid}');" } Remove Question
+  .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space

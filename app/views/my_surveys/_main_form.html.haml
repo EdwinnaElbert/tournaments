@@ -1,0 +1,34 @@
+.form-group.m-form__group
+  %label Date start
+  .col-lg-4.col-md-9.col-sm-12
+    .input-group.date
+      -#= f.text_field :start_datetime, @start_datetime.strftime("%Y-%m-%d %H:%M"), class: "form-control m-input"
+      = f.text_field :start_datetime, class: "form-control m-input survey_start_datetime", id: "m_datepicker_2", placeholder: "Select date", :readonly => "readonly", :type => "text"
+      -# %input#m_datepicker_2.form-control.m-input{:placeholder => "Select date", :readonly => "readonly", :type => "text"}/
+      .input-group-append
+        %span.input-group-text
+          %i.la.la-calendar-check-o
+.form-group.m-form__group
+  %label End date
+  .col-lg-4.col-md-9.col-sm-12
+    .input-group.date
+      -#= f.text_field :start_datetime, @start_datetime.strftime("%Y-%m-%d %H:%M"), class: "form-control m-input"
+      = f.text_field :end_datetime, class: "form-control m-input survey_end_datetime", id: "m_datepicker_2", placeholder: "Select date", :readonly => "readonly", :type => "text"
+      -# %input#m_datepicker_2.form-control.m-input{:placeholder => "Select date", :readonly => "readonly", :type => "text"}/
+      .input-group-append
+        %span.input-group-text
+          %i.la.la-calendar-check-o
+.form-group.m-form__group
+  %label{:for => "example-text-input"}= 'Title'
+  = f.text_field :title, class: "form-control m-input"
+.form-group.m-form__group
+  %label{:for => "example-text-input"}= 'Description'
+  = f.text_field :description, class: "form-control m-input"
+.form-group.m-form__group
+  = f.label :is_anonymous, 'Is Anonymous'
+  .m-checkbox-list
+    %label.m-checkbox
+      = f.check_box :is_anonymous
+      %span#click_is_anonymous
+.m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
+.form-group.m-form__group.row

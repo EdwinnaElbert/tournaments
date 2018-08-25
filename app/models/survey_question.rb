@@ -6,8 +6,8 @@ class SurveyQuestion < ApplicationRecord
 
   belongs_to :survey
 
-  # accepts_nested_attributes_for :survey_question_answers, reject_if: :all_blank, allow_destroy: true
-  validates :survey_id, :question, :weight, presence: :true
+  accepts_nested_attributes_for :survey_question_answers, reject_if: :all_blank, allow_destroy: true
+  validates :question, :weight, presence: :true
 
-  enum question_type: %i[radio checkbox string]
+  # enum question_type: %i[zero radio checkbox string] # :survey_id
 end

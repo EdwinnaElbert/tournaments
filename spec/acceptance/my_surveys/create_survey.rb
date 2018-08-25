@@ -12,6 +12,8 @@ feature "Signed in user who has already one survey creates a survey" do
     find('#add_survey').click
 
     expect(page).to have_content('Description')
+    # find('.survey_start_datetime').set('27/11/2018')
+    # find('.survey_end_datetime').set('27/12/2018')
     fill_in 'survey_title', with: 'New survey title'
     fill_in 'survey_description', with: 'Lorem Ipsum'
     find('#click_is_anonymous').click
