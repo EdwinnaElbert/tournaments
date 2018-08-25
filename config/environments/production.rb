@@ -24,12 +24,13 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
   config.action_mailer_default_url_options = {host: "survey.toqomo.com"}
-  config.action_mailer_smtp_settings = {
-    enable_starttls_auto: false,
-    domain: "survey.toqomo.com",
-    address: "survey.toqomo.com",
-    openssl_verify_mode: "none"
-  }
+  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer_smtp_settings = {
+  #   enable_starttls_auto: false,
+  #   domain: "survey.toqomo.com",
+  #   address: "survey.toqomo.com",
+  #   openssl_verify_mode: "none"
+  # }
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
