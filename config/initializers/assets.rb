@@ -14,6 +14,7 @@ Rails.application.config.assets.precompile += %w( scripts.bundle.js )
 Rails.application.config.assets.precompile += %w( vendors.bundle.js )
 
 Rails.application.config.assets.precompile += %w( vendors.bundle.css )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 # Rails.application.config.assets.paths << Rails.root.join("fonts")
 # Rails.application.config.assets.paths << Rails.root.join("fonts/flaticon/")
 # Rails.application.config.assets.paths << Rails.root.join("fonts/fontawesome5/")
