@@ -57,6 +57,7 @@ group :development do
   gem "capistrano-rails", "~> 1.4", require: false
   gem "capistrano3-unicorn"
   gem "capistrano-rails-console", require: false
+  gem "capistrano-rails-db"
 end
 
 group :development, :test do
