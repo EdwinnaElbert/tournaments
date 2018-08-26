@@ -34,6 +34,7 @@ gem "jbuilder", "~> 2.5"
 
 # Use Capistrano for deployment
 gem "devise"
+gem "faker"
 gem "haml-rails"
 gem "nexmo"
 gem "phonelib"
@@ -69,7 +70,6 @@ group :development, :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
 
-  gem "faker"
   gem "rubocop"
   gem "rubocop-rspec"
   gem "selenium-webdriver"
