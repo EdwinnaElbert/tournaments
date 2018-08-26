@@ -13,7 +13,7 @@ set :pty, true
 
 set :linked_dirs, %w(log tmp vendor/bundle public/system public/assets)
 set :linked_files,        %w{config/database.yml config/master.key}
-set :rvm_ruby_version,    "2.5.1@surveys"
+set :rvm_ruby_version,    "2.5.1@shopapi"
 
 set :bundle_env_variables, rails_env: "production"
 

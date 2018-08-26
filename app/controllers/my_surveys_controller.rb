@@ -44,12 +44,12 @@ class MySurveysController < AppController
     end
   end
 
-  #
+
   def edit
     @page_title = 'Edit Surveys'
     @survey = Survey.find(params[:id])
   end
-  #
+
   # def update
   #   @survey = Survey.find(params[:id])
   #   if @survey.update_attributes(survey_params)
@@ -95,7 +95,7 @@ class MySurveysController < AppController
   #   end
   #   redirect_to app_surveys_path(), flash: { notice: 'Survey successfully updated!' }
   # end
-  #
+
   def destroy
     @survey = Survey.find(params[:id])
     redirect_to app_surveys_path(), flash: { alert: 'Survey not found!' } if @survey.blank?
