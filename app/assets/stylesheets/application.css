@@ -14,7 +14,7 @@
  *= require_self
  */
 #login_background {
-  background-image: url('bg-4.jpg');
+  background-image: url('misc/bg-4.jpg');
 }
 #notification_bg_tag {
   background: url('misc/notification_bg.jpg');
