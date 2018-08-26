@@ -2,6 +2,7 @@
   "name": "surveys",
   "private": true,
   "dependencies": {
+    "bootstrap": "twitter/bootstrap",
     "jquery": "^3.3.1"
   }
 }

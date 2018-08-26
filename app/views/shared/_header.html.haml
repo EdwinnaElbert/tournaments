@@ -26,7 +26,7 @@
               %i.flaticon-more
             / BEGIN: Topbar Toggler
       / END: Brand
-      #m_header_nav.m-stack__item.m-stack__item--fluid.m-header-head
+      #m_header_nav.m-stack__item.m-stack__item--fluid.m-header-head{style: 'background: white'}
         / BEGIN: Horizontal Menu
         %button#m_aside_header_menu_mobile_close_btn.m-aside-header-menu-mobile-close.m-aside-header-menu-mobile-close--skin-dark
           %i.la.la-close
@@ -446,10 +446,16 @@
                                     All caught up!
                                     %br No new logs.
                   %li.m-nav__item.m-topbar__quick-actions.m-topbar__quick-actions--img.m-dropdown.m-dropdown--large.m-dropdown--header-bg-fill.m-dropdown--arrow.m-dropdown--align-right.m-dropdown--align-push.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
-                    %a.m-nav__link.m-dropdown__toggle{:href => "#"}
-                      %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--info.m--hide
-                      %span.m-nav__link-icon
-                        %i.flaticon-share
+                    - if current_user
+                      = link_to destroy_user_session_path, method: :delete, class: "m-nav__link m-dropdown__toggle" do
+                        %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--info.m--hide
+                        %span.m-nav__link-icon
+                          %i.flaticon-logout
+                    - else
+                      = link_to new_user_session_path, class: "m-nav__link m-dropdown__toggle" do
+                        %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--info.m--hide
+                        %span.m-nav__link-icon
+                          %i.la.la-sign-in
                     .m-dropdown__wrapper
                       %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                       .m-dropdown__inner

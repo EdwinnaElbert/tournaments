@@ -9,6 +9,8 @@ class CreateSurveys < ActiveRecord::Migration[5.2]
       t.datetime :start_datetime, null: false
       t.datetime :end_datetime
       t.belongs_to :user, type: :uuid, foreign_key: true
+
+      t.timestamps null: false
     end
 
     add_index :surveys, :start_datetime

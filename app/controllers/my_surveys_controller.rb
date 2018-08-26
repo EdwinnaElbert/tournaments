@@ -11,11 +11,10 @@ class MySurveysController < AppController
 
   def new
     @page_title = "Add Surveys"
-    @survey = Survey.new(start_datetime: DateTime.now.in_time_zone("Moscow"))
+    @survey = Survey.new()
   end
   #
   def create
-    binding.pry
     @survey = Survey.new(survey_params)
     @survey.user_id = current_user.id
     if @survey.save
@@ -24,7 +23,6 @@ class MySurveysController < AppController
       #   question = SurveyQuestion.new
       #   question.survey_id = @survey.id
       #   question.question = q[:question]
-      #   binding.pry
       #   question.question_type = q[:question_type]
       #   question.weight = i
       #   if question.save!
@@ -42,7 +40,7 @@ class MySurveysController < AppController
       # SurveyToFileWorker.perform_async(@survey.id.to_s)
       redirect_to my_surveys_path(), flash: { notice: 'Survey successfully created!' }
     else
-      redirect_to new_my_surveys_path(), flash: { alert: 'Survey not created!' }
+      redirect_to new_my_survey_path(), flash: { alert: 'Survey not created!' }
     end
   end
 
@@ -98,18 +96,18 @@ class MySurveysController < AppController
   #   redirect_to app_surveys_path(), flash: { notice: 'Survey successfully updated!' }
   # end
   #
-  # def destroy
-  #   @survey = Survey.find(params[:id])
-  #   redirect_to app_surveys_path(), flash: { alert: 'Survey not found!' } if @survey.blank?
-  #
-  #   @survey.survey_questions.each do |q|
-  #     q.survey_question_answers.delete_all
-  #     q.delete
-  #   end
-  #   @survey.send_destroy_push
-  #   @survey.delete
-  #   redirect_to app_surveys_path(), flash: { notice: 'Survey successfully deleted!' }
-  # end
+  def destroy
+    @survey = Survey.find(params[:id])
+    redirect_to app_surveys_path(), flash: { alert: 'Survey not found!' } if @survey.blank?
+
+    # @survey.survey_questions.each do |q|
+    #   q.survey_question_answers.delete_all
+    #   q.delete
+    # end
+    # @survey.send_destroy_push
+    @survey.destroy
+    redirect_to my_surveys_path(), flash: { notice: 'Survey successfully deleted!' }
+  end
   #
   # def export_excel
   #   @survey = Survey.find(params[:id])
@@ -128,11 +126,10 @@ class MySurveysController < AppController
   #
   #
     def survey_params
-      params["survey"]["start_datetime"] = Date.strptime(params["survey"]["start_datetime"], "%m/%d/%Y") unless params["survey"]["start_datetime"].respond_to?(:to_date)
-      params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%m/%d/%Y") unless params["survey"]["end_datetime"].respond_to?(:to_date)
-      #params["survey"]["survey_questions_attributes"].values.each { |q| q.delete("_delete") } if params["survey"]["survey_questions_attributes"].present?
-      #binding.pry
-      #params["survey"]["survey_question_answers_attributes"].values.each { |a| a.delete("_delete") } if params["survey"]["survey_question_answers_attributes"].present?
+      params["survey"]["start_datetime"] = Date.strptime(params["survey"]["start_datetime"], "%m/%d/%Y") unless params["survey"]["start_datetime"].is_a?(Date)
+      params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%m/%d/%Y") unless params["survey"]["end_datetime"].is_a?(Date) || params["survey"]["end_datetime"] = ""
+      # params["survey"]["survey_questions_attributes"].values.each { |q| q.delete("_delete") } if params["survey"]["survey_questions_attributes"].present?
+      # params["survey"]["survey_question_answers_attributes"].values.each { |a| a.delete("_delete") } if params["survey"]["survey_question_answers_attributes"].present?
       params.require(:survey).permit!
     end
 end

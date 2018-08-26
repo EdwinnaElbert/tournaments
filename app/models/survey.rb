@@ -3,7 +3,7 @@
 class Survey < ApplicationRecord
   belongs_to :user
 
-  has_many :survey_questions
+  has_many :survey_questions, dependent: :destroy
   has_many :survey_user_answers
 
   accepts_nested_attributes_for :survey_questions, reject_if: :all_blank, allow_destroy: true

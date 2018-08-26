@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -22,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_061557) do
     t.string "answer", null: false
     t.integer "weight", null: false
     t.uuid "survey_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["survey_question_id"], name: "index_survey_question_answers_on_survey_question_id"
   end
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_061557) do
     t.integer "weight", null: false
     t.integer "question_type", null: false
     t.uuid "survey_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
 
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_061557) do
     t.uuid "user_id"
     t.uuid "survey_id"
     t.uuid "survey_question_answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_user_answers_on_survey_id"
     t.index ["survey_question_answer_id"], name: "index_survey_user_answers_on_survey_question_answer_id"
     t.index ["survey_question_id"], name: "index_survey_user_answers_on_survey_question_id"
@@ -54,6 +58,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_061557) do
     t.datetime "start_datetime", null: false
     t.datetime "end_datetime"
     t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["end_datetime"], name: "index_surveys_on_end_datetime"
     t.index ["start_datetime"], name: "index_surveys_on_start_datetime"
     t.index ["user_id"], name: "index_surveys_on_user_id"
@@ -74,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_061557) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name", null: false

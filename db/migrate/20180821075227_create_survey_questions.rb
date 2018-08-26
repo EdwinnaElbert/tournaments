@@ -7,6 +7,8 @@ class CreateSurveyQuestions < ActiveRecord::Migration[5.2]
       t.integer :weight, null: false
       t.integer :question_type, null: false
       t.belongs_to :survey, type: :uuid, foreign_key: true
+
+      t.timestamps null: false
     end
   end
 

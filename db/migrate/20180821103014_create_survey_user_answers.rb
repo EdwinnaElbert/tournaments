@@ -10,6 +10,8 @@ class CreateSurveyUserAnswers < ActiveRecord::Migration[5.2]
       t.belongs_to :user, type: :uuid, foreign_key: true
       t.belongs_to :survey, type: :uuid, foreign_key: true
       t.belongs_to :survey_question_answer, type: :uuid, foreign_key: true
+
+      t.timestamps null: false
     end
   end
 

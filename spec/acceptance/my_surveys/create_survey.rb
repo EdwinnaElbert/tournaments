@@ -8,6 +8,7 @@ feature "Signed in user who has already one survey creates a survey" do
 
   scenario "with valid email and password", :js => true do
     sign_in(user)
+    expect(Survey.all.count).to eq(1)
     expect(page).to have_content("Create Survey")
     # find('#add_survey').click # не работает кнопка в тестах
 
@@ -15,8 +16,9 @@ feature "Signed in user who has already one survey creates a survey" do
     find('#add_survey').click
 
     expect(page).to have_content('Description')
-    # find('.survey_start_datetime').set('27/11/2018')
-    # find('.survey_end_datetime').set('27/12/2018')
+    # 27/11/2018 -- invalid date, т.к. первым идет месяц
+    find('.survey_start_datetime').set('11/27/2018')
+    find('.survey_end_datetime').set('12/27/2018')
     fill_in 'survey_title', with: 'New survey title'
     fill_in 'survey_description', with: 'Lorem Ipsum'
     find('#click_is_anonymous').click
@@ -31,6 +33,8 @@ feature "Signed in user who has already one survey creates a survey" do
     expect(page).to have_content('Question # 3 (Free answer)')
     find('#survey_question_title_3').set('Question 3')
     click_on 'Create'
+
+    expect(current_path).to eq(my_surveys_path)
     expect(Survey.all.count).to eq(2)
     expect(Survey.order('created_at Desc').first.survey_questions.count).to eq(3)
   end

@@ -9,27 +9,29 @@
   html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
   .m-portlet__body
     = render 'main_form', f: f
+    .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
+    .form-group.m-form__group.row
       .col-lg-6#questions_body
-    .m-portlet__body
-      %br/
-      %br/
-      %a.btn.btn-brand.m-btn.m-btn--custom.m-btn--icon#add_only_answer{ onclick: "add_multiple_choice()" }
-        %span
-          %i.la.la-circle-thin
-          %span Add Only answer
-      %a.btn.btn-accent.m-btn.m-btn--custom.m-btn--icon#add_multiple_answer{ onclick: "add_checkboxes_choice()" }
-        %span
-          %i.la.la-check-square
-          %span Add Multiple answer
-      %a.btn.btn-focus.m-btn.m-btn--custom.m-btn--icon#add_free_answer{ onclick: "add_paragraph_choice()" }
-        %span
-          %i.la.la-smile-o
-          %span Add Free answer
-      %br/
-      %br/
+  .m-portlet__body
+    %br/
+    %br/
+    %a.btn.btn-brand.m-btn.m-btn--custom.m-btn--icon#add_only_answer{ onclick: "add_multiple_choice()" }
+      %span
+        %i.la.la-circle-thin
+        %span Add Only answer
+    %a.btn.btn-accent.m-btn.m-btn--custom.m-btn--icon#add_multiple_answer{ onclick: "add_checkboxes_choice()" }
+      %span
+        %i.la.la-check-square
+        %span Add Multiple answer
+    %a.btn.btn-focus.m-btn.m-btn--custom.m-btn--icon#add_free_answer{ onclick: "add_paragraph_choice()" }
+      %span
+        %i.la.la-smile-o
+        %span Add Free answer
+    %br/
+    %br/
 
-      .m-portlet__foot--fit
-        .m-form__actions.m-form__actions
-          %button.btn.btn-primary{ type: "submit", data: { confirm: 'Do you really want to save?' } }
-            Create
-          = link_to "Cancel", app_surveys_path, class: "btn btn-secondary"
+  .m-portlet__foot--fit
+    .m-form__actions.m-form__actions
+      %button.btn.btn-primary{ type: "submit" }
+        Create
+      = link_to "Cancel", app_surveys_path, class: "btn btn-secondary"
