@@ -19,6 +19,47 @@
 //= require bootstrap-datepicker
 
 function add_multiple_choice(){
+  // var uuid = generateUUID();
+  // var uuid2 = generateUUID();
+  var add_option_link = "";
+  var remove_option_link = "";
+  var remove_question_link = "";
+  var count = $("#questions_body .col-lg-12").length;
+  var html = "<div class='col-lg-12 question_" + count + "'>\
+                <h5 class='m--font-primary'>\
+                  Question #\
+                  <span>" + count + "<span>\
+                  (Only answer)\
+                </h5>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=1>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][weight]' value=" + count + ">\
+                <input class='destroy_" + count + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][_destroy]' value=0>\
+                <div class='answers col-lg-10' id='answers_" + count + "'>\
+                  <h6 class='m--font-brand'>Answers</h6>\
+                  <div class='form-group m-form__group row align-items-center'>\
+                    <div class='col-md-10'>\
+                      <div>\
+                        <div>\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][answer]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
+                          <input  class='weight_" + '0' + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][weight]' value=" + 1 + ">\
+                        </div>\
+                      </div>\
+                    </div>\
+                  </div>\
+                </div>\
+                <div class='m-form__group form-group row'>\
+                  <div class='col-lg-10'>\
+                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
+                    <a href='js:' onclick='remove_question(\"" + count + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                  </div>\
+                </div>\
+                <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
+              </div>"
+  $("#questions_body").append(html);
+}
+
+function add_multiple_choice_old(){
   var uuid = generateUUID();
   var uuid2 = generateUUID();
   var add_option_link = "";
@@ -34,7 +75,7 @@ function add_multiple_choice(){
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=1>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][weight]' value=" + count + ">\
-                <!-- <input class='delete_" + uuid + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][_delete]' value=0> -->\
+                <input class='delete_" + uuid + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][_delete]' value=0>\
                 <div class='answers col-lg-10' id='answers_" + uuid + "'>\
                   <h6 class='m--font-brand'>Answers</h6>\
                   <div class='form-group m-form__group row align-items-center'>\
@@ -60,29 +101,29 @@ function add_multiple_choice(){
 }
 
 function add_checkboxes_choice(){
-  var uuid = generateUUID();
-  var uuid2 = generateUUID();
+  // var uuid = generateUUID();
+  // var uuid2 = generateUUID();
   var add_option_link = "";
   var remove_option_link = "";
   var remove_question_link = "";
-  var count = $("#questions_body .col-lg-12").length + 1;
-  var html = "<div class='col-lg-12 question_" + uuid + "'>\
+  var count = $("#questions_body .col-lg-12").length;
+  var html = "<div class='col-lg-12 question_" + count + "'>\
                 <h5 class='m--font-primary'>\
                   Question #\
                   <span>" + count + "<span>\
                   (Multiple answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
-                <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=2>\
-                <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][weight]' value=" + count + ">\
-                <div class='answers col-lg-10' id='answers_" + uuid + "'>\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=2>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][weight]' value=" + count + ">\
+                <div class='answers col-lg-10' id='answers_" + count + "'>\
                   <h6 class='m--font-brand'>Answers</h6>\
                   <div class='form-group m-form__group row align-items-center'>\
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][answer]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
-                          <input  class='weight_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][weight]' value=" + 1 + ">\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][answer]' id='survey_question_answer_title_" + 0 + "' data-validate='true'>\
+                          <input  class='weight_" + 0 + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][weight]' value=" + 1 + ">\
                         </div>\
                       </div>\
                     </div>\
@@ -90,8 +131,8 @@ function add_checkboxes_choice(){
                 </div>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='add_multiple_option(\"" + uuid + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
-                    <a href='js:' onclick='remove_question(\"" + uuid + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
+                    <a id='remove_question' href='js:' onclick='remove_question(\"" + count + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
@@ -99,31 +140,97 @@ function add_checkboxes_choice(){
   $("#questions_body").append(html);
 }
 
+// function add_checkboxes_choice(){
+//   var uuid = generateUUID();
+//   var uuid2 = generateUUID();
+//   var add_option_link = "";
+//   var remove_option_link = "";
+//   var remove_question_link = "";
+//   var count = $("#questions_body .col-lg-12").length + 1;
+//   var html = "<div class='col-lg-12 question_" + uuid + "'>\
+//                 <h5 class='m--font-primary'>\
+//                   Question #\
+//                   <span>" + count + "<span>\
+//                   (Multiple answer)\
+//                 </h5>\
+//                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
+//                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=2>\
+//                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][weight]' value=" + count + ">\
+//                 <div class='answers col-lg-10' id='answers_" + uuid + "'>\
+//                   <h6 class='m--font-brand'>Answers</h6>\
+//                   <div class='form-group m-form__group row align-items-center'>\
+//                     <div class='col-md-10'>\
+//                       <div>\
+//                         <div>\
+//                           <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][answer]' id='survey_question_answer_title_" + count + "' data-validate='true'>\
+//                           <input  class='weight_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][weight]' value=" + 1 + ">\
+//                         </div>\
+//                       </div>\
+//                     </div>\
+//                   </div>\
+//                 </div>\
+//                 <div class='m-form__group form-group row'>\
+//                   <div class='col-lg-10'>\
+//                     <a href='js:' onclick='add_multiple_option(\"" + uuid + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
+//                     <a id='remove_question' href='js:' onclick='remove_question(\"" + uuid + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+//                   </div>\
+//                 </div>\
+//                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
+//               </div>"
+//   $("#questions_body").append(html);
+// }
+
 function add_paragraph_choice(){
-  var uuid = generateUUID();
-  var uuid2 = generateUUID();
+  // var uuid = generateUUID();
+  // var uuid2 = generateUUID();
   var add_option_link = "";
   var remove_option_link = "";
   var remove_question_link = "";
-  var count = $("#questions_body .col-lg-12").length + 1;
-  var html = "<div class='col-lg-12 question_" + uuid + "'>\
+  var count = $("#questions_body .col-lg-12").length;
+  var html = "<div class='col-lg-12 question_" + count + "'>\
                 <h5 class='m--font-primary'>\
                   Question #\
                   <span>" + count + "<span>\
                   (Free answer)\
                 </h5>\
-                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
-                <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=3>\
-                <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][weight]' value=" + count + ">\
+                <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=3>\
+                <input type='hidden' name='survey[survey_questions_attributes][" + count + "][weight]' value=" + count + ">\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='remove_question(\"" + uuid + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                    <a href='js:' onclick='remove_question(\"" + count + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
               </div>"
   $("#questions_body").append(html);
 }
+
+// function add_paragraph_choice(){
+//   var uuid = generateUUID();
+//   var uuid2 = generateUUID();
+//   var add_option_link = "";
+//   var remove_option_link = "";
+//   var remove_question_link = "";
+//   var count = $("#questions_body .col-lg-12").length + 1;
+//   var html = "<div class='col-lg-12 question_" + uuid + "'>\
+//                 <h5 class='m--font-primary'>\
+//                   Question #\
+//                   <span>" + count + "<span>\
+//                   (Free answer)\
+//                 </h5>\
+//                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
+//                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][question_type]' value=3>\
+//                 <input type='hidden' name='survey[survey_questions_attributes][" + uuid + "][weight]' value=" + count + ">\
+//                 <div class='m-form__group form-group row'>\
+//                   <div class='col-lg-10'>\
+//                     <a href='js:' onclick='remove_question(\"" + uuid + "\");' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+//                   </div>\
+//                 </div>\
+//                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
+//               </div>"
+//   $("#questions_body").append(html);
+// }
 
 function generateUUID() {
     var d = new Date().getTime();
@@ -135,36 +242,66 @@ function generateUUID() {
     return uuid;
 };
 
-function add_multiple_option(uuid){
-  var uuid2 = generateUUID();
-  var answer_count = ($("#answers_" + uuid + " .form-group").length + 1);
-  var html = "<div class='form-group m-form__group row align-items-center option_" + uuid2 + "'>\
+// function add_multiple_option(uuid){
+//   var uuid2 = generateUUID();
+//   var answer_count = ($("#answers_" + uuid + " .form-group").length + 1);
+//   var html = "<div class='form-group m-form__group row align-items-center option_" + uuid2 + "'>\
+//                     <div class='col-md-10'>\
+//                       <div>\
+//                         <div>\
+//                           <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][answer]' id='survey_question_answer_title_' data-validate='true'>\
+//                           <input class='delete_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][_delete]' value=0>\
+//                           <input  class='weight_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][weight]' value=" + answer_count + ">\
+//                         </div>\
+//                       </div>\
+//                     </div>\
+//                     <div class='col-md-2'>\
+//                       <a id='remove_option' onclick='remove_option(\"" + uuid2 + "\");' class='m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill'>\
+//                         <i class='la la-trash m--font-danger'></i></a>\
+//                     </div>\
+//                   </div>"
+//   $("#answers_" + uuid).append(html);
+// }
+
+function add_multiple_option(count){
+  // var uuid2 = generateUUID();
+  var answer_count = ($("#answers_" + count + " .form-group").length);
+  var html = "<div class='form-group m-form__group row align-items-center option_" + answer_count + "'>\
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][answer]' id='survey_question_answer_title_' data-validate='true'>\
-                          <!-- <input class='delete_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][_delete]' value=0> -->\
-                          <input  class='weight_" + uuid2 + "' type='hidden' name='survey[survey_questions_attributes][" + uuid + "][survey_question_answers_attributes][" + uuid2 + "][weight]' value=" + answer_count + ">\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][answer]' id='survey_question_answer_title_' data-validate='true'>\
+                          <input class='destroy_" + answer_count + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][_destroy]' value=0>\
+                          <input  class='weight_" + answer_count + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][weight]' value=" + answer_count + ">\
                         </div>\
                       </div>\
                     </div>\
                     <div class='col-md-2'>\
-                      <a onclick='remove_option(\"" + uuid2 + "\");' class='m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill'>\
+                      <a id='remove_option' onclick='remove_option(\"" + answer_count + "\");' class='m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill'>\
                         <i class='la la-trash m--font-danger'></i></a>\
                     </div>\
                   </div>"
-  $("#answers_" + uuid).append(html);
+  $("#answers_" + count).append(html);
 }
 
+// function remove_option(uuid){
+//   $(".option_" + uuid).remove();
+//   $(".destroy_" + uuid).val(1);
+// }
+//
+// function remove_question(uuid){
+//   // $(".question_" + uuid).remove();
+//   $(".question_" + uuid).hide();
+//   $(".destroy_" + uuid).val(1);
+// }
 
-
-function remove_option(uuid){
-  $(".option_" + uuid).remove();
-  // $(".delete_" + uuid).val(1);
+function remove_option(count){
+  $(".option_" + count).remove();
+  $(".destroy_" + count).val(1);
 }
 
-function remove_question(uuid){
-  $(".question_" + uuid).remove();
-  // $(".question_" + uuid).hide();
-  // $(".delete_" + uuid).val(1);
+function remove_question(count){
+  // $(".question_" + uuid).remove();
+  $(".question_" + count).remove();
+  $(".destroy_" + count).val(1);
 }

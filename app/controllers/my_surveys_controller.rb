@@ -130,6 +130,6 @@ class MySurveysController < AppController
       params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%m/%d/%Y") unless params["survey"]["end_datetime"].is_a?(Date) || params["survey"]["end_datetime"] == ""
       # params["survey"]["survey_questions_attributes"].values.each { |q| q.delete("_delete") } if params["survey"]["survey_questions_attributes"].present?
       # params["survey"]["survey_question_answers_attributes"].values.each { |a| a.delete("_delete") } if params["survey"]["survey_question_answers_attributes"].present?
-      params.require(:survey).permit!
+      params.require(:survey).permit(:title, :description, :is_anonymous, :start_datetime, :end_datetime, { survey_questions_attributes: [  :question, :question_type, :id, :_delete, :weight, { survey_question_answers_attributes: [ :answer, :id, :_delete, :weight ]}]})
     end
 end
