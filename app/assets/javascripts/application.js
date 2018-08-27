@@ -25,10 +25,10 @@ function add_multiple_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
-  var html = "<div class='col-lg-12 question_container question_" + count + "'>\
+  var html = "<div class='col-lg-12 question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
                   Question #\
-                  <span>" + count + "<span>\
+                  <span>" + (count + 1) + "<span>\
                   (Only answer)\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
@@ -107,10 +107,10 @@ function add_checkboxes_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
-  var html = "<div class='col-lg-12  question_container question_" + count + "'>\
+  var html = "<div class='col-lg-12  question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
                   Question #\
-                  <span>" + count + "<span>\
+                  <span>" + (count + 1) + "<span>\
                   (Multiple answer)\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
@@ -188,10 +188,10 @@ function add_paragraph_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
-  var html = "<div class='col-lg-12 question_container question_" + count + "'>\
+  var html = "<div class='col-lg-12 question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
                   Question #\
-                  <span>" + count + "<span>\
+                  <span>" + (count + 1) + "<span>\
                   (Free answer)\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\

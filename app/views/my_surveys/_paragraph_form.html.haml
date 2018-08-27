@@ -1,5 +1,5 @@
 - uuid = SecureRandom.uuid
-.col-lg-12{ class: "question_#{uuid}" }
+.col-lg-12.question_container{ class: "question_#{uuid}" }
   %h5.m--font-primary
     Question #
     %span= i
@@ -13,5 +13,5 @@
 
   .m-form__group.form-group.row
     .col-lg-10
-      %a.m-link.m-link--state.m-link--danger{ href: 'js:', onclick: "remove_question('#{uuid}');" } Remove Question
+      %a.m-link.m-link--state.m-link--danger{ href: 'js:', onclick: "remove_question(this);" } Remove Question
   .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
