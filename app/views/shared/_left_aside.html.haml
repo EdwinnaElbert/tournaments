@@ -16,16 +16,6 @@
                   %span.m-menu__link-badge
                     %span.m-badge.m-badge--danger
                       = current_user.surveys.count
-      %li.m-menu__item.m-menu__item--active{"aria-haspopup" => "true"}
-        = link_to app_surveys_path, class: "m-menu__link" do
-          %i.m-menu__link-icon.flaticon-list-2
-          %span.m-menu__link-title
-            %span.m-menu__link-wrap
-              %span.m-menu__link-text All Surveys
-              - if Survey.where("created_at >= ?", Time.now - 1.day).count > 0
-                %span.m-menu__link-badge
-                  %span.m-badge.m-badge--success
-                    = "#{Survey.where("created_at >= ?", Time.now - 1.day).count} New"
         %i.m-menu__section-icon.flaticon-more-v2
       %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true"}
         %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}

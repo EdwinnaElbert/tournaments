@@ -66,9 +66,9 @@
         <%= f.submit "Log in", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" } %><br />
       <!--begin::Action  ,-->
       <div class="m-login__action">
-        <a href="#" class="m-link">
+        <%= link_to new_user_password_path, class: 'm-link' do %>
           <span>Forgot Password ?</span>
-        </a>
+        <% end %>
       </div>
       <!--end::Action-->
       <!--begin::Divider-->
