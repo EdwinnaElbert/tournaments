@@ -13,9 +13,9 @@
               %span.m-menu__link-wrap
                 %span.m-menu__link-text My Surveys
                 - if current_user.surveys.count > 0
-                %span.m-menu__link-badge
-                  %span.m-badge.m-badge--danger
-                    = current_user.surveys.count
+                  %span.m-menu__link-badge
+                    %span.m-badge.m-badge--danger
+                      = current_user.surveys.count
       %li.m-menu__item.m-menu__item--active{"aria-haspopup" => "true"}
         = link_to app_surveys_path, class: "m-menu__link" do
           %i.m-menu__link-icon.flaticon-list-2
