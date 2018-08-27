@@ -447,12 +447,12 @@
                                     %br No new logs.
                   %li.m-nav__item.m-topbar__quick-actions.m-topbar__quick-actions--img.m-dropdown.m-dropdown--large.m-dropdown--header-bg-fill.m-dropdown--arrow.m-dropdown--align-right.m-dropdown--align-push.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
                     - if current_user
-                      = link_to destroy_user_session_path, method: :delete, class: "m-nav__link m-dropdown__toggle" do
+                      = link_to destroy_user_session_path, method: :delete, class: "m-nav__link" do
                         %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--info.m--hide
                         %span.m-nav__link-icon
                           %i.flaticon-logout
                     - else
-                      = link_to new_user_session_path, class: "m-nav__link m-dropdown__toggle" do
+                      = link_to new_user_session_path, class: "m-nav__link" do
                         %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--info.m--hide
                         %span.m-nav__link-icon
                           %i.la.la-sign-in
