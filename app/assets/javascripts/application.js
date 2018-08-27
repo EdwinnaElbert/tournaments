@@ -291,7 +291,7 @@ function remove_option(uuid){
 
 function remove_question(uuid){
   // $(".question_" + uuid).remove();
-  $(".question_" + uuid).hide();
+  $(".question_" + uuid).remove();
   //$(".destroy_" + uuid).val(1);
 }
 
