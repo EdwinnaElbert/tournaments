@@ -43,7 +43,7 @@
               = f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password"
             .form-group.m-form__group
               = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password Confirmation"
-            = f.submit "Change my password", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
+            = f.submit t(".change_my_password"), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
             %br/
             / begin::Action  ,
             / end::Action

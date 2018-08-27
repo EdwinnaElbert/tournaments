@@ -22,22 +22,20 @@
     .m-grid__item.m-grid__item--fluid.m-grid__item--order-tablet-and-mobile-1.m-login__wrapper
       / begin::Head
       .m-login__head
-        %span Don't have an account?
-        = link_to 'Sign Up', new_user_registration_path, class: 'm-link m--font-danger'
+        = link_to  t('devise.registrations.new.sign_up'), new_user_registration_path, class: 'm-link m--font-danger'
       / end::Head
       / begin::Body
       .m-login__body
         / begin::Signin
         .m-login__signin
           .m-login__title
-            %h3 Forgot your password?
+            %h3= t("devise.passwords.new.forgot_your_password")
           / begin::Form
           = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-            = devise_error_messages!
             = hidden_field_tag 'authenticity_token', form_authenticity_token
-            .form-group.m-form__group
-              = f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Email"
-            = f.submit "Send me reset password instructions", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
+            .form-group.m-form__group.has-danger
+              = f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: t('activerecord.attributes.user.email')
+            = f.submit t("devise.passwords.new.send_me_reset_password_instructions"), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
             %br/
             / begin::Action  ,
             / end::Action
@@ -45,7 +43,7 @@
             .m-login__form-divider
               .m-divider
                 %span
-                %span OR
+                %span= t('devise.shared.or')
                 %span
             / end::Divider
             / begin::Options

@@ -17,6 +17,7 @@
 //= require vendors.bundle
 //= require scripts.bundle
 //= require bootstrap-datepicker
+//= require rails.validations
 
 function add_multiple_choice(){
   // var uuid = generateUUID();

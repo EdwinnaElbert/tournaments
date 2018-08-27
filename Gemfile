@@ -32,9 +32,9 @@ gem "jbuilder", "~> 2.5"
 # Use ActiveStorage variant
 # gem "mini_magick", "~> 4.8"
 
-# Use Capistrano for deployment
 gem "client_side_validations"
 gem "devise"
+gem "devise-i18n"
 gem "faker"
 gem "haml-rails"
 gem "nexmo"

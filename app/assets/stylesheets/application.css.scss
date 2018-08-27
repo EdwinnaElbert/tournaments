@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ p, span, h1, h2, h3, h4, h5, h6, a {
+   font-family: "Calibri", sans-serif;
+ }
 #login_background {
   background-image: image-url('misc/bg-4.jpg');
 }
