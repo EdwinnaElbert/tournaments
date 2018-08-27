@@ -25,7 +25,8 @@
                   %td=s.title
                   %td.nowrap
                     %span.dropdown
-                    = link_to app_survey_path(s), class: "m-portlet__nav-link btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" do
+                    -# app_survey_path(s)
+                    = link_to '#', class: "m-portlet__nav-link btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" do
                       %i.la.la-edit
         - else
           = link_to 'Add Survey', new_my_survey_path, class: 'btn btn-lg btn-primary', html: { id: 'add_survey' }
