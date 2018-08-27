@@ -12,6 +12,7 @@
             %span.m-menu__link-title
               %span.m-menu__link-wrap
                 %span.m-menu__link-text My Surveys
+                - if current_user.surveys.count > 0
                 %span.m-menu__link-badge
                   %span.m-badge.m-badge--danger
                     = current_user.surveys.count
