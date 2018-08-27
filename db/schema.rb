@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_065828) do
+ActiveRecord::Schema.define(version: 2018_08_27_130246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_065828) do
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.string "phone", default: "", null: false
+    t.string "phone", default: ""
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2018_08_27_065828) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "patronymic"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -33,6 +33,7 @@ gem "jbuilder", "~> 2.5"
 # gem "mini_magick", "~> 4.8"
 
 # Use Capistrano for deployment
+gem "client_side_validations"
 gem "devise"
 gem "faker"
 gem "haml-rails"

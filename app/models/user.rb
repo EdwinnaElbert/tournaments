@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :surveys
   has_many :survey_user_answers
 
-  validates :phone, :email, :first_name, :last_name, presence: :true
+  validates :email, presence: :true
 end
