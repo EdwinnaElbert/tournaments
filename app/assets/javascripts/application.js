@@ -160,10 +160,11 @@ function add_multiple_option(uuid){
 
 function remove_option(uuid){
   $(".option_" + uuid).remove();
-  $(".delete_" + uuid).val(1);
+  // $(".delete_" + uuid).val(1);
 }
 
 function remove_question(uuid){
-  $(".question_" + uuid).hide();
-  $(".delete_" + uuid).val(1);
+  $(".question_" + uuid).remove();
+  // $(".question_" + uuid).hide();
+  // $(".delete_" + uuid).val(1);
 }
