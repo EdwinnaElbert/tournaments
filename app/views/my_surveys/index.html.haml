@@ -38,9 +38,6 @@
                       %a.btn.m-btn.m-btn--hover-brand.m-btn--icon.m-btn--icon-only.m-btn--pill{ href: "#", "aria-expanded": "true", 'data-toggle': "dropdown"}
                         %i.la.la-ellipsis-h
                       .dropdown-menu.dropdown-menu-right
-                        = link_to app_survey_path(s), class: "dropdown-item" do
-                          %i.la.la-eye
-                          Preview
                         = link_to my_survey_path(s), method: :delete, class: "dropdown-item" do
                           %i.la.la-trash
                           Destroy

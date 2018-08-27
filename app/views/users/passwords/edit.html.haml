@@ -23,40 +23,29 @@
       / begin::Head
       .m-login__head
         %span Don't have an account?
-        %a.m-link.m--font-danger{:href => "#"} Sign Up
+        %a.m-link.m--font-danger{:href => "#"} Change your password
       / end::Head
       / begin::Body
       .m-login__body
         / begin::Signin
         .m-login__signin
           .m-login__title
-            %h3 Create Account
+            %h3 Forgot your password?
           / begin::Form
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), class: "m-login__form m-form") do |f|
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
             = devise_error_messages!
-            = hidden_field_tag 'authenticity_token', form_authenticity_token
-            -# .form-group.m-form__group
-            -#   = f.text_field :first_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "First Name"
-            -# .form-group.m-form__group
-            -#   = f.text_field :last_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Last Name"
-            -# .form-group.m-form__group
-            -#   = f.text_field :patronymic, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Patronymic"
-            .form-group.m-form__group
-              = f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Email"
-            -# .form-group.m-form__group
-            -#   = f.text_field :phone, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Phone Number"
+            = f.hidden_field :reset_password_token
             .form-group.m-form__group
               - if @minimum_password_length
                 %em
                   (#{@minimum_password_length} characters minimum)
               %br/
               = f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password"
-            = f.submit "Sign up", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
+            .form-group.m-form__group
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password Confirmation"
+            = f.submit "Change my password", class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
             %br/
             / begin::Action  ,
-            .m-login__action
-              = link_to new_user_password_path, class: "m-link" do
-                %span Forgot Password ?
             / end::Action
             / begin::Divider
             .m-login__form-divider
@@ -91,3 +80,30 @@
         sessionStorage.fonts = true;
     }
   });
+
+-#
+-# <h2>Change your password</h2>
+-#
+-# <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+-#   <%= devise_error_messages! %>
+-#   <%= f.hidden_field :reset_password_token %>
+-#
+-#   <div class="field">
+-#     <%= f.label :password, "New password" %><br />
+-#     <% if @minimum_password_length %>
+-#       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+-#     <% end %>
+-#     <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+-#   </div>
+-#
+-#   <div class="field">
+-#     <%= f.label :password_confirmation, "Confirm new password" %><br />
+-#     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+-#   </div>
+-#
+-#   <div class="actions">
+-#     <%= f.submit "Change my password" %>
+-#   </div>
+-# <% end %>
+-#
+-# <%= render "users/shared/links" %>
