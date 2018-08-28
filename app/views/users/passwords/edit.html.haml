@@ -3,72 +3,30 @@
 .m-grid.m-grid--hor.m-grid--root.m-page
   #m_login.m-grid__item.m-grid__item--fluid.m-grid.m-grid--desktop.m-grid--ver-desktop.m-grid--hor-tablet-and-mobile.m-login.m-login--6
     #login_background.m-grid__item.m-grid__item--order-tablet-and-mobile-2.m-grid.m-grid--hor.m-login__aside
-      .m-grid__item
-        .m-login__logo
-          %a{:href => "#"}
-            = image_tag("logo-4.png")
-      .m-grid__item.m-grid__item--fluid.m-grid.m-grid--ver
-        .m-grid__item.m-grid__item--middle
-          %span.m-login__title Whatever CTA's wave purpose important exit element
-          %span.m-login__subtitle Lorem ipsum amet estudiat
-      .m-grid__item
-        .m-login__info
-          .m-login__section
-            %a.m-link{:href => "#"} &copy 2018 Metronic
-          .m-login__section
-            %a.m-link{:href => "#"} Privacy
-            %a.m-link{:href => "#"} Legal
-            %a.m-link{:href => "#"} Contact
+      = render 'users/shared/left_side'
     .m-grid__item.m-grid__item--fluid.m-grid__item--order-tablet-and-mobile-1.m-login__wrapper
       / begin::Head
       .m-login__head
-        %span Don't have an account?
-        %a.m-link.m--font-danger{:href => "#"} Change your password
+        %span= t('devise.passwords.edit.don_t_have_an_account')
+        = link_to t('devise.registrations.new.sign_up'), new_user_registration_path, class: "m-link m--font-danger"
       / end::Head
       / begin::Body
       .m-login__body
         / begin::Signin
         .m-login__signin
           .m-login__title
-            %h3 Forgot your password?
+            %h3= t('devise.passwords.edit.change_my_password')
           / begin::Form
-          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-            = devise_error_messages!
+          = form_for(resource, as: resource_name, validate: true, url: password_path(resource_name), html: { method: :put }) do |f|
             = f.hidden_field :reset_password_token
-            .form-group.m-form__group
-              - if @minimum_password_length
-                %em
-                  (#{@minimum_password_length} characters minimum)
-              %br/
-              = f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password"
-            .form-group.m-form__group
-              = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: "Password Confirmation"
-            = f.submit t(".change_my_password"), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
+            .form-group.m-form__group.has_danger
+              = f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: t('devise.passwords.edit.new_password')
+            .form-group.m-form__group.has_danger
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: t('devise.passwords.edit.confirm_new_password')
+            = f.submit t('devise.passwords.edit.change_my_password'), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
             %br/
-            / begin::Action  ,
-            / end::Action
-            / begin::Divider
-            .m-login__form-divider
-              .m-divider
-                %span
-                %span OR
-                %span
-            / end::Divider
-            / begin::Options
-            .m-login__options
-              %a.btn.btn-primary.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-facebook-f
-                  %span Facebook
-              %a.btn.btn-info.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-twitter
-                  %span Twitter
-              %a.btn.btn-danger.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-google
-                  %span Google
-            / end::Options
+            %br/
+            = render 'users/shared/oauth_links'
         / end::Signin
       / end::Body
     %script{:src => "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"}

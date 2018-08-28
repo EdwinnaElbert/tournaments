@@ -3,22 +3,7 @@
 .m-grid.m-grid--hor.m-grid--root.m-page
   #m_login.m-grid__item.m-grid__item--fluid.m-grid.m-grid--desktop.m-grid--ver-desktop.m-grid--hor-tablet-and-mobile.m-login.m-login--6
     #login_background.m-grid__item.m-grid__item--order-tablet-and-mobile-2.m-grid.m-grid--hor.m-login__aside
-      .m-grid__item
-        .m-login__logo
-          %a{:href => "#"}
-            = image_tag("logo-4.png")
-      .m-grid__item.m-grid__item--fluid.m-grid.m-grid--ver
-        .m-grid__item.m-grid__item--middle
-          %span.m-login__title Whatever CTA's wave purpose important exit element
-          %span.m-login__subtitle Lorem ipsum amet estudiat
-      .m-grid__item
-        .m-login__info
-          .m-login__section
-            %a.m-link{:href => "#"} &copy 2018 Metronic
-          .m-login__section
-            %a.m-link{:href => "#"} Privacy
-            %a.m-link{:href => "#"} Legal
-            %a.m-link{:href => "#"} Contact
+      = render 'users/shared/left_side'
     .m-grid__item.m-grid__item--fluid.m-grid__item--order-tablet-and-mobile-1.m-login__wrapper
       / begin::Head
       .m-login__head
@@ -37,33 +22,11 @@
               = f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: t('activerecord.attributes.user.email')
             = f.submit t("devise.passwords.new.send_me_reset_password_instructions"), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
             %br/
-            / begin::Action  ,
-            / end::Action
-            / begin::Divider
-            .m-login__form-divider
-              .m-divider
-                %span
-                %span= t('devise.shared.or')
-                %span
-            / end::Divider
-            / begin::Options
-            .m-login__options
-              %a.btn.btn-primary.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-facebook-f
-                  %span Facebook
-              %a.btn.btn-info.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-twitter
-                  %span Twitter
-              %a.btn.btn-danger.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
-                %span
-                  %i.fab.fa-google
-                  %span Google
-            / end::Options
+            %br/
+            = render '/users/shared/oauth_links'
         / end::Signin
       / end::Body
-    %script{:src => "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"}
+  %script{:src => "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"}
 
 :javascript
   WebFont.load({

@@ -5,7 +5,7 @@
         %i.la.la-gear
       %h3.m-portlet__head-text
         Add New Survey
-= form_for @survey, url: my_surveys_path, validate: true,
+= form_for @survey, url: my_surveys_path,
   html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
   .m-portlet__body
     = render 'main_form', f: f
@@ -34,4 +34,4 @@
     .m-form__actions.m-form__actions
       %button.btn.btn-primary{ type: "submit" }
         Create
-      = link_to "Cancel", app_surveys_path, class: "btn btn-secondary"
+      = link_to "Cancel", my_surveys_path, class: "btn btn-secondary"

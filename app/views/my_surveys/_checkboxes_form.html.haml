@@ -18,7 +18,7 @@
               %input.form-control.m-input{ required: "required", type: "text", name: "survey[survey_questions_attributes][#{uuid}][survey_question_answers_attributes][#{uuid2}][title]", "data-validate" => true, value: a.answer }
         - if k > 0
           .col-md-2
-            %a.m-portlet__nav-link.btn.m-btn.m-btn--hover-danger.m-btn--icon.m-btn--icon-only.m-btn--pill{ href: 'js:', onclick: "remove_option('#{uuid2}');" }
+            %a.m-portlet__nav-link.btn.m-btn.m-btn--hover-danger.m-btn--icon.m-btn--icon-only.m-btn--pill{ href: 'js:', onclick: "remove_option(this);" }
               %i.la.la-trash.m--font-danger
 
   .m-form__group.form-group.row

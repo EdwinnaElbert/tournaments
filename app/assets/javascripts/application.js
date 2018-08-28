@@ -300,9 +300,9 @@ function add_multiple_option(count){
 // }
 
 function remove_option(clicked_item){
-  $(clicked_item.closest('.row')).hide()
+  $(clicked_item).closest('.row').hide()
   // $(".option_" + count).remove();
-  $(clicked_item.closest('.row')).find('.destroy').val(1)
+  $(clicked_item).closest('.row').find('.destroy').val(1)
   // $(".destroy_" + count).val(1);
 }
 

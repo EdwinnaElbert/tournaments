@@ -1,0 +1,124 @@
+= stylesheet_link_tag 'vendors.bundle.css', media: 'all', 'data-turbolinks-track': 'reload'
+/ begin:: Page
+.m-grid.m-grid--hor.m-grid--root.m-page
+  #m_login.m-grid__item.m-grid__item--fluid.m-grid.m-grid--desktop.m-grid--ver-desktop.m-grid--hor-tablet-and-mobile.m-login.m-login--6
+    #login_background.m-grid__item.m-grid__item--order-tablet-and-mobile-2.m-grid.m-grid--hor.m-login__aside
+      = render '/users/shared/left_side'
+    .m-grid__item.m-grid__item--fluid.m-grid__item--order-tablet-and-mobile-1.m-login__wrapper
+      / begin::Head
+      .m-login__head
+        %a.m-link.m--font-danger{:href => "#"}= t('devise.registrations.new.sign_up')
+      / end::Head
+      / begin::Body
+      .m-login__body
+        / begin::Signin
+        .m-login__signin
+          .m-login__title
+            %h3= t('devise.registrations.edit.title_2')
+          / begin::Form
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true, html: { method: :put }) do |f|
+            = devise_error_messages!
+            = hidden_field_tag 'authenticity_token', form_authenticity_token
+            -# .form-group.m-form__group
+            -#   = f.text_field :first_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "First Name"
+            -# .form-group.m-form__group
+            -#   = f.text_field :last_name, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Last Name"
+            -# .form-group.m-form__group
+            -#   = f.text_field :patronymic, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Patronymic"
+            .form-group.m-form__group.has-danger
+              = f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: t('activerecord.attributes.user.email')
+
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              .success
+                = t('devise.registrations.edit.currently_waiting_confirmation_for_email', resource.unconfirmed_email)
+            -# .form-group.m-form__group
+            -#   = f.text_field :phone, autofocus: true, autocomplete: "off", class: "form-control m-input", placeholder: "Phone Number"
+            .form-group.m-form__group.has-danger
+              = f.label :password, t('devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it')
+              = f.password_field :password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: t('activerecord.attributes.user.password')
+            .form-group.m-form__group.has-danger
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: t('activerecord.attributes.user.password_confirmation')
+            .form-group.m-form__group.has-warning
+              = f.label :current_password, t('devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes')
+              = f.password_field :current_password, autocomplete: "new-password", class: "form-control m-input m-login__form-input--last", placeholder: t('activerecord.attributes.user.current_password')
+
+            = f.submit t('devise.registrations.edit.update'), class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary", html: { id: "m_login_signin_submit" }
+            %br/
+            %br/
+            %br/
+            %p= "#{t('devise.registrations.edit.unhappy')}?"
+            = button_to t('devise.registrations.edit.cancel_my_account'), registration_path(resource_name), data: { confirm: t('devise.registrations.edit.are_you_sure?') }, class: "btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air", method: :delete
+        / end::Signin
+      / end::Body
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"}
+
+:javascript
+  WebFont.load({
+    google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+    active: function() {
+        sessionStorage.fonts = true;
+    }
+  });
+
+
+
+
+//
+// <h2>Edit <%= resource_name.to_s.humanize %></h2>
+//
+// <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+//   <%= devise_error_messages! %>
+//
+//   <div class="field">
+//     <%= f.label :email %><br />
+//     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+//   </div>
+//
+//   <div class="field">
+//     <%= f.label :first_name %><br />
+//     <%= f.text_field :first_name %>
+//   </div>
+//
+//   <div class="field">
+//     <%= f.label :last_name %><br />
+//     <%= f.text_field :last_name %>
+//   </div>
+//
+//   <div class="field">
+//     <%= f.label :patronymic %><br />
+//     <%= f.text_field :patronymic %>
+//   </div>
+//
+//   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+//     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+//   <% end %>
+//
+//   <div class="field">
+//     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+//     <%= f.password_field :password, autocomplete: "new-password" %>
+//     <% if @minimum_password_length %>
+//       <br />
+//       <em><%= @minimum_password_length %> characters minimum</em>
+//     <% end %>
+//   </div>
+//
+//   <div class="field">
+//     <%= f.label :password_confirmation %><br />
+//     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+//   </div>
+//
+//   <div class="field">
+//     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+//     <%= f.password_field :current_password, autocomplete: "current-password" %>
+//   </div>
+//
+//   <div class="actions">
+//     <%= f.submit "Update" %>
+//   </div>
+// <% end %>
+//
+// <h3>Cancel my account</h3>
+//
+//
+//
+// <%= link_to "Back", :back %>

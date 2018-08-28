@@ -1,0 +1,27 @@
+/ begin::Action  ,
+.m-login__action
+  = link_to new_user_password_path, class: "m-link" do
+    %span= t('devise.shared.links.forgot_your_password')
+/ end::Action
+/ begin::Divider
+.m-login__form-divider
+  .m-divider
+    %span
+    %span= t('devise.shared.or')
+    %span
+/ end::Divider
+/ begin::Options
+.m-login__options
+  %a.btn.btn-primary.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
+    %span
+      %i.fab.fa-facebook-f
+      %span Facebook
+  %a.btn.btn-info.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
+    %span
+      %i.fab.fa-twitter
+      %span Twitter
+  %a.btn.btn-danger.m-btn.m-btn--pill.m-btn.m-btn.m-btn--icon{:href => "#"}
+    %span
+      %i.fab.fa-google
+      %span Google
+/ end::Options
