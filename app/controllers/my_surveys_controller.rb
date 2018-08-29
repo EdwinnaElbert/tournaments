@@ -52,6 +52,7 @@ class MySurveysController < AppController
 
   def update
     @survey = Survey.find(params[:id])
+    binding.pry
     if @survey.update_attributes(survey_params)
       redirect_to my_surveys_path(), flash: { notice: 'Survey successfully updated!' }
     else

@@ -459,46 +459,28 @@
                   %li.m-nav__item.m-topbar__languages.m-dropdown.m-dropdown--small.m-dropdown--arrow.m-dropdown--align-right.m-dropdown--mobile-full-width{"m-dropdown-toggle" => "click"}
                     %a.m-nav__link.m-dropdown__toggle{:href => "#"}
                       %span.m-nav__link-text
-                        = image_tag "flags/020-flag.svg", class: "m-topbar__language-selected-img"
+                        = image_tag "flags/013-russia.svg", class: "m-topbar__language-selected-img"
                         -# %img.m-topbar__language-selected-img{:src => "flags/020-flag.svg"}
                       .m-dropdown__wrapper
                         %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                         .m-dropdown__inner
-                          .m-dropdown__header.m--align-center#flagstick_container
-                            %span.m-dropdown__header-subtitle Select your language
+                          .m-dropdown__header.m--align-center#flagstick_container{ style: 'background: none'}
+                            %span.m-dropdown__header-subtitle= t('locales.select_your_language')
                           .m-dropdown__body
                             .m-dropdown__content
                               %ul.m-nav.m-nav--skin-light
                                 %li.m-nav__item.m-nav__item--active
-                                  %a.m-nav__link.m-nav__link--active{:href => "#"}
+                                  = link_to locale: 'en' do
                                     %span.m-nav__link-icon
                                       = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
                                       -# %img.m-topbar__language-img{:src => "/app/assets/images/flags/020-flag.svg"}/
-                                      %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text USA
+                                      %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text= t('ls.english')
                                   %li.m-nav__item
-                                    %a.m-nav__link{:href => "#"}
+                                    = link_to locale: 'ru' do
                                       %span.m-nav__link-icon
-                                        = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
+                                        = image_tag "flags/013-russia.svg", class: "m-topbar__language-img"
                                         -# %img.m-topbar__language-img{:src => "flags/015-china.svg"}/
-                                        %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text China
-                                    %li.m-nav__item
-                                      %a.m-nav__link{:href => "#"}
-                                        %span.m-nav__link-icon
-                                          = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
-                                          -# %img.m-topbar__language-img{:src => "flags/016-spain.svg"}/
-                                          %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Spain
-                                      %li.m-nav__item
-                                        %a.m-nav__link{:href => "#"}
-                                          %span.m-nav__link-icon
-                                            = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
-                                            -# %img.m-topbar__language-img{:src => "flags/014-japan.svg"}/
-                                            %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Japan
-                                        %li.m-nav__item
-                                          %a.m-nav__link{:href => "#"}
-                                            %span.m-nav__link-icon
-                                              = image_tag "flags/020-flag.svg", class: "m-topbar__language-img"
-                                              -# %img.m-topbar__language-img{:src => "flags/017-germany.svg"}/
-                                              %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text Germany
+                                        %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text= t('ls.russia')
                               %li.m-nav__item.m-topbar__user-profile.m-topbar__user-profile--img.m-dropdown.m-dropdown--medium.m-dropdown--arrow.m-dropdown--header-bg-fill.m-dropdown--align-right.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
                                 %a.m-nav__link.m-dropdown__toggle{:href => "#"}
                                   %span.m-topbar__userpic

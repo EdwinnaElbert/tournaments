@@ -1,4 +1,4 @@
-ru:
+en:
   activerecord:
     attributes:
       survey:
@@ -7,7 +7,6 @@ ru:
         title:          "Title"
         description:    "Desription"
         is_anonymous:   "Is Anonymous"
-
   surveys:
     create:              "Create survey"
     add:                 "Add survey"

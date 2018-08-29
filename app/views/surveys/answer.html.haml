@@ -1,0 +1,18 @@
+.m-portlet__head
+  .m-portlet__head-caption
+    .m-portlet__head-title
+      %span.m-portlet__head-icon.m--hide
+        %i.la.la-gear
+      %h3.m-portlet__head-text
+        = t('answers.add')
+= form_for :answers, url: answer_survey_survey_path(@survey),
+  html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
+  .m-portlet__body
+    = render 'main_form', f: f
+    .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
+
+  .m-portlet__foot--fit
+    .m-form__actions.m-form__actions
+      %button.btn.btn-primary{ type: "submit" }
+        = t('answers.create')
+      -# = link_to t('cancel'), my_surveys_path, class: "btn btn-secondary"

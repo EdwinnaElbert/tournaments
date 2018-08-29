@@ -1,0 +1,13 @@
+.col-lg-12.question_container
+  %h5.m--font-primary
+    = t('surveys.num')
+    %span= i
+    = question.question
+
+  .m-form__group.form-group
+    .m-checkbox-list
+      - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+        %label.m-checkbox
+          %input{:type => "checkbox", name: "[answers][#{i}][survey_question_answer_ids][]", value: a.id }/
+          Default
+          %span

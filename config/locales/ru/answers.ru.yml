@@ -1,0 +1,8 @@
+ru:
+  answers:
+    add:    'Ответить'
+    create: 'Ответить'
+  activerecord:
+    attributes:
+      survey_user_answer:
+        answer: 'Ответ'

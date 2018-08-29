@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  ls:
+    select_your_language: "Select your language"
+    english:              "English"
+    russian:              "Russian"

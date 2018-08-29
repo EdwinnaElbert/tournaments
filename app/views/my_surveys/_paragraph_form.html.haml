@@ -8,7 +8,7 @@
   %input.form-control.m-input{ required: 'required', type: 'text', name: "survey[survey_questions_attributes][#{i}][question]", "data-validate" => true, value: question.question }
   - if question.id.present?
     %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][id]", value: question.id.to_s }
-    %input{ type: "hidden", class: "delete_#{i}", name: "survey[survey_questions_attributes][#{i}][_destroy]", value: 0 }
+    %input{ type: "hidden", class: "destroy delete_#{i}", name: "survey[survey_questions_attributes][#{i}][_destroy]", value: 0 }
   %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][question_type]", value: question.question_type }
 
   .m-form__group.form-group.row

@@ -1,0 +1,8 @@
+.col-lg-12.question_container
+  %h5.m--font-primary
+    = t('surveys.num')
+    %span= i
+    = question.question
+    %br
+    %br
+    %input.form-control.m-input{type: "text", name: "[answers][#{i}][answer]" }

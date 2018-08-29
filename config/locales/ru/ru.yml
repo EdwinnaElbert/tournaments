@@ -5,3 +5,7 @@ ru:
   my_surveys:          "Мои опросы"
   contacts:            "Контакты"
   support:             "Поддержка"
+  ls:
+    select_your_language: "Выберите язык"
+    english:              "Английский"
+    russian:              "Русский"

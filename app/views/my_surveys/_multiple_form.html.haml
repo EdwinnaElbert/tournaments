@@ -12,17 +12,17 @@
   %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][question_type]", value: question.question_type }
   - if question.id.present?
     %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][id]", value: question.id.to_s }
-    %input{ type: "hidden", class: "delete_#{i}", name: "survey[survey_questions_attributes][#{i}][_destroy]", value: 0 }
+    %input{ type: "hidden", class: "destroy delete_#{i}", name: "survey[survey_questions_attributes][#{i}][_destroy]", value: 0 }
   .answers.col-lg-10
     %h6.m--font-brand= t('surveys.answers')
     - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
-      - if a.id.present?
-        %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][survey_question_answers_attributes][#{k}][id]", value: a.id.to_s }
-        %input{ type: "hidden", class: "delete_#{k}", name: "survey[survey_questions_attributes][#{i}][survey_question_answers_attributes][#{k}][_destroy]", value: 0 }
-      .form-group.m-form__group.row.option_row.align-items-center{ class: "option_#{k}" }
+      .form-group.m-form__group.row.option_row.align-items-center{ id: "answers_#{i}" }
         .col-md-10
           %div
             %div
+              - if a.id.present?
+                %input{ type: "hidden", name: "survey[survey_questions_attributes][#{i}][survey_question_answers_attributes][#{k}][id]", value: a.id }
+                %input{ type: "hidden", class: "destroy delete_#{k}", name: "survey[survey_questions_attributes][#{i}][survey_question_answers_attributes][#{k}][_destroy]", value: 0 }
               %input.form-control.m-input{ required: "required", type: "text", name: "survey[survey_questions_attributes][#{i}][survey_question_answers_attributes][#{k}][answer]", "data-validate" => true, value: a.answer }
         - if k > 0
           .col-md-2

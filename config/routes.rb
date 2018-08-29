@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :my_surveys
     root to: "my_surveys#index"
   end
-
+  resources :surveys do
+    member do
+      get :answer
+      post :answer_survey
+    end
+  end
   root "my_surveys#index"
 end

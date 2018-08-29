@@ -1,0 +1,8 @@
+ru:
+  answers:
+    add:    'Add Answer'
+    create: 'Create answer'
+  activerecord:
+    attributes:
+      survey_user_answer:
+        answer: 'Answer'

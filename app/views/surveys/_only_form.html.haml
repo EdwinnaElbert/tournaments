@@ -1,0 +1,13 @@
+.col-lg-12.question_container
+  %h5.m--font-primary
+    = t('surveys.num')
+    %span= i
+    = question.question
+
+  .m-form__group.form-group
+    .m-radio-list
+      - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+        %label.m-radio
+          %input{name: "[answers][#{i}][survey_question_answer_id]", :type => "radio", :value => "0"}/
+          = a.answer
+          %span

@@ -1,10 +1,4 @@
 ru:
-  create:              "Создать"
-  update:              "Обновить"
-  cancel:              "Отмена"
-  my_surveys:          "Мои опросы"
-  contacts:            "Контакты"
-  support:             "Поддержка"
   activerecord:
     attributes:
       survey:
@@ -13,7 +7,6 @@ ru:
         title:          "Название"
         description:    "Описание"
         is_anonymous:   "Анонимный опрос"
-
   surveys:
     create:              "Создать опрос"
     add:                 "Добавить опрос"
