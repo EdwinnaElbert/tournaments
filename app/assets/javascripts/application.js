@@ -20,24 +20,46 @@
 //= require rails.validations
 
 function add_multiple_choice(){
-  // var uuid = generateUUID();
-  // var uuid2 = generateUUID();
   var add_option_link = "";
   var remove_option_link = "";
   var remove_question_link = "";
+  if (locale == 'ru') {
+    var i18n = {
+      quest: 'Вопрос',
+      numb: '№',
+      only: '(Выбор одного ответа)',
+      multiple: '(Множественный выбор)',
+      open: 'Открытый вопрос',
+      anss: 'Ответы',
+      add_opt: 'Добавить вариант',
+      remove_quest: 'Удалить вопрос'
+    };
+  } else {
+    var i18n = {
+      quest: 'Question',
+      numb: '#',
+      only: '(Only answer)',
+      multiple: '(Multiple choice)',
+      open: 'Open question',
+      anss: 'Answers',
+      add_opt: 'Add option',
+      remove_quest: 'Remove question'
+    }
+  }
+  var question
   var count = $("#questions_body .col-lg-12").length;
   var html = "<div class='col-lg-12 question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
-                  Question #\
+                  " + i18n.quest + ' ' + i18n.numb + "\
                   <span>" + (count + 1) + "<span>\
-                  (Only answer)\
+                  " + i18n.only + "\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=1>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + count + "][weight]' value=" + count + ">\
                 <input class='destroy destroy_" + count + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][_destroy]' value=0>\
                 <div class='answers col-lg-10' id='answers_" + count + "'>\
-                  <h6 class='m--font-brand'>Answers</h6>\
+                  <h6 class='m--font-brand'>" + i18n.anss + "</h6>\
                   <div class='form-group m-form__group row align-items-center'>\
                     <div class='col-md-10'>\
                       <div>\
@@ -51,8 +73,8 @@ function add_multiple_choice(){
                 </div>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
-                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</a>&nbsp;&nbsp;\
+                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
@@ -108,18 +130,43 @@ function add_checkboxes_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
+
+  if (locale == 'ru') {
+    var i18n = {
+      quest: 'Вопрос',
+      numb: '№',
+      only: '(Выбор одного ответа)',
+      multiple: '(Множественный выбор)',
+      open: 'Открытый вопрос',
+      anss: 'Ответы',
+      add_opt: 'Добавить вариант',
+      remove_quest: 'Удалить вопрос'
+    };
+  } else {
+    var i18n = {
+      quest: 'Question',
+      numb: '#',
+      only: '(Only answer)',
+      multiple: '(Multiple choice)',
+      open: 'Open question',
+      anss: 'Answers',
+      add_opt: 'Add option',
+      remove_quest: 'Remove question'
+    }
+  }
+
   var html = "<div class='col-lg-12  question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
-                  Question #\
+                  " + i18n.quest + ' ' + i18n.numb + "\
                   <span>" + (count + 1) + "<span>\
-                  (Multiple answer)\
+                  " + i18n.multiple +  "\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=2>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + count + "][weight]' value=" + count + ">\
                 <input type='hidden' class='destroy' name='survey[survey_questions_attributes][" + count + "][_destroy]' value=" + 0 + ">\
                 <div class='answers col-lg-10' id='answers_" + count + "'>\
-                  <h6 class='m--font-brand'>Answers</h6>\
+                  <h6 class='m--font-brand'>" + i18n.anss + "</h6>\
                   <div class='form-group m-form__group row align-items-center'>\
                     <div class='col-md-10'>\
                       <div>\
@@ -133,8 +180,8 @@ function add_checkboxes_choice(){
                 </div>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>Add option</a>&nbsp;&nbsp;\
-                    <a id='remove_question' href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                    <a href='js:' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</a>&nbsp;&nbsp;\
+                    <a id='remove_question' href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
@@ -189,11 +236,34 @@ function add_paragraph_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
+  if (locale == 'ru') {
+    var i18n = {
+      quest: 'Вопрос',
+      numb: '№',
+      only: '(Выбор одного ответа)',
+      multiple: '(Множественный выбор)',
+      open: 'Открытый вопрос',
+      anss: 'Ответы',
+      add_opt: 'Добавить вариант',
+      remove_quest: 'Удалить вопрос'
+    };
+  } else {
+    var i18n = {
+      quest: 'Question',
+      numb: '#',
+      only: '(Only answer)',
+      multiple: '(Multiple choice)',
+      open: 'Free answer',
+      anss: 'Answers',
+      add_opt: 'Add option',
+      remove_quest: 'Remove question'
+    }
+  }
   var html = "<div class='col-lg-12 question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
-                  Question #\
+                  " + i18n.quest + ' ' + i18n.numb + "\
                   <span>" + (count + 1) + "<span>\
-                  (Free answer)\
+                  " + i18n.open + "\
                 </h5>\
                 <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][question]' id='survey_question_title_" + count + "' data-validate='true'>\
                 <input type='hidden' name='survey[survey_questions_attributes][" + count + "][question_type]' value=3>\
@@ -201,7 +271,7 @@ function add_paragraph_choice(){
                 <input type='hidden' class='destroy' name='survey[survey_questions_attributes][" + count + "][_destroy]' value=" + 0 + ">\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>Remove Question</a>\
+                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\

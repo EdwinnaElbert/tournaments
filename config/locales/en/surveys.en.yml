@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    attributes:
+      survey:
+        start_datetime: "Start date"
+        end_datetime:   "End date"
+        title:          "Title"
+        description:    "Desription"
+        is_anonymous:   "Is Anonymous"
+
+  surveys:
+    create:              "Create survey"
+    add:                 "Add survey"
+    edit_survey:         "Edit survey"
+    add_only_answer:     "Add only answer"
+    add_free_answer:     "Add free answer"
+    add_multiple_answer: "Add multiple answer"
+    question:            "Question"
+    num:                 " #"
+    only:                "(Only answer)"
+    multiple:            "(Multiple choice)"
+    free:                "Free question"
+    add_option:          "Add option"
+    remove_question:     "Remove question"
+    answers:             "Answers"
+    select_date:         "Select date"
