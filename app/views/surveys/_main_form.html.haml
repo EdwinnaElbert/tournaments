@@ -2,22 +2,9 @@
   .col-lg-6#questions_body
     - @survey.survey_questions.order("weight" => "asc").each_with_index do |q, i|
       - if q.question_type == 1
-        = render "only_form", question: q, i: i + 1
+        = render "only_form", question: q, i: i
       - elsif q.question_type == 2
-        = render "multiple_form", question: q, i: i + 1
+        = render "multiple_form", question: q, i: i
       - elsif q.question_type == 3
-        = render "paragraph_form", question: q, i: i + 1
+        = render "paragraph_form", question: q, i: i
       %br\
-
-
--# Your form should use f.fields_for for nested attributes
--#
--# <%= form_for @project do |f| %>
--#     <%= f.fields_for :service_rates do |sr| %>
--#       <tr>
--#         <td>
--#           <%= sr.text_field(:value, class: 'uk-width-1-1', placeholder: 'Stundensatz' %>
--#         </td>
--#       </tr>
--#     <% end %>
--# <% end %>

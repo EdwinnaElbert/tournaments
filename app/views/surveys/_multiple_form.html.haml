@@ -8,6 +8,7 @@
     .m-checkbox-list
       - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
         %label.m-checkbox
+          %input{name: "[answers][#{i}][survey_question_id]", :type => "hidden", :value => question.id }/
           %input{:type => "checkbox", name: "[answers][#{i}][survey_question_answer_ids][]", value: a.id }/
           Default
           %span

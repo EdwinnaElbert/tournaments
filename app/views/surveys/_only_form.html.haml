@@ -7,7 +7,10 @@
   .m-form__group.form-group
     .m-radio-list
       - question.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+        -# f.fields_for :answer do |ans|
         %label.m-radio
-          %input{name: "[answers][#{i}][survey_question_answer_id]", :type => "radio", :value => "0"}/
+          -# = ans.radio_button :survey_question_answer_id
+          %input{name: "[answers][#{i}][survey_question_id]", :type => "hidden", :value => question.id}/
+          %input{name: "[answers][#{i}][survey_question_answer_id]", :type => "radio", :value => a.id}/
           = a.answer
           %span

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     root to: "my_surveys#index"
   end
   resources :surveys do
+    # resources :users, only: :show
     member do
+      get :show_answers
       get :answer
       post :answer_survey
     end

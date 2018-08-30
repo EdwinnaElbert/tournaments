@@ -1,0 +1,65 @@
+.m-portlet__head
+  .m-portlet__head-caption
+    .m-portlet__head-title
+      %span.m-portlet__head-icon.m--hide
+        %i.la.la-gear
+      %h3.m-portlet__head-text
+        = t('answers.add')
+= form_for :answers, url: answer_survey_survey_path(@survey),
+  html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
+  .m-portlet__body
+    .form-group.m-form__group.row
+      .col-lg-6#questions_body
+        - @survey.survey_questions.order("weight" => "asc").each_with_index do |q, i|
+          - if q.question_type == 1
+            .col-lg-12.question_container
+              %h5.m--font-primary
+                = t('surveys.num')
+                %span= i + 1
+                = q.question
+
+              .m-form__group.form-group
+                .m-radio-list
+                  - q.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+                    %label.m-radio
+                      - if @user_answers.where(survey_question_id: q.id).first.try(:survey_question_answer_id) == a.id
+                        %input{type: "radio", disabled: true, checked: true}/
+                      - else
+                        %input{type: "radio", disabled: true}/
+                      = a.answer
+                      %span
+          - elsif q.question_type == 2
+            .col-lg-12.question_container
+              %h5.m--font-primary
+                = t('surveys.num')
+                %span= i + 1
+                = q.question
+
+            .m-form__group.form-group
+              .m-checkbox-list
+                - q.survey_question_answers.order("weight" => "asc").each_with_index do |a, k|
+                  %label.m-checkbox
+                    - if @user_answers.where(survey_question_id: q.id).first.try(:survey_question_answer_ids).include?(a.id)
+                      %input{:type => "checkbox", disabled: true, checked: true }/
+                    - else
+                      %input{:type => "checkbox", disabled: true }/
+                    = a.answer
+                    %span
+          - elsif q.question_type == 3
+            .col-lg-12.question_container
+              %h5.m--font-primary
+                = t('surveys.num')
+                %span= i + 1
+                = q.question
+                %br
+                %br
+                - user_answer = @user_answers.where(survey_question_id: q.id).first
+                %input.form-control.m-input{type: "text", disabled: true, placeholder: user_answer.try(:answer) }
+          %br\
+    .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
+
+  .m-portlet__foot--fit
+    .m-form__actions.m-form__actions
+      %button.btn.btn-primary{ type: "submit" }
+        = t('answers.create')
+      -# = link_to t('cancel'), my_surveys_path, class: "btn btn-secondary"
