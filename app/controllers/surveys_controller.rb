@@ -2,18 +2,14 @@
 
 class SurveysController < AppController
   before_action -> { set_survey }
-  # # before_action -> { can_action('surveys_add') }, only: [:new, :create, :edit, :update, :destroy]
-  # def index
-  #   @page_title = "Surveys"
-  #   @surveys = Survey.order("start_datetime asc")
-  #   # @surveys = @surveys.page(params[:page]).per(@per_page)
-  # end
 
   def answer
     authenticate_user! unless @survey.is_anonymous
+    # redirect_to :show_answers if cookies[:already_answered] == "true"
   end
 
   def answer_survey
+    # cookies[:already_answered] = SecureRandom.uuid
     begin
       SurveyUserAnswer.create(params_hash)
       redirect_to show_answers_survey_path
@@ -23,7 +19,11 @@ class SurveysController < AppController
   end
 
   def show_answers
-    @user_answers = SurveyUserAnswer.where(user_id: current_user.id, survey_id: @survey.id)
+    if current_user
+      @user_answers = SurveyUserAnswer.where(user_id: current_user.id, survey_id: @survey.id)
+    else
+      
+    end
   end
 
   private
@@ -38,7 +38,7 @@ class SurveysController < AppController
 
     def params_hash
       answers_params.values.first.to_h.values.each do |v|
-        v.merge!( user_id: current_user.id, survey_id: @survey.id )
+        v.merge!(user_id: current_user.id, survey_id: @survey.id)
       end
     end
 end
