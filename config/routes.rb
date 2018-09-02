@@ -24,5 +24,5 @@ Rails.application.routes.draw do
       post :answer_survey
     end
   end
-  root "my_surveys#index"
+  root "welcome#index"
 end
