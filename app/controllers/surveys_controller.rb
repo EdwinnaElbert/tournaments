@@ -5,7 +5,7 @@ class SurveysController < AppController
 
   def answer
     authenticate_user! unless @survey.is_anonymous
-    render 'thank_you' if cookies[:already_answered].include?(@survey.id)
+    render 'thank_you' if cookies[:already_answered].try(:include?, @survey.id)
   end
 
   def answer_survey
