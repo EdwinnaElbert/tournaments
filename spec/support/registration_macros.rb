@@ -10,7 +10,7 @@ module RegistrationMacros
     fill_in "user_phone", with: "phone"
     fill_in "user_password", with: "password"
 
-    click_on "Sign up"
+    click_on t("devise.registrations.new.sign_up")
     expect(User.all.count).to eq 1
     # expect(page).to have_content t('devise.sessions.signed_in')
   end

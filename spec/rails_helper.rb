@@ -73,6 +73,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
-
+# Capybara::Selenium::Driver.new(app, :browser => :chrome, :switches => %w[--disable-popup-blocking])
 # Capybara::Screenshot.autosave_on_failure = false

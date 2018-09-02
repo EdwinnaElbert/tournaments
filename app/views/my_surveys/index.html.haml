@@ -31,7 +31,7 @@
                   %td=s.title
                   %td= s.survey_questions.count
                   %td= 'answer_count'
-                  %td='short link using firebase'
+                  %td= link_to answer_survey_path(s), answer_survey_path(s)
                   %td=s.is_anonymous
                   %td.nowrap
                     %span.dropdown

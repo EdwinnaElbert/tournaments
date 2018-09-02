@@ -5,11 +5,11 @@ class SurveysController < AppController
 
   def answer
     authenticate_user! unless @survey.is_anonymous
-    # redirect_to :show_answers if cookies[:already_answered] == "true"
+    render 'thank_you' if cookies[:already_answered] == "true"
   end
 
   def answer_survey
-    # cookies[:already_answered] = SecureRandom.uuid
+    cookies[:already_answered] = true
     begin
       SurveyUserAnswer.create(params_hash)
       redirect_to show_answers_survey_path
@@ -21,8 +21,7 @@ class SurveysController < AppController
   def show_answers
     if current_user
       @user_answers = SurveyUserAnswer.where(user_id: current_user.id, survey_id: @survey.id)
-    else
-      
+      render 'show_answers'
     end
   end
 

@@ -5,7 +5,7 @@
         %i.la.la-gear
       %h3.m-portlet__head-text
         = t('surveys.add')
-= form_for @survey, validate: true, url: my_surveys_path,
+= form_for @survey, validate: false, url: my_surveys_path,
   html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
   .m-portlet__body
     = render 'main_form', f: f
