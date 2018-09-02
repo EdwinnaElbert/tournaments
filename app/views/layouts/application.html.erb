@@ -11,7 +11,7 @@
 
   <body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
     <!-- <div class="m-grid m-grid--hor m-grid--root m-page"> -->
-    <%- unless controller._prefixes.include?('devise') %>
+    <%- if !controller._prefixes.include?('devise') %>
       <%= render '/shared/header' %>
       <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
         <%= render '/shared/left_aside' %>
@@ -21,7 +21,7 @@
             <%= yield %>
         </div>
       </div>
-    <%- else %>
+    <%- elsif controller._prefixes.include?('devise') %>
       <%= yield %>
     <% end %>
 

@@ -490,16 +490,17 @@
                                 .m-dropdown__wrapper
                                   %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
                                   .m-dropdown__inner
-                                    .m-dropdown__header.m--align-center#user_profile_container
-                                      .m-card-user.m-card-user--skin-dark
-                                        .m-card-user__pic
-                                          = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
-                                          -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
-                                          /
-                                            <span class="m-type m-type--lg m--bg-danger"><span class="m--font-light">S<span><span>
-                                        .m-card-user__details
-                                          %span.m-card-user__name.m--font-weight-500 Mark Andre
-                                          %a.m-card-user__email.m--font-weight-300.m-link{:href => ""} mark.andre@gmail.com
+                                    .m-dropdown__header.m--align-center#user_profile_container{ style: 'background: transparent'}
+                                      - if current_user
+                                        .m-card-user.m-card-user--skin-dark
+                                          .m-card-user__pic
+                                            = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
+                                            -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
+                                            /
+                                              <span class="m-type m-type--lg m--bg-danger"><span class="m--font-light">S<span><span>
+                                          .m-card-user__details
+                                            %span.m-card-user__name.m--font-weight-500= "#{current_user.try(:first_name)} #{current_user.try(:last_name)}"
+                                            %span.m-card-user__email.m--font-weight-300.m-link= "#{current_user.try(:email)}"
                                     .m-dropdown__body
                                       .m-dropdown__content
                                         %ul.m-nav.m-nav--skin-light
