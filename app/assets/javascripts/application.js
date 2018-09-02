@@ -63,6 +63,7 @@ function add_multiple_choice(){
     }
   }
   var count = $("#questions_body .col-lg-12").length;
+  var answer_count = ($("#answers_" + count + " .form-group").length);
   var html = "<div class='col-lg-12 question_container question_" + (count + 1) + "'>\
                 <h5 class='m--font-primary'>\
                   " + i18n.quest + ' ' + i18n.numb + "\
@@ -79,7 +80,7 @@ function add_multiple_choice(){
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][answer]' id='survey_question_answer_title_" + count + "_0' data-validate='true'>\                        <input  class='weight_" + '0' + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][weight]' value=" + 1 + ">\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][answer]' id='survey_question_answer_title_" + count + "_0' data-validate='true'>\                        <input  class='weight_" + '0' + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][weight]' value=" + 1 + ">\
                         </div>\
                       </div>\
                     </div>\
@@ -101,6 +102,7 @@ function add_checkboxes_choice(){
   var remove_option_link = "";
   var remove_question_link = "";
   var count = $("#questions_body .col-lg-12").length;
+  var answer_count = ($("#answers_" + count + " .form-group").length);
 
   if (locale == 'ru') {
     var i18n = {
@@ -142,8 +144,8 @@ function add_checkboxes_choice(){
                     <div class='col-md-10'>\
                       <div>\
                         <div>\
-                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][answer]' id='survey_question_answer_title_" + count + "_0' data-validate='true'>\
-                          <input  class='weight_" + 0 + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + 0 + "][weight]' value=" + 1 + ">\
+                          <input class='form-control m-input' required='required' type='text' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][answer]' id='survey_question_answer_title_" + count + "_0' data-validate='true'>\
+                          <input  class='weight_" + 0 + "' type='hidden' name='survey[survey_questions_attributes][" + count + "][survey_question_answers_attributes][" + answer_count + "][weight]' value=" + 1 + ">\
                         </div>\
                       </div>\
                     </div>\

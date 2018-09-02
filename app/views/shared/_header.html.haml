@@ -507,7 +507,7 @@
                                           %li.m-nav__section.m--hide
                                             %span.m-nav__section-text Section
                                           %li.m-nav__item
-                                            %a.m-nav__link{:href => "header/profile.html"}
+                                            = link_to edit_user_registration_path, class: 'm-nav__link' do
                                               %i.m-nav__link-icon.flaticon-profile-1
                                               %span.m-nav__link-title
                                                 %span.m-nav__link-wrap
