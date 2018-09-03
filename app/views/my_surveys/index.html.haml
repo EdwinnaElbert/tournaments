@@ -33,10 +33,10 @@
                   %td= 'answer_count'
                   - if Rails.env.production?
                     %td
-                      %a{ href: "#{request.host}#{answer_survey_path(s)}" }= "#{request.host}#{answer_survey_path(s)}"
+                      %a{ href: "#{answer_survey_path(s)}" }= "#{request.host}#{answer_survey_path(s)}"
                   - else
                     %td
-                      %a{ href: "localhost:3000#{answer_survey_path(s)}" }= "localhost:3000#{answer_survey_path(s)}"
+                      %a{ href: "#{answer_survey_path(s)}" }= "localhost:3000#{answer_survey_path(s)}"
                   %td=s.is_anonymous
                   %td.nowrap
                     %span.dropdown
