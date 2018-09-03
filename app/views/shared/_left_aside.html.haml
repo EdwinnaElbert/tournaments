@@ -11,7 +11,7 @@
             %i.m-menu__link-icon.flaticon-list-2
             %span.m-menu__link-title
               %span.m-menu__link-wrap
-                %span.m-menu__link-text My Surveys
+                %span.m-menu__link-text= t('my_surveys')
                 - if current_user.surveys.count > 0
                   %span.m-menu__link-badge
                     %span.m-badge.m-badge--danger
@@ -20,7 +20,7 @@
       %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true"}
         %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
           %i.m-menu__link-icon.flaticon-exclamation
-          %span.m-menu__link-text Contacts
+          %span.m-menu__link-text= t('contacts')
           %i.m-menu__ver-arrow.la.la-angle-right
         .m-menu__submenu
           %span.m-menu__arrow
@@ -32,5 +32,5 @@
               %a.m-menu__link{:href => "#"}
                 %i.m-menu__link-bullet.m-menu__link-bullet--dot
                   %span
-                %span.m-menu__link-text Support
+                %span.m-menu__link-text= t('support')
         .m-grid__item.m-grid__item--fluid.m-wrapper

@@ -10,7 +10,7 @@
 
 User.create!(first_name: Faker::Name.first_name,
              last_name: Faker::Name.last_name,
-             email: "surveys@test.com",
+             email: "surveys1@test.com",
              phone: "79781234567",
              password: "surveys1",
              confirmed_at: Time.now)

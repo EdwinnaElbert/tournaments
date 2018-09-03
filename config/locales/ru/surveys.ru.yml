@@ -8,6 +8,7 @@ ru:
         description:    "Описание"
         is_anonymous:   "Анонимный опрос"
   surveys:
+    surveys:             "Опросы"
     create:              "Создать опрос"
     add:                 "Добавить опрос"
     edit_survey:         "Редактировать опрос"
