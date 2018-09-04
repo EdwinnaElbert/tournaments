@@ -88,8 +88,8 @@ function add_multiple_choice(){
                 </div>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' id='add_option_" + count + "' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</a>&nbsp;&nbsp;\
-                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
+                    <span id='add_option_" + count + "' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</span>&nbsp;&nbsp;\
+                    <span onclick='remove_question(this);' id='remove_question_" + count + "' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</span>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
@@ -153,8 +153,8 @@ function add_checkboxes_choice(){
                 </div>\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' id='add_opt_" + count + "' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</a>&nbsp;&nbsp;\
-                    <a id='remove_question' href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
+                    <span id='add_opt_" + count + "' onclick='add_multiple_option(\"" + count + "\");' class='m-link m-link--state m-link--success'>" + i18n.add_opt + "</span>&nbsp;&nbsp;\
+                    <span id='remove_question_" + count + "' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</span>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
@@ -202,7 +202,7 @@ function add_paragraph_choice(){
                 <input type='hidden' class='destroy' name='survey[survey_questions_attributes][" + count + "][_destroy]' value=" + 0 + ">\
                 <div class='m-form__group form-group row'>\
                   <div class='col-lg-10'>\
-                    <a href='js:' onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</a>\
+                    <span onclick='remove_question(this);' class='m-link m-link--state m-link--danger'>" + i18n.remove_quest + "</span>\
                   </div>\
                 </div>\
                 <div class='m-form__seperator m-form__seperator--dashed m-form__seperator--space'></div>\
