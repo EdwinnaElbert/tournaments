@@ -7,6 +7,14 @@ en:
         title:          "Title"
         description:    "Desription"
         is_anonymous:   "Is Anonymous"
+    errors:
+      models:
+        survey:
+          attributes:
+            start_datetime:
+              blank: "Start datetime can't be blank"
+            title:
+              blank: "Title can't be blank"
   surveys:
     create:              "Create survey"
     add:                 "Add survey"

@@ -5,7 +5,7 @@
         %i.la.la-gear
       %h3.m-portlet__head-text
         = t('surveys.add')
-= form_for @survey, validate: false, novalidate: true, url: my_surveys_path,
+= form_for @survey, validate: true, novalidate: true, url: my_surveys_path,
   html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
   .m-portlet__body
     = render 'main_form', f: f
@@ -18,4 +18,7 @@
     .m-form__actions.m-form__actions
       %button.btn.btn-primary{ type: "submit" }
         = t('surveys.create')
-      = link_to t('cancel'), my_surveys_path, class: "btn btn-secondary"
+      = link_to t('cancel'), my_surveys_path, class: "btn btn-secondary submit_with_dp"
+
+:javascript
+  var locale = "#{I18n.locale}";

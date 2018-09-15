@@ -15,8 +15,8 @@ class MySurveysController < AppController
   end
 
   def create
-    @survey = Survey.new(survey_params)
-    @survey.user_id = current_user.id
+    binding.pry
+    @survey = Survey.new(survey_params.merge(user_id: current_user.id))
     if @survey.save
       redirect_to my_surveys_path(), flash: { notice: 'Survey successfully created!' }
     else
@@ -47,8 +47,8 @@ class MySurveysController < AppController
   private
 
     def survey_params
-      params["survey"]["start_datetime"] = Date.strptime(params["survey"]["start_datetime"], "%m/%d/%Y") unless params["survey"]["start_datetime"].is_a?(Date) || params["survey"]["start_datetime"] == ""
-      params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%m/%d/%Y") unless params["survey"]["end_datetime"].is_a?(Date) || params["survey"]["end_datetime"] == ""
+      params["survey"]["start_datetime"] = Date.strptime(params["survey"]["start_datetime"], "%d/%m/%Y") unless params["survey"]["start_datetime"].is_a?(Date) || params["survey"]["start_datetime"] == ""
+      params["survey"]["end_datetime"] = Date.strptime(params["survey"]["end_datetime"], "%d/%m/%Y") unless params["survey"]["end_datetime"].is_a?(Date) || params["survey"]["end_datetime"] == ""
       # params["survey"]["survey_questions_attributes"].values.each { |q| q.delete("_delete") } if params["survey"]["survey_questions_attributes"].present?
       # params["survey"]["survey_question_answers_attributes"].values.each { |a| a.delete("_delete") } if params["survey"]["survey_question_answers_attributes"].present?
 

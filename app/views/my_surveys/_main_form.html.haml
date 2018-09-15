@@ -2,8 +2,8 @@
   = f.label :start_datetime, class: "form-control-label"
   .col-lg-4.col-md-9.col-sm-12
     .input-group.date
-      = f.text_field :start_datetime, class: "form-control m-input", id: "m_datepicker_1", value: @survey.start_datetime.try(:strftime, "%m/%d/%Y"),
-          placeholder: t("surveys.select_date"), onclose: 'function(dateText, inst) { $(inst.input).change().focusout(); }'
+      = f.text_field :start_datetime, class: "form-control m-input datepicker", jqdatepicker: true, id: "m_datepicker_1", value: @survey.start_datetime.try(:strftime, "%m/%d/%Y"),
+          placeholder: t("surveys.select_date"), autocomplete: "off"
       -#= f.text_field :start_datetime, @start_datetime.strftime("%Y-%m-%d %H:%M"), class: "form-control m-input"
       -# = f.text_field :start_datetime, value: @survey.start_datetime.try(:strftime, "%m/%d/%Y"), class: "form-control m-input survey_start_datetime", autocomplete: "off", id: "m_datepicker_1", placeholder: t("surveys.select_date"), :type => "text"
       -# %input#m_datepicker_2.form-control.m-input{:placeholder => "Select date", :readonly => "readonly", :type => "text"}/

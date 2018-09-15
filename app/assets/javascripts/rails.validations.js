@@ -272,6 +272,15 @@
     formBuilders: {
       'ActionView::Helpers::FormBuilder': {
         add: function(element, settings, message) {
+          // form = $(element.form);
+          //
+          // $('#datepicker_1_message').remove();
+          // $(element).closest('.has_danger').find('.message').remove();
+          // $(element).closest('.has_danger').append("<label class='message' style='color:red'>" + message + "</label>");
+          // $(element).attr('valid', false);
+          // $(element).data('changed', true);
+          // $(element).attr('data-validate', true);
+          // $('.submit_with_dp').click(function(event) { event.preventDefault(); });
           var form, inputErrorField, label, labelErrorField;
           form = $(element[0].form);
           if (element.data('valid') !== false && (form.find("label.message[for='" + (element.attr('id')) + "']")[0] == null)) {
@@ -282,15 +291,28 @@
               element.attr('autofocus', false);
             }
             element.before(inputErrorField);
-            inputErrorField.find('span#input_tag').replaceWith(element);
+            // inputErrorField.find('span#input_tag').replaceWith(element);
+
             inputErrorField.find('label.message').attr('for', element.attr('id'));
             labelErrorField.find('label.message').attr('for', element.attr('id'));
             labelErrorField.insertAfter(label);
             labelErrorField.find('label#label_tag').replaceWith(label);
           }
-          return form.find("label.message[for='" + (element.attr('id')) + "']").text(message);
+          // inputErrorField.style('visibility: hidden')
+          // labelErrorField.style('visibility: hidden')
+          if ($(element).closest('.has_danger').find('#datepicker_1_message').length == 0) {
+            // form.find("label.message[for='" + (element.attr('id')) + "']").closest('.has_danger').find('.message').remove()
+            // return form.find("label.message[for='" + (element.attr('id')) + "']").closest('.has_danger').append("<label class='message'>" + message + "</label>");
+            return $(element).closest('.has_danger').append("<label class='message' style='color:red'>" + message + "</label>");
+          }
         },
         remove: function(element, settings) {
+          // alert('remove')
+          // $('#datepicker_1_message').remove();
+          // $(element).closest('.has_danger').find('.message').remove();
+          // $(element).removeData('valid');
+          // $(element).removeData('changed');
+          // $(element).removeAttr('data-validate');
           var errorFieldClass, form, inputErrorField, label, labelErrorField;
           form = $(element[0].form);
           errorFieldClass = $(settings.input_tag).attr('class');
@@ -301,8 +323,12 @@
             inputErrorField.find("#" + (element.attr('id'))).detach();
             inputErrorField.replaceWith(element);
             label.detach();
+            // form.find("label.message[for='" + (element.attr('id')) + "']").closest('.has_danger').find('.message').remove()
             return labelErrorField.replaceWith(label);
           }
+          // console.log($(element).closest('.has_danger').find('.message'))
+          return $(element).closest('.has_danger').find('.message').remove()
+          $('#datepicker_1_message').remove();
         }
       }
     },
@@ -328,9 +354,12 @@
           }
         },
         presence: function(element, options) {
-          if (/^\s*$/.test(element.val() || '')) {
-            return options.message;
-          }
+           if(document.readyState === "complete") {
+              console.log(element.value)
+              if (/^\s*$/.test(element.val() || '')) {
+                return options.message;
+              }
+            }
         },
         acceptance: function(element, options) {
           var ref;
