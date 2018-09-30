@@ -1,0 +1,19 @@
+.m-portlet__head
+  .m-portlet__head-caption
+    .m-portlet__head-title
+      %span.m-portlet__head-icon.m--hide
+        %i.la.la-gear
+= form_for @tournament, validate: true, novalidate: true,
+    html: { method: "post", class: "m-form m-form--fit m-form--label-align-right" } do |f|
+  .m-portlet__body
+    = render 'form', f: f
+    .m-form__seperator.m-form__seperator--dashed.m-form__seperator--space
+
+  .m-portlet__foot--fit
+    .m-form__actions.m-form__actions
+      %button.btn.btn-primary{ type: "submit" }
+        = t('tournament.create')
+      = link_to t('cancel'), tournaments_path, class: "btn btn-secondary submit_with_dp"
+
+:javascript
+  var locale = "#{I18n.locale}";

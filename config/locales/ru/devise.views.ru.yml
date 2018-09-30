@@ -35,7 +35,7 @@ ru:
               blank: "Email не может быть пустым"
             password:
               blank: "Пароль не может быть пустым"
-              too_short: "Должен содержать более %{minimum} символов"
+              too_short: "Должен содержать не менее %{count} символов"
   devise:
     confirmations:
       confirmed: "Ваш адрес эл. почты успешно подтвержден."

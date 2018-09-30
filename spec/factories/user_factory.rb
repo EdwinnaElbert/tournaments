@@ -2,11 +2,11 @@
 
 FactoryBot.define do
   factory :user do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+    phone { Faker::Alphanumeric.alphanumeric(10) }
     email { Faker::Internet.email }
-    phone { Faker::PhoneNumber.phone_number }
+    first_name { Faker::Alphanumeric.alphanumeric(10) }
+    last_name { Faker::Alphanumeric.alphanumeric(10) }
+    confirmed_at { Faker::Date.between(2.days.ago, Date.today) }
     password { Faker::Internet.password }
-    confirmed_at { Time.now }
   end
 end

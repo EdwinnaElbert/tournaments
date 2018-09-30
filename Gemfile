@@ -35,7 +35,6 @@ gem "jbuilder", "~> 2.5"
 gem "client_side_validations"
 gem "devise"
 gem "devise-i18n"
-gem "faker"
 gem "haml-rails"
 gem "nexmo"
 gem "phonelib"
@@ -65,7 +64,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15"
   # gem "capybara-webkit"
+  gem "database_cleaner"
   gem "factory_bot_rails"
+  gem "faker", git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem "rspec-rails"
   # gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome

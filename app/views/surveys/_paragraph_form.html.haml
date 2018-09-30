@@ -1,9 +1,0 @@
-.col-lg-12.question_container
-  %h5.m--font-primary
-    = t('surveys.num')
-    %span= i + 1
-    = question.question
-    %br
-    %br
-    %input{name: "[answers][#{i}][survey_question_id]", :type => "hidden", :value => question.id}/
-    %input.form-control.m-input{type: "text", name: "[answers][#{i}][answer]" }

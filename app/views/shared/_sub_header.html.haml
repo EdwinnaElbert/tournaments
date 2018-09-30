@@ -9,11 +9,11 @@
         %span.m-subheader__daterange-label
           %span.m-subheader__daterange-title
           %span.m-subheader__daterange-date.m--font-brand
-        - if current_user
+        -# if current_user
           = link_to new_my_survey_path do
             %button.btn.btn-brand.m-btn#add_survey
               = t('surveys.create')
-        - else
+        -# else
           = link_to new_user_session_path do
             %button.btn.btn-brand.m-btn
               = t('surveys.add')

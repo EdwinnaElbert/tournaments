@@ -2,5 +2,6 @@
 
 class WelcomeController < AppController
   def index
+    @tournaments = Tournament.where(active: true)
   end
 end

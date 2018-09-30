@@ -15,19 +15,5 @@ en:
               blank: "Start datetime can't be blank"
             title:
               blank: "Title can't be blank"
-  surveys:
-    create:              "Create survey"
-    add:                 "Add survey"
-    edit_survey:         "Edit survey"
-    add_only_answer:     "Add only answer"
-    add_free_answer:     "Add free answer"
-    add_multiple_answer: "Add multiple answer"
-    question:            "Question"
-    num:                 " #"
-    only:                "(Only answer)"
-    multiple:            "(Multiple choice)"
-    free:                "Free question"
-    add_option:          "Add option"
-    remove_question:     "Remove question"
-    answers:             "Answers"
-    select_date:         "Select date"
+  tournaments:
+    create: "Create Tournament"

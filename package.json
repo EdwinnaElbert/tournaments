@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "twitter/bootstrap",
+    "jQuery": "^1.7.4",
     "jquery": "^3.3.1"
   }
 }

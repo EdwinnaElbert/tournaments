@@ -10,64 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_162240) do
+ActiveRecord::Schema.define(version: 2018_09_29_125958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "survey_question_answers", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.string "answer", null: false
-    t.integer "weight", null: false
-    t.uuid "survey_question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["survey_question_id"], name: "index_survey_question_answers_on_survey_question_id"
+  create_table "games", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.integer "game_type", null: false
+    t.uuid "tournament_id", null: false
+    t.uuid "team_1_id", null: false
+    t.integer "score_1", null: false
+    t.uuid "team_2_id", null: false
+    t.integer "score_2", null: false
+    t.boolean "judge_decision_win", default: false
+    t.index ["tournament_id"], name: "index_games_on_tournament_id"
   end
 
-  create_table "survey_questions", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.text "question", default: "", null: false
-    t.integer "weight", null: false
-    t.integer "question_type", null: false
-    t.uuid "survey_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  create_table "teams", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.uuid "tournament_id", null: false
+    t.boolean "off", default: false, null: false
+    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
-  create_table "survey_user_answers", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.string "answer"
-    t.integer "weight"
-    t.text "survey_question_answer_ids", default: [], array: true
-    t.uuid "survey_question_id"
-    t.uuid "user_id"
-    t.uuid "survey_id"
-    t.uuid "survey_question_answer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["survey_id"], name: "index_survey_user_answers_on_survey_id"
-    t.index ["survey_question_answer_id"], name: "index_survey_user_answers_on_survey_question_answer_id"
-    t.index ["survey_question_id"], name: "index_survey_user_answers_on_survey_question_id"
-    t.index ["user_id"], name: "index_survey_user_answers_on_user_id"
-  end
-
-  create_table "surveys", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.boolean "is_anonymous"
-    t.datetime "start_datetime", null: false
-    t.datetime "end_datetime"
-    t.uuid "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["end_datetime"], name: "index_surveys_on_end_datetime"
-    t.index ["start_datetime"], name: "index_surveys_on_start_datetime"
-    t.index ["user_id"], name: "index_surveys_on_user_id"
+  create_table "tournaments", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "active", default: true, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.string "phone", default: ""
+    t.string "phone"
     t.string "email", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -83,14 +59,11 @@ ActiveRecord::Schema.define(version: 2018_09_02_162240) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "patronymic"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "survey_question_answers", "survey_questions"
-  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "games", "tournaments"
+  add_foreign_key "teams", "tournaments"
 end

@@ -6,9 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :trackable,
          :recoverable, :rememberable, :validatable
 
-  has_many :surveys
-  has_many :survey_user_answers
-
   validates :email, presence: :true
   validates :password, presence: :true, length: { minimum: 6 }
 end

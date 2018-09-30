@@ -15,20 +15,5 @@ ru:
               blank: "Дата начала не может быть пустой"
             title:
               blank: "Название не может быть пустым"
-  surveys:
-    surveys:             "Опросы"
-    create:              "Создать опрос"
-    add:                 "Добавить опрос"
-    edit_survey:         "Редактировать опрос"
-    add_only_answer:     "Вопрос с выбором одного ответа"
-    add_free_answer:     "Открытый вопрос"
-    add_multiple_answer: "Вопрос с множественным выбором"
-    question:            "Вопрос"
-    num:                 " №"
-    only:                "(Выбор одного ответа)"
-    multiple:            "(Множественный выбор)"
-    free:                "Открытый вопрос"
-    add_option:          "Добавить вариант"
-    remove_question:     "Удалить вопрос"
-    answers:             "Ответы"
-    select_date:         "Выбрать дату"
+  tournaments:
+    create: "Создать турнир"
