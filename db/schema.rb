@@ -10,21 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_151209) do
+ActiveRecord::Schema.define(version: 2018_09_30_170649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "games", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.integer "game_type", null: false
+  create_table "groups", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.integer "group_type", null: false
     t.uuid "tournament_id", null: false
-    t.uuid "team_1_id", null: false
-    t.integer "score_1", null: false
-    t.uuid "team_2_id", null: false
-    t.integer "score_2", null: false
-    t.boolean "judge_decision_win", default: false
-    t.index ["tournament_id"], name: "index_games_on_tournament_id"
+    t.index ["tournament_id"], name: "index_groups_on_tournament_id"
+  end
+
+  create_table "matches", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.uuid "team_1_id_id", null: false
+    t.uuid "team_2_id_id", null: false
+    t.uuid "group_id", null: false
+    t.index ["group_id"], name: "index_matches_on_group_id"
+    t.index ["team_1_id_id"], name: "index_matches_on_team_1_id_id"
+    t.index ["team_2_id_id"], name: "index_matches_on_team_2_id_id"
+  end
+
+  create_table "scores", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.uuid "match_id", null: false
+    t.index ["match_id"], name: "index_scores_on_match_id"
+    t.index ["team_id"], name: "index_scores_on_team_id"
   end
 
   create_table "teams", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
@@ -37,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_151209) do
   create_table "tournaments", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
     t.boolean "active", default: true, null: false
-    t.string "current_state"
+    t.string "aasm_state"
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
@@ -65,6 +76,9 @@ ActiveRecord::Schema.define(version: 2018_09_30_151209) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "games", "tournaments"
+  add_foreign_key "groups", "tournaments"
+  add_foreign_key "matches", "groups"
+  add_foreign_key "scores", "matches"
+  add_foreign_key "scores", "teams"
   add_foreign_key "teams", "tournaments"
 end

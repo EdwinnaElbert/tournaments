@@ -6,7 +6,10 @@ class GamesController < AppController
 
   def create
     binding.pry
-    ArrangeMatchesService.new(@tournament)
+    @tournament.next_state
+
+    # @tournament.current_state.next
+    # ArrangeMatchesService.call(@tournament)
   end
 
   def update

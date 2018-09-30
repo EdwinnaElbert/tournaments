@@ -1,4 +1,4 @@
-class ArrangeMatchesService
+class NewGroupService
   def self.call(tournament)
     binding.pry
     tournament.current_state
