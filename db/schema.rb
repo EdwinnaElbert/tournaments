@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_125958) do
+ActiveRecord::Schema.define(version: 2018_09_30_151209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_125958) do
   create_table "tournaments", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
     t.boolean "active", default: true, null: false
+    t.string "current_state"
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|

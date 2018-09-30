@@ -31,7 +31,7 @@ gem "jbuilder", "~> 2.5"
 
 # Use ActiveStorage variant
 # gem "mini_magick", "~> 4.8"
-
+gem "aasm"
 gem "client_side_validations"
 gem "devise"
 gem "devise-i18n"
@@ -42,6 +42,7 @@ gem "phonelib"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "unicorn"
 
+gem "rubyzip", ">= 1.2.2"
 group :development do
   # Access an interactive console on exception pages or by calling "console" anywhere in the code.
   gem "web-console", ">= 3.3.0"
