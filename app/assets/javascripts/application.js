@@ -44,5 +44,8 @@ function generate_scores(ab, tournament_id) {
     method: 'POST',
     dataType: 'json',
     data: { ab: ab, tournament_id: tournament_id  }
-  })
+  }).done( function () {
+    window.reload()
+   }
+  )
 }

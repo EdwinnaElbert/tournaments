@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGroupService
   def self.call(tournament)
     Group.group_types.count.times do |i|
