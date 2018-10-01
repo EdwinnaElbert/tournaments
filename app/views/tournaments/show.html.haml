@@ -6,7 +6,7 @@
       = form_tag("/tournaments/#{@tournament.id}/games", method: :post) do
         = submit_tag "Generate", class: "btn btn-primary"
     - if @tournament.groups.where(group_type: 0).first.matches.present?
-      %button.btn.btn-primary#generate_game{ onclick: "generate_scores('#{@a_matches.rows}', '#{@b_matches.rows}')" } Generate scores
+      %button.btn.btn-primary#generate_game{ onclick: "generate_scores('#{@a_matches.rows + @b_matches.rows}', '#{@tournament.id}')" } Generate scores
   %br
   %hr
   .m-portlet__body

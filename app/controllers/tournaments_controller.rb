@@ -12,10 +12,10 @@ class TournamentsController < AppController
     a_sql = "SELECT m.id,
                     m.team_1_id,
                     t_1.title AS team_1_title,
-                    s_1.score AS score_1,
+                    COALESCE(s_1.score, 0) AS score_1,
                     m.team_2_id,
                     t_2.title AS team_2_title,
-                    s_2.score AS score_2
+                    COALESCE(s_2.score, 0) AS score_2
              FROM matches m
       INNER JOIN teams t_1 ON m.team_1_id = t_1.id
       INNER JOIN teams t_2 ON m.team_2_id = t_2.id
@@ -25,6 +25,7 @@ class TournamentsController < AppController
 
     @a_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 0).first.id]])
     @b_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 1).first.id]])
+    binding.pry
   end
 
   def create

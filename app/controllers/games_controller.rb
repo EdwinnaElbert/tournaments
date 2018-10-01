@@ -6,7 +6,7 @@ class GamesController < AppController
 
   def create
     unless @tournament.aasm_state == "final"
-      @tournament.to_next_state
+      @tournament.to_next_state!
       ArrangeMatchesService.new(@tournament)
     end
     redirect_to tournament_path(@tournament)
