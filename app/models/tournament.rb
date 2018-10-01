@@ -19,18 +19,12 @@ class Tournament < ApplicationRecord
     state :play_off_1_4
     state :play_off_1_2
     state :final
-    event :next_state do
+    event :to_next_state do
       transitions from: :play_off_1_2, to: :final
       transitions from: :play_off_1_4, to: :play_off_1_2
       transitions from: :first_tour, to: :play_off_1_4
       transitions from: :no_games, to: :first_tour
     end
-    event :to_first_tour   do transitions from: :no_games, to: :first_tour end
-    event :to_play_off_1_4 do transitions from: :first_tour, to: :play_off_1_4 end
-    event :to_play_off_1_2 do transitions from: :play_off_1_4, to: :play_off_1_2 end
-    event :to_final        do transitions from: :play_off_1_2, to: :final end
-
-    # after_all_transitions :form_group
   end
 
   def team_count
@@ -39,19 +33,5 @@ class Tournament < ApplicationRecord
 
   def team_uniq
     errors.add(:tournament, "All 16 teams should have uniq names") if teams.pluck(:title).uniq.count != teams.pluck(:title).count
-  end
-
-  def next_state
-    binding.pry
-    list = aasm.states.map { |s| s.name }
-    send("to_#{list[self.aasm_state.to_i + 1]}!")
-  end
-
-  def form_group
-    NewGroupService.call(self)
-  end
-
-  def available_states
-    aasm.states.map { |s| s.name }
   end
 end

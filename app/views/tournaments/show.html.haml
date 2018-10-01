@@ -3,28 +3,11 @@
     .m-portlet__head-title
       %span.m-portlet__head-icon.m--hide
         %i.la.la-gear
-    %button.btn.btn-primary#generate_game{ onclick: "generate_game('#{@tournament.id}', '#{@current_user}')" } Generate
+      = form_tag("/tournaments/#{@tournament.id}/games", method: :post) do
+        = submit_tag "Generate", class: "btn btn-primary"
+    - if @tournament.groups.where(group_type: 0).first.matches.present?
+      %button.btn.btn-primary#generate_game{ onclick: "generate_scores('#{@a_matches.rows}', '#{@b_matches.rows}')" } Generate scores
+  %br
+  %hr
   .m-portlet__body
-
-:javascript
-  var locale = "#{I18n.locale}";
-  // function generate_game(tournament_id) {
-  //   alert(tournament_id)
-  //   $.ajax({
-  //     url: '/games/create',
-  //     method: 'POST',
-  //     data: tournament_id
-  //     // dataType: 'json',
-  //     // data
-  //     })
-  //     //.done(function(data) {
-  //       // console.log(data.ev.event_type);
-  //       // toastr.info(data.ev.message);
-  //       //
-  //       // if (data.ev.event_type === 'new_message') {
-  //       //   return $(".messages").attr("data-message-count", data.unread_msgs);
-  //       // } else {
-  //       //   return $(".events").attr("data-notification", "true");
-  //       // }
-  //   // });
-  // }
+    = render "table"

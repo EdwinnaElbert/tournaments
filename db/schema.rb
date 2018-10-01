@@ -23,17 +23,18 @@ ActiveRecord::Schema.define(version: 2018_09_30_170649) do
   end
 
   create_table "matches", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
-    t.uuid "team_1_id_id", null: false
-    t.uuid "team_2_id_id", null: false
+    t.uuid "team_1_id", null: false
+    t.uuid "team_2_id", null: false
     t.uuid "group_id", null: false
     t.index ["group_id"], name: "index_matches_on_group_id"
-    t.index ["team_1_id_id"], name: "index_matches_on_team_1_id_id"
-    t.index ["team_2_id_id"], name: "index_matches_on_team_2_id_id"
+    t.index ["team_1_id"], name: "index_matches_on_team_1_id"
+    t.index ["team_2_id"], name: "index_matches_on_team_2_id"
   end
 
   create_table "scores", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.uuid "team_id", null: false
     t.uuid "match_id", null: false
+    t.integer "score"
     t.index ["match_id"], name: "index_scores_on_match_id"
     t.index ["team_id"], name: "index_scores_on_team_id"
   end

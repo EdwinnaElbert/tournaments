@@ -4,8 +4,10 @@ class Group < ApplicationRecord
   belongs_to :tournament
 
   has_many :matches
+  has_many :scores, through: :matches
+  has_many :teams, through: :matches
 
-  validates :game_type, presence: :true
+  validates :group_type, presence: :true
   enum group_type: [
     :a,             # 0
     :b,             # 1

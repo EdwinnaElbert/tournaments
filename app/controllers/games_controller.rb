@@ -5,24 +5,16 @@ class GamesController < AppController
   before_action :set_tournament
 
   def create
-    binding.pry
-    @tournament.next_state
-
-    # @tournament.current_state.next
-    # ArrangeMatchesService.call(@tournament)
-  end
-
-  def update
-
+    unless @tournament.aasm_state == "final"
+      @tournament.to_next_state
+      ArrangeMatchesService.new(@tournament)
+    end
+    redirect_to tournament_path(@tournament)
   end
 
   private
 
   def set_tournament
     @tournament = Tournament.find(params[:tournament_id])
-  end
-
-  def score_params
-
   end
 end

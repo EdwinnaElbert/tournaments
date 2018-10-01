@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :tournaments do
       resources :games
     end
+    resources :scores, only: :create
     root to: "tournaments#new"
   end
   root "welcome#index"

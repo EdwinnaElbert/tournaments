@@ -25,21 +25,24 @@ $.ajaxSetup({
   }
 });
 
-function generate_game(tournament_id) {
-  alert(tournament_id)
+function set_score(team_id, match_id, score) {
   $.ajax({
-    url: `/tournaments/${tournament_id}/games`,
+    url: `/scores`,
     method: 'POST',
-    dataType: 'json'
+    dataType: 'json',
+    data: {
+      team_id: team_id,
+      match_id: match_id,
+      score: score
+    }
   })
-    //.done(function(data) {
-      // console.log(data.ev.event_type);
-      // toastr.info(data.ev.message);
-      //
-      // if (data.ev.event_type === 'new_message') {
-      //   return $(".messages").attr("data-message-count", data.unread_msgs);
-      // } else {
-      //   return $(".events").attr("data-notification", "true");
-      // }
-  // });
+}
+
+function generate_scores(a, b) {
+  $.ajax({
+    url: `/scores`,
+    method: 'POST',
+    dataType: 'json',
+    data: { a: a, b: b  }
+  })
 }
