@@ -9,28 +9,19 @@ class TournamentsController < AppController
   end
 
   def show
+    @tournament.groups.each do |group|
+      self.instance_variable_set("@#{group.group_type}",
+        Match.where("(team_1_id IN (?) OR team_2_id IN (?)) AND group_id IN (?)",
+                     @tournament.teams.pluck(:id),
+                     @tournament.teams.pluck(:id),
+                     group.id).includes(:scores)
+      )
+    end
     binding.pry
-    a_sql = "SELECT m.id,
-                    m.team_1_id,
-                    t_1.title AS team_1_title,
-                    COALESCE(s_1.score, 0) AS score_1,
-                    m.team_2_id,
-                    t_2.title AS team_2_title,
-                    COALESCE(s_2.score, 0) AS score_2
-             FROM matches m
-      INNER JOIN teams t_1 ON m.team_1_id = t_1.id
-      INNER JOIN teams t_2 ON m.team_2_id = t_2.id
-      LEFT JOIN scores s_1 ON s_1.team_id = t_1.id AND s_1.match_id = m.id
-      LEFT JOIN scores s_2 ON s_2.team_id = t_2.id AND s_2.match_id = m.id
-      WHERE m.group_id = $1"
-
-    @a_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 0).first.id]])
-    @b_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 1).first.id]])
   end
 
   def create
     @tournament = Tournament.create(tournament_params)
-    binding.pry
     if @tournament.present?
       CreateGroupService.call(@tournament)
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }

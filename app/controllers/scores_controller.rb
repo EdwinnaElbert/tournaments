@@ -10,7 +10,7 @@ class ScoresController < AppController
       tournament = Tournament.find(params[:tournament_id])
       GenerateScoresService.call(tournament)
     end
-    redirect_to tournament_path(@tournament)
+    redirect_to tournament_path(tournament.id)
   end
 
   def update

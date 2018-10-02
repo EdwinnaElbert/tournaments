@@ -12,7 +12,6 @@ class CreateFirstMatchesService
       group_id = Group.where(tournament_id: tournament.id, group_type: group_type).first.id
 
       team_ids = teams_in_group.pluck(:id)
-      binding.pry
       Team.where(id: team_ids).update_all(group_id: group_id)
 
       team_pairs = team_ids.combination(2).to_a

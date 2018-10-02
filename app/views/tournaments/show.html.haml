@@ -4,10 +4,11 @@
       %span.m-portlet__head-icon.m--hide
         %i.la.la-gear
       = form_tag("/tournaments/#{@tournament.id}/matches", method: :post) do
-        = submit_tag "Generate", class: "btn btn-primary"
+        = submit_tag "To next round", class: "btn btn-primary"
     - if @tournament.groups.where(group_type: 0).first.matches.present?
       %button.btn.btn-primary#generate_game{ onclick: "generate_scores('#{@tournament.id}')" } Generate scores
   %br
   %hr
   .m-portlet__body
-    = render "table"
+    = render "groups_table"
+    = render "play_off_1_4_table"

@@ -4,7 +4,7 @@ class Tournament < ApplicationRecord
   include AASM
 
   has_many :teams, dependent: :destroy
-  has_many :groups
+  has_many :groups, -> { order(group_type: :asc) }
   has_many :home_matches, through: :teams, foreign_key: :team_1_id
   has_many :visitor_matches, through: :teams, foreign_key: :team_2_id
   accepts_nested_attributes_for :teams, reject_if: proc { |attributes| attributes.values.include?(nil) }, allow_destroy: false, limit: 16
@@ -31,11 +31,10 @@ class Tournament < ApplicationRecord
   end
 
   # def group_teams(group_type)
-  #   teams.where("current_group_type = ?", group_type)
+  #   teams.where("group_id = ?", group_type)
   # end
 
   def current_groups
-    binding.pry
     if [0, 1].include?(teams.first.group.group_type.to_i)
       groups.where(group_type: [0, 1]).order(group_type: :asc).pluck(:id)
     else
