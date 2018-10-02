@@ -12,9 +12,8 @@ class CreateFirstMatchesService
       team_pairs = group.pluck(:id).combination(2).to_a
       team_pairs.map { |team_pair| { team_1_id: team_pair[0],
                                      team_2_id: team_pair[1],
-                                     group_type: group_type } }
+                                     current_group_type: @tournament.current_groups[group_type] } }
     end
-
   end
 
   # def create_matches(shuffled, range, group_type)

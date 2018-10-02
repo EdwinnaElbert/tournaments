@@ -9,6 +9,7 @@ class TournamentsController < AppController
   end
 
   def show
+    binding.pry
     a_sql = "SELECT m.id,
                     m.team_1_id,
                     t_1.title AS team_1_title,

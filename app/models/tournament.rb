@@ -35,10 +35,10 @@ class Tournament < ApplicationRecord
   # end
 
   def current_groups
-    if [0, 1].include?(@tournament.teams.first.group.group_type)
-      groups.where(group_type: [0, 1])
+    if [0, 1].include?(teams.first.group.group_type)
+      groups.where(group_type: [0, 1]).order(group_type: :asc)
     else
-      [@tournament.teams.first.group.first]
+      [teams.first.group.first]
     end
   end
 end
