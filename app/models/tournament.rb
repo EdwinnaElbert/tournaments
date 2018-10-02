@@ -18,15 +18,11 @@ class Tournament < ApplicationRecord
     state :play_off_1_2
     state :final
     event :to_next_state do
-      # TODO на каждый переход по своему сервису
       transitions from: :play_off_1_2, to: :final #,        after: Proc.new { |*args| set_process(*args) }
       transitions from: :play_off_1_4, to: :play_off_1_2 #, after: Proc.new { |*args| set_process(*args) }
       transitions from: :first_tour, to: :play_off_1_4 #,   after: Proc.new { |*args| set_process(*args) }
-      # self?
-      transitions from: :no_games, to: :first_tour,       after: Proc.new { |*args| CreateFirstMatchesService.call(self) }
+      transitions from: :no_games, to: :first_tour, after: Proc.new { current_groups([0, 1]); CreateFirstMatchesService.call(self) }
     end
-
-
   end
 
   def team_count
@@ -41,11 +37,7 @@ class Tournament < ApplicationRecord
     teams.where('current_group_type = ?', group_type)
   end
 
-  # def matches
-  #   home_matches + visitor_matches
-  # end
-  #
-  # def group_matches(group_id)
-  #   home_matches.where(group_id: group_id).joins(:scores).uniq + visitor_matches.where(group_id: group_id).joins(:scores).uniq
-  # end
+  def current_groups(group_types = [])
+    groups.where(group_type: group_types)
+  end
 end

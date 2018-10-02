@@ -1,9 +1,9 @@
 class AddCurrentGroupTypeToTeam < ActiveRecord::Migration[5.2]
   def up
-    add_column :teams, :current_group_type, :integer
+    add_reference :teams, :group, foreign_key: true, type: :uuid
   end
 
   def down
-    remove_column :teams, :current_group_type
+    remove_reference :teams, :group
   end
 end

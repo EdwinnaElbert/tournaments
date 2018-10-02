@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(version: 2018_10_01_173455) do
     t.string "title", null: false
     t.uuid "tournament_id", null: false
     t.boolean "off", default: false, null: false
-    t.integer "current_group_type"
+    t.uuid "group_id"
+    t.index ["group_id"], name: "index_teams_on_group_id"
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
@@ -82,5 +83,6 @@ ActiveRecord::Schema.define(version: 2018_10_01_173455) do
   add_foreign_key "matches", "groups"
   add_foreign_key "scores", "matches"
   add_foreign_key "scores", "teams"
+  add_foreign_key "teams", "groups"
   add_foreign_key "teams", "tournaments"
 end

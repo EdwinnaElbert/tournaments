@@ -7,25 +7,27 @@
 
 class CreateFirstMatchesService
   def self.call(tournament)
-    @tournament = tournament
-    shuffled = @tournament.teams.shuffle
-    create_matches(shuffled, 0..7, 0)
-    save_group_type(shuffled, 0..7, 0)
-    create_matches(shuffled, 8..15, 1)
-    save_group_type(shuffled, 8..15, 1)
+    shuffled_teams = tournament.teams.order("random()").in_groups(2)
+    shuffled_teams.each_with_index do |group, group_type|
+      team_pairs = group.pluck(:id).combination(2).to_a
+      team_pairs.map { |team_pair| { team_1_id: team_pair[0],
+                                     team_2_id: team_pair[1],
+                                     group_type: group_type } }
+    end
+
   end
 
-  def create_matches(shuffled, range, group_type)
-    shuffled.slice(range).combination(2).each do |team_pair|
-      Match.create(group_id: @tournament.groups.where(group_type: group_type).first.id,
-                  team_1_id: team_pair[0].id,
-                  team_2_id: team_pair[1].id)
-    end
-  end
-
-  def save_group_type(shuffled, range, group_type)
-    shuffled.slice(range).each do |team|
-      Team.find(team.id).update_attributes(current_group_type: group_type)
-    end
-  end
+  # def create_matches(shuffled, range, group_type)
+  #   shuffled.slice(range).combination(2).each do |team_pair|
+  #     Match.create(group_id: @tournament.groups.where(group_type: group_type).first.id,
+  #                 team_1_id: team_pair[0].id,
+  #                 team_2_id: team_pair[1].id)
+  #   end
+  # end
+  #
+  # def save_group_type(shuffled, range, group_type)
+  #   shuffled.slice(range).each do |team|
+  #     Team.find(team.id).update_attributes(current_group_type: group_type)
+  #   end
+  # end
 end

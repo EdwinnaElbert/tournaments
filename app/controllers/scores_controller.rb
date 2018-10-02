@@ -8,7 +8,7 @@ class ScoresController < AppController
       @score = Score.find_or_create_by(team_id: params[:team_id], match_id: params[:match_id], score: params[:score])
     else
       binding.pry
-      ab = JSON.parse(params[:ab]).map { |v| [{ match_id: v[0], team_id: v[1], score: rand(0..100)}, { match_id: v[0], team_id: v[4], score: rand(0..100)}] }.flatten
+      a_b_teams = JSON.parse(params[:a_b_teams]).map { |v| [{ match_id: v[0], team_id: v[1], score: rand(0..100)}, { match_id: v[0], team_id: v[4], score: rand(0..100)}] }.flatten
       (ab).each do |score_params|
         Score.create(score_params)
       end

@@ -25,11 +25,11 @@ class TournamentsController < AppController
 
     @a_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 0).first.id]])
     @b_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 1).first.id]])
-    binding.pry
   end
 
   def create
     @tournament = Tournament.create(tournament_params)
+    binding.pry
     if @tournament.present?
       CreateGroupService.call(@tournament)
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }
