@@ -11,10 +11,10 @@ class TournamentsController < AppController
   def show
     @tournament.groups.each do |group|
       self.instance_variable_set("@#{group.group_type}",
-        Match.where("(team_1_id IN (?) OR team_2_id IN (?)) AND group_id IN (?)",
+        Match.where("(team_1_id IN (?) OR team_2_id IN (?)) AND matches.group_id IN (?)",
                      @tournament.teams.pluck(:id),
                      @tournament.teams.pluck(:id),
-                     group.id).includes(:scores)
+                     group.id).includes(:scores).eager_load(:team_1).eager_load(:team_2)
       )
     end
     binding.pry

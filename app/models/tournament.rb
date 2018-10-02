@@ -18,8 +18,8 @@ class Tournament < ApplicationRecord
     state :play_off_1_2
     state :final
     event :to_next_state do
-      transitions from: :play_off_1_2, to: :final #,        after: Proc.new { |*args| set_process(*args) }
-      transitions from: :play_off_1_4, to: :play_off_1_2 #, after: Proc.new { |*args| set_process(*args) }
+      transitions from: :play_off_1_2, to: :final, after: Proc.new { ToPlayOffService.call(self) }
+      transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { ToPlayOffService.call(self) }
       transitions from: :first_tour, to: :play_off_1_4, after: Proc.new { ToPlayOffService.call(self) }
       transitions from: :no_games, to: :first_tour, after: Proc.new { CreateFirstMatchesService.call(self) }
     end

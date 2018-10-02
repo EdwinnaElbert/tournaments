@@ -10,5 +10,7 @@
   %br
   %hr
   .m-portlet__body
-    = render "groups_table"
-    = render "play_off_1_4_table"
+    - [@a, @b, @play_off_1_4, @play_off_1_2, @final].each_with_index do |group, i|
+      - if group.any?
+        %div{ id: "table_#{i}"}
+          = render "table", group: group, group_index: i
