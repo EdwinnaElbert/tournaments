@@ -34,11 +34,11 @@ class TournamentsController < AppController
         #              #.includes([:team_1_score, :team_2_score])
       )
     end
-    binding.pry
   end
 
   def create
     @tournament = Tournament.create(tournament_params)
+    binding.pry
     if @tournament.present?
       CreateGroupService.call(@tournament)
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }

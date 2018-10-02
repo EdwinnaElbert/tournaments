@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_many :matches
   has_many :teams
   has_many :scores, through: :matches
-  # has_many :teams, through: :matches
+  has_many :teams, through: :matches
 
   validates :group_type, presence: :true
   enum group_type: [
