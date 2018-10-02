@@ -9,10 +9,12 @@ class CreateFirstMatchesService
   def self.call(tournament)
     shuffled_teams = tournament.teams.order("random()").in_groups(2)
     shuffled_teams.each_with_index do |group, group_type|
+      group_id = Group.where(tournament_id: tournament.id, group_type: group_type).first.id
       team_pairs = group.pluck(:id).combination(2).to_a
-      team_pairs.map { |team_pair| { team_1_id: team_pair[0],
-                                     team_2_id: team_pair[1],
-                                     current_group_type: @tournament.current_groups[group_type] } }
+      matches_attrs = team_pairs.map { |team_pair| { team_1_id: team_pair[0],
+                                                     team_2_id: team_pair[1],
+                                                     group_id:  group_id } }
+      Match.create(matches_attrs)
     end
   end
 
