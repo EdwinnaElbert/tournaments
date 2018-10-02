@@ -38,12 +38,12 @@ function set_score(team_id, match_id, score) {
   })
 }
 
-function generate_scores(ab, tournament_id) {
+function generate_scores(tournament_id) {
   $.ajax({
     url: `/scores`,
     method: 'POST',
     dataType: 'json',
-    data: { ab: ab, tournament_id: tournament_id  }
+    data: { tournament_id: tournament_id  }
   }).done( function () {
     window.reload()
    }

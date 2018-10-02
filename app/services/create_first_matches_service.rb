@@ -7,28 +7,19 @@
 
 class CreateFirstMatchesService
   def self.call(tournament)
-    shuffled_teams = tournament.teams.order("random()").in_groups(2)
-    shuffled_teams.each_with_index do |group, group_type|
+    shuffled_teams = tournament.teams.shuffle.in_groups(2)
+    shuffled_teams.each_with_index do |teams_in_group, group_type|
       group_id = Group.where(tournament_id: tournament.id, group_type: group_type).first.id
-      team_pairs = group.pluck(:id).combination(2).to_a
+
+      team_ids = teams_in_group.pluck(:id)
+      binding.pry
+      Team.where(id: team_ids).update_all(group_id: group_id)
+
+      team_pairs = team_ids.combination(2).to_a
       matches_attrs = team_pairs.map { |team_pair| { team_1_id: team_pair[0],
                                                      team_2_id: team_pair[1],
                                                      group_id:  group_id } }
       Match.create(matches_attrs)
     end
   end
-
-  # def create_matches(shuffled, range, group_type)
-  #   shuffled.slice(range).combination(2).each do |team_pair|
-  #     Match.create(group_id: @tournament.groups.where(group_type: group_type).first.id,
-  #                 team_1_id: team_pair[0].id,
-  #                 team_2_id: team_pair[1].id)
-  #   end
-  # end
-  #
-  # def save_group_type(shuffled, range, group_type)
-  #   shuffled.slice(range).each do |team|
-  #     Team.find(team.id).update_attributes(current_group_type: group_type)
-  #   end
-  # end
 end

@@ -20,7 +20,7 @@ class Tournament < ApplicationRecord
     event :to_next_state do
       transitions from: :play_off_1_2, to: :final #,        after: Proc.new { |*args| set_process(*args) }
       transitions from: :play_off_1_4, to: :play_off_1_2 #, after: Proc.new { |*args| set_process(*args) }
-      transitions from: :first_tour, to: :play_off_1_4 #,   after: Proc.new { |*args| set_process(*args) }
+      transitions from: :first_tour, to: :play_off_1_4, after: Proc.new { ToPlayOffService.call(self) }
       transitions from: :no_games, to: :first_tour, after: Proc.new { CreateFirstMatchesService.call(self) }
     end
   end
@@ -35,10 +35,11 @@ class Tournament < ApplicationRecord
   # end
 
   def current_groups
-    if [0, 1].include?(teams.first.group.group_type)
-      groups.where(group_type: [0, 1]).order(group_type: :asc)
+    binding.pry
+    if [0, 1].include?(teams.first.group.group_type.to_i)
+      groups.where(group_type: [0, 1]).order(group_type: :asc).pluck(:id)
     else
-      [teams.first.group.first]
+      [teams.first.group.group_type.id]
     end
   end
 end

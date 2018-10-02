@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     resources :tournaments do
-      resources :games
+      resources :matches
     end
     resources :scores, only: :create
     root to: "tournaments#new"
