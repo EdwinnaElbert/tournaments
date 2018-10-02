@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    attributes:
+    errors:
+      models:
+        tournament:
+          attributes:
+  tournaments:
+    create: "Create Tournament"

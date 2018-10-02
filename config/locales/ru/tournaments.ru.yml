@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    attributes:
+    errors:
+      models:
+        tournament:
+          attributes:
+            title:
+              blank: "Не может быть пустым"
+  tournaments:
+    create: "Создать турнир"

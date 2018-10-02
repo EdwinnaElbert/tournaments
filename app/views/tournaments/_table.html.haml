@@ -1,0 +1,33 @@
+.row
+  .col-md-4
+  .col-md-4
+    %table#html_table.table-striped.m-table.m-table--head-bg-success{:width => "100%", style: "margin-top: 70px"}
+      %thead
+        %tr
+          %th{style: "text-align: center;", :title => "Team 1 title", colspan: 3}
+            %h3= t("group.#{group_index}")
+
+      -# TABLE HEAD
+
+      %thead
+        %tr
+          %th{ style: "text-align: center;", :title => "Team 1 title"} Team 1 title
+          %th{ style: "text-align: center;", :title => "Score"} Score
+          %th{ style: "text-align: center;", :title => "Team 2 title"} Team 2 title
+
+      -# TABLE BODY
+
+      %tbody
+        - group.each do |match|
+          %tr
+            %td{ style: "text-align: center;" }=  match["team_1_title"]
+            %td{ style: "text-align: center;" }
+              .row
+                .col-md-4
+                  %input.form-control.m-input{ onchange: "set_score('#{match["team_1_id"]}', '#{match["id"]}', this.value)", value: match["score_1"] }
+                .col-md-4
+                  %span{ style: "text-align: center" } &mdash;
+                .col-md-4
+                  %input.form-control.m-input{ onchange: "set_score('#{match["team_2_id"]}', '#{match["id"]}', this.value)", value: match["score_2"] }
+            %td{ style: "text-align: center;" }=  match["team_2_title"]
+  .col-md-4

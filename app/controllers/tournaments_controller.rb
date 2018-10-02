@@ -9,12 +9,29 @@ class TournamentsController < AppController
   end
 
   def show
+    sql = "SELECT m.id,
+                    m.team_1_id,
+                    t_1.title AS team_1_title,
+                    s_1.score AS score_1,
+                    m.team_2_id,
+                    t_2.title AS team_2_title,
+                    s_2.score AS score_2
+             FROM matches m
+      INNER JOIN teams t_1 ON m.team_1_id = t_1.id
+      INNER JOIN teams t_2 ON m.team_2_id = t_2.id
+      LEFT JOIN scores s_1 ON s_1.team_id = t_1.id AND s_1.match_id = m.id
+      LEFT JOIN scores s_2 ON s_2.team_id = t_2.id AND s_2.match_id = m.id
+      WHERE m.group_id = $1"
+
+    # teams = @tournament.teams.pluck(:id)
     @tournament.groups.each do |group|
       self.instance_variable_set("@#{group.group_type}",
-        Match.where("(team_1_id IN (?) OR team_2_id IN (?)) AND matches.group_id IN (?)",
-                     @tournament.teams.pluck(:id),
-                     @tournament.teams.pluck(:id),
-                     group.id).includes(:scores).eager_load(:team_1).eager_load(:team_2)
+                                 ActiveRecord::Base.connection.
+                                   select_all(sql,
+                                              'SQL',
+                                              [[nil, group.id]])
+        # Match.includes([:team_1_score, :team_2_score, :team_1]).where("matches.group_id IN (?)", group.id)
+        #              #.includes([:team_1_score, :team_2_score])
       )
     end
     binding.pry
