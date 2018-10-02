@@ -15,10 +15,13 @@ class CreateFirstMatchesService
       Team.where(id: team_ids).update_all(group_id: group_id)
 
       team_pairs = team_ids.combination(2).to_a
-      matches_attrs = team_pairs.map { |team_pair| { team_1_id: team_pair[0],
-                                                     team_2_id: team_pair[1],
-                                                     group_id:  group_id } }
-      Match.create(matches_attrs)
+
+      team_pairs.each do |team_pair|
+        match = Match.create(group_id: group_id)
+        match.teams << Team.find(team_pair[0])
+        match.teams << Team.find(team_pair[1])
+      end
     end
+    GenerateScoresService.call(tournament)
   end
 end

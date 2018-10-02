@@ -1,13 +1,10 @@
 class GenerateScoresService
   def self.call(tournament)
-    team_ids = tournament.team_ids
-    matches = Match.where("team_1_id IN (?) OR team_2_id IN (?) AND group_id IN (?)", team_ids, team_ids, tournament.current_groups)
-    score_attrs = matches.map { |match| [{ team_id: match.team_1_id,
-                                           score: rand(tournament.min_score..tournament.max_score),
-                                           match_id: match.id },
-                                         { team_id: match.team_2_id,
-                                           score: rand(tournament.min_score..tournament.max_score),
-                                           match_id: match.id }] }.flatten
-    Score.create(score_attrs)
+    matches = Match.where("group_id IN (?)", tournament.current_groups).distinct
+    binding.pry
+    matches.each do |match|
+      Score.create(match_id: match.id, team_id: match.teams.first.id, score: nil)
+      Score.create(match_id: match.id, team_id: match.teams.last.id, score: nil)
+    end
   end
 end
