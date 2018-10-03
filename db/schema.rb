@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
   create_table "teams", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
     t.boolean "off", default: false, null: false
-    t.uuid "group_id"
-    t.index ["group_id"], name: "index_teams_on_group_id"
   end
 
   create_table "teams_tournaments", force: :cascade do |t|
@@ -88,7 +86,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
   add_foreign_key "matches", "groups"
   add_foreign_key "scores", "matches"
   add_foreign_key "scores", "teams"
-  add_foreign_key "teams", "groups"
   add_foreign_key "teams_tournaments", "teams"
   add_foreign_key "teams_tournaments", "tournaments"
 end

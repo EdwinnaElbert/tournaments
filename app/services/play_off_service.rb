@@ -8,8 +8,6 @@ class PlayOffService
       winners_scores, loosers = DivideWinnersLoosersService.call(@tournament, group_id)
       winners_scores_all << winners_scores
       SetOffService.call(loosers)
-      binding.pry
-      UpdateCurrentGroupService.call(winners_scores.flatten(1).map { |ws| ws[1] }.uniq, @tournament.next_group_id)
     end
     (winners_scores_all.flatten!(2).count / 2).times do |i|
       MatchesGenerator.call(winners_scores_all[i][1], winners_scores_all[-(i + 1)][1], @tournament.next_group_id)

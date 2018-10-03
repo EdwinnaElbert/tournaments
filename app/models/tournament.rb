@@ -36,10 +36,6 @@ class Tournament < ApplicationRecord
     errors.add(:tournament, "All 16 teams should have uniq names") if teams.pluck(:title).uniq.count != teams.pluck(:title).count
   end
 
-  # def group_teams(group_type)
-  #   teams.where("group_id = ?", group_type)
-  # end
-
   def current_groups
     aasm_state.in?(["no_games", "first_tour"]) ? groups.limit(2).pluck(:id) : [groups[TOURNAMENT_STATES.index(aasm_state.to_sym)].id]
   end
