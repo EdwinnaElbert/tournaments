@@ -10,19 +10,22 @@ class Tournament < ApplicationRecord
   validates :title, presence: :true
   validate :team
 
+  TOURNAMENT_STATES = [:no_games, :first_tour, :play_off_1_4, :play_off_1_2, :final, :finished]
+
   aasm do
-    state :no_games, initial: true
-    state :first_tour
-    state :play_off_1_4
-    state :play_off_1_2
-    state :final
-    state :finished
+    TOURNAMENT_STATES.each_with_index do |state, i|
+      if i == 0
+        state state, initial: true
+      else
+        state state
+      end
+    end
     event :to_next_state do
-      transitions from: :final, to: :finished, after: Proc.new {  }
-      transitions from: :play_off_1_2, to: :final, after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :final, to: :finished,            after: Proc.new { FinishTournamentService.new.call(self) }
+      transitions from: :play_off_1_2, to: :final,        after: Proc.new { PlayOffService.new.call(self) }
       transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { PlayOffService.new.call(self) }
-      transitions from: :first_tour, to: :play_off_1_4, after: Proc.new { PlayOffService.new.call(self) }
-      transitions from: :no_games, to: :first_tour, after: Proc.new { FirstTourService.new.call(self) }
+      transitions from: :first_tour, to: :play_off_1_4,   after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :no_games, to: :first_tour,       after: Proc.new { FirstTourService.new.call(self) }
     end
   end
 
@@ -36,6 +39,10 @@ class Tournament < ApplicationRecord
   # end
 
   def current_groups
-    aasm_state.in?(["no_games", "first_tour"]) ? groups.limit(2).pluck(:id) : [groups[aasm_state.to_i].id]
+    aasm_state.in?(["no_games", "first_tour"]) ? groups.limit(2).pluck(:id) : [groups[TOURNAMENT_STATES.index(aasm_state.to_sym)].id]
+  end
+
+  def next_group_id
+    groups.where("id > ?", current_groups.last).first.id || groups.last.id
   end
 end

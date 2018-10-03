@@ -12,6 +12,6 @@ class FirstTourService
         MatchesGenerator.call(team_pair[0], team_pair[1], group_id)
       end
     end
-    GenerateScoresService.call(tournament)
+    GenerateScoresService.call(tournament, tournament.current_groups)
   end
 end
