@@ -69,13 +69,13 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker", git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem "rspec-rails"
-  # gem "selenium-webdriver"
+  gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
 
   gem "rubocop"
   gem "rubocop-rspec"
-  gem "selenium-webdriver"
+  # gem "selenium-webdriver"
   gem "pry-rails"
 end
 

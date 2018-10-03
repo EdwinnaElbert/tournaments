@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Team < ApplicationRecord
-  belongs_to :tournament
+  has_and_belongs_to_many :tournaments
   belongs_to :group, required: false
   has_and_belongs_to_many :teams
 

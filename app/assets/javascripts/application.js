@@ -44,8 +44,8 @@ function generate_random_scores(tournament_id) {
     method: 'POST',
     dataType: 'json',
     data: { tournament_id: tournament_id  }
-  }).success( function () {
-    window.reload()
+  }).done( function () {
+    window.location.reload()
    }
   )
 }

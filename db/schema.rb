@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_104804) do
+ActiveRecord::Schema.define(version: 2018_10_03_075410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,16 @@ ActiveRecord::Schema.define(version: 2018_10_02_104804) do
 
   create_table "teams", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
-    t.uuid "tournament_id", null: false
     t.boolean "off", default: false, null: false
     t.uuid "group_id"
     t.index ["group_id"], name: "index_teams_on_group_id"
-    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
+  end
+
+  create_table "teams_tournaments", force: :cascade do |t|
+    t.uuid "tournament_id", null: false
+    t.uuid "team_id", null: false
+    t.index ["team_id"], name: "index_teams_tournaments_on_team_id"
+    t.index ["tournament_id"], name: "index_teams_tournaments_on_tournament_id"
   end
 
   create_table "tournaments", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
@@ -82,5 +87,6 @@ ActiveRecord::Schema.define(version: 2018_10_02_104804) do
   add_foreign_key "scores", "matches"
   add_foreign_key "scores", "teams"
   add_foreign_key "teams", "groups"
-  add_foreign_key "teams", "tournaments"
+  add_foreign_key "teams_tournaments", "teams"
+  add_foreign_key "teams_tournaments", "tournaments"
 end

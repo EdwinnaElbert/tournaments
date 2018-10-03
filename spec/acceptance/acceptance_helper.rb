@@ -3,7 +3,7 @@
 require "rails_helper"
 
 # Capybara.server = :puma
-Capybara.default_driver = :selenium
+Capybara.default_driver = :selenium_chrome
 # Capybara.javascript_driver = :webkit
 # Capybara.default_driver = :webkit
 Capybara.default_max_wait_time = 10

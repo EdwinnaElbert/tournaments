@@ -3,10 +3,9 @@
 class Tournament < ApplicationRecord
   include AASM
 
-  has_many :teams, dependent: :destroy
+  has_and_belongs_to_many :teams
   has_many :groups, -> { order(group_type: :asc) }
-  has_many :home_matches, through: :teams, foreign_key: :team_1_id
-  has_many :visitor_matches, through: :teams, foreign_key: :team_2_id
+
   accepts_nested_attributes_for :teams, reject_if: proc { |attributes| attributes.values.include?(nil) }, allow_destroy: false, limit: 16
   validates :title, presence: :true
   validate :team
@@ -20,10 +19,10 @@ class Tournament < ApplicationRecord
     state :finished
     event :to_next_state do
       transitions from: :final, to: :finished, after: Proc.new {  }
-      transitions from: :play_off_1_2, to: :final, after: Proc.new { ToPlayOffService.call(self) }
-      transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { ToPlayOffService.call(self) }
-      transitions from: :first_tour, to: :play_off_1_4, after: Proc.new { ToPlayOffService.call(self) }
-      transitions from: :no_games, to: :first_tour, after: Proc.new { CreateFirstMatchesService.call(self) }
+      transitions from: :play_off_1_2, to: :final, after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :first_tour, to: :play_off_1_4, after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :no_games, to: :first_tour, after: Proc.new { FirstTourService.new.call(self) }
     end
   end
 

@@ -1,13 +1,13 @@
 require "rails_helper"
+
 RSpec.describe Tournament, type: :model do
   it "has a valid factory" do
-    expect(FactoryBot.build :tournament).to_not be_valid
-    # expect(FactoryBot.build :tournament_with_teams, teams_count: 16).to be_valid
+    expect(FactoryBot.build :tournament, :with_many_teams).to be_valid
   end
 
   describe "associations" do
-    it { should have_many :teams }
-    it { should have_many :games }
+    it { should have_and_belong_to_many :teams }
+    it { should have_many :groups }
   end
 
   describe "validations" do
