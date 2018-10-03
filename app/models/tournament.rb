@@ -10,6 +10,8 @@ class Tournament < ApplicationRecord
   validates :title, presence: :true
   validate :team
 
+  belongs_to :winner, class_name: "Team", required: false
+
   TOURNAMENT_STATES = [:no_games, :first_tour, :play_off_1_4, :play_off_1_2, :final, :finished]
 
   aasm do

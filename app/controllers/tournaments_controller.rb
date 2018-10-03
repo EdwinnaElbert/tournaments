@@ -21,7 +21,7 @@ class TournamentsController < AppController
   def create
     @tournament = Tournament.create(tournament_params)
     if @tournament.present?
-      CreateGroupService.call(@tournament)
+      GroupsGenerator.call(@tournament)
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }
     else
       redirect_to new_tournament_path, flash: { errors: @tournament.errors.messages }

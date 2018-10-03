@@ -8,6 +8,8 @@ class Team < ApplicationRecord
   has_many :scores
   has_many :matches, through: :scores
 
+  has_many :tournaments
+
   validates :title, presence: :true
   validates :off, inclusion: { in: [true, false], message: "Off should be set to true or false" }
 end

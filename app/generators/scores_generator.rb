@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GenerateScoresService
+class ScoresGenerator
   def self.call(tournament, group_ids)
     matches = Match.where("group_id IN (?)", group_ids)
     matches.each do |match|

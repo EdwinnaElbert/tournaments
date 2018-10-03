@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_075410) do
+ActiveRecord::Schema.define(version: 2018_10_03_171231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_075410) do
     t.string "aasm_state"
     t.integer "min_score", default: 0, null: false
     t.integer "max_score", default: 100, null: false
+    t.uuid "winner_id"
+    t.index ["winner_id"], name: "index_tournaments_on_winner_id"
   end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|

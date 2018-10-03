@@ -14,6 +14,6 @@ class PlayOffService
     (winners_scores_all.flatten!(2).count / 2).times do |i|
       MatchesGenerator.call(winners_scores_all[i][1], winners_scores_all[-(i + 1)][1], @tournament.next_group_id)
     end
-    GenerateScoresService.call(tournament, @tournament.next_group_id)
+    ScoresGenerator.call(tournament, @tournament.next_group_id)
   end
 end
