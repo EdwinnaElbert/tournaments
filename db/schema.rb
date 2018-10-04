@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
 
   create_table "matches", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.uuid "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_matches_on_group_id"
   end
 
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
   create_table "teams", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
     t.boolean "off", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams_tournaments", force: :cascade do |t|
@@ -50,6 +54,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
   create_table "tournaments", id: :uuid, default: -> { "uuid_generate_v1()" }, force: :cascade do |t|
     t.string "title", null: false
     t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "aasm_state"
     t.integer "min_score", default: 0, null: false
     t.integer "max_score", default: 100, null: false

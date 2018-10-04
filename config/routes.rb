@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :scores do
       post "generate_random", to: "scores#generate_random", on: :collection
     end
-    root to: "tournaments#new"
+
+    if Tournament.where(active: true).any?
+      root to: "tournaments#show", id: Tournament.where(active: true).order(created_at: :desc).first.id
+    else
+      root to: "tournaments#new"
+    end
+
   end
   root "welcome#index"
 end

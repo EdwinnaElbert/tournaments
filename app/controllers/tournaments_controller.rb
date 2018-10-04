@@ -9,13 +9,11 @@ class TournamentsController < AppController
   end
 
   def show
-    teams = @tournament.teams.pluck(:id)
     @tournament.groups.each do |group|
       self.instance_variable_set("@#{group.group_type}",
                                  Match.where(group_id: group.id).includes([scores: :team])
       )
     end
-    group = @tournament.groups.first
   end
 
   def create
