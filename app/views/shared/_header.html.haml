@@ -7,7 +7,8 @@
         .m-stack.m-stack--ver.m-stack--general
           .m-stack__item.m-stack__item--middle.m-brand__logo
             %a.m-brand__logo-wrapper{:href => "index.html"}
-              = image_tag "logo/logo_default_dark.png"
+              %h4{ style: "color: white !important"} TOURNAMENTS
+              -# image_tag "logo/logo_default_dark.png"
           .m-stack__item.m-stack__item--middle.m-brand__tools
             / BEGIN: Left Aside Minimize Toggle
             %a#m_aside_left_minimize_toggle.m-brand__icon.m-brand__toggler.m-brand__toggler--left.m--visible-desktop-inline-block{:href => "javascript:;"}
@@ -31,298 +32,27 @@
         %button#m_aside_header_menu_mobile_close_btn.m-aside-header-menu-mobile-close.m-aside-header-menu-mobile-close--skin-dark
           %i.la.la-close
         #m_header_menu.m-header-menu.m-aside-header-menu-mobile.m-aside-header-menu-mobile--offcanvas.m-header-menu--skin-light.m-header-menu--submenu-skin-light.m-aside-header-menu-mobile--skin-dark.m-aside-header-menu-mobile--submenu-skin-dark
-          %ul.m-menu__nav.m-menu__nav--submenu-arrow
-            %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-              %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-                %i.m-menu__link-icon.flaticon-add
-                %span.m-menu__link-text Actions
-                %i.m-menu__hor-arrow.la.la-angle-down
-                %i.m-menu__ver-arrow.la.la-angle-right
-              .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--left
-                %span.m-menu__arrow.m-menu__arrow--adjust
-                %ul.m-menu__subnav
-                  %li.m-menu__item{"aria-haspopup" => "true"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-file
-                      %span.m-menu__link-text Create New Post
-                  %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-diagram
-                      %span.m-menu__link-title
-                        %span.m-menu__link-wrap
-                          %span.m-menu__link-text Generate Reports
-                          %span.m-menu__link-badge
-                            %span.m-badge.m-badge--success 2
-                  %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "hover"}
-                    %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-                      %i.m-menu__link-icon.flaticon-business
-                      %span.m-menu__link-text Manage Orders
-                      %i.m-menu__hor-arrow.la.la-angle-right
-                      %i.m-menu__ver-arrow.la.la-angle-right
-                    .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--right
-                      %span.m-menu__arrow
-                      %ul.m-menu__subnav
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Latest Orders
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Pending Orders
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Processed Orders
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Delivery Reports
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Payments
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Customers
-                  %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "hover"}
-                    %a.m-menu__link.m-menu__toggle{:href => "#"}
-                      %i.m-menu__link-icon.flaticon-chat-1
-                      %span.m-menu__link-text Customer Feedbacks
-                      %i.m-menu__hor-arrow.la.la-angle-right
-                      %i.m-menu__ver-arrow.la.la-angle-right
-                    .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--right
-                      %span.m-menu__arrow
-                      %ul.m-menu__subnav
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Customer Feedbacks
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Supplier Feedbacks
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Reviewed Feedbacks
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Resolved Feedbacks
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Feedback Reports
-                  %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-users
-                      %span.m-menu__link-text Register Member
-            %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-              %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-                %i.m-menu__link-icon.flaticon-line-graph
-                %span.m-menu__link-text Reports
-                %i.m-menu__hor-arrow.la.la-angle-down
-                %i.m-menu__ver-arrow.la.la-angle-right
-              .m-menu__submenu.m-menu__submenu--fixed.m-menu__submenu--left{:style => "width:1000px"}
-                %span.m-menu__arrow.m-menu__arrow--adjust
-                .m-menu__subnav
-                  %ul.m-menu__content
-                    %li.m-menu__item
-                      %h3.m-menu__heading.m-menu__toggle
-                        %span.m-menu__link-text Finance Reports
-                        %i.m-menu__ver-arrow.la.la-angle-right
-                      %ul.m-menu__inner
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-map
-                            %span.m-menu__link-text Annual Reports
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-user
-                            %span.m-menu__link-text HR Reports
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-clipboard
-                            %span.m-menu__link-text IPO Reports
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-graphic-1
-                            %span.m-menu__link-text Finance Margins
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-graphic-2
-                            %span.m-menu__link-text Revenue Reports
-                    %li.m-menu__item
-                      %h3.m-menu__heading.m-menu__toggle
-                        %span.m-menu__link-text Project Reports
-                        %i.m-menu__ver-arrow.la.la-angle-right
-                      %ul.m-menu__inner
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Coca Cola CRM
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Delta Airlines Booking Site
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Malibu Accounting
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Vineseed Website Rewamp
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Zircon Mobile App
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--line
-                              %span
-                            %span.m-menu__link-text Mercury CMS
-                    %li.m-menu__item
-                      %h3.m-menu__heading.m-menu__toggle
-                        %span.m-menu__link-text HR Reports
-                        %i.m-menu__ver-arrow.la.la-angle-right
-                      %ul.m-menu__inner
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Staff Directory
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Client Directory
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Salary Reports
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Staff Payslips
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Corporate Expenses
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                              %span
-                            %span.m-menu__link-text Project Expenses
-                    %li.m-menu__item
-                      %h3.m-menu__heading.m-menu__toggle
-                        %span.m-menu__link-text Reporting Apps
-                        %i.m-menu__ver-arrow.la.la-angle-right
-                      %ul.m-menu__inner
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Report Adjusments
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Sources  Mediums
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Reporting Settings
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Conversions
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Report Flows
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %span.m-menu__link-text Audit  Logs
-            %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-              %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-                %i.m-menu__link-icon.flaticon-paper-plane
-                %span.m-menu__link-title
-                  %span.m-menu__link-wrap
-                    %span.m-menu__link-text Apps
-                    %span.m-menu__link-badge
-                      %span.m-badge.m-badge--brand.m-badge--wide new
-                %i.m-menu__hor-arrow.la.la-angle-down
-                %i.m-menu__ver-arrow.la.la-angle-right
-              .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--left
-                %span.m-menu__arrow.m-menu__arrow--adjust
-                %ul.m-menu__subnav
-                  %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-business
-                      %span.m-menu__link-text eCommerce
-                  %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "hover"}
-                    %a.m-menu__link.m-menu__toggle{:href => "crud/datatable_v1.html"}
-                      %i.m-menu__link-icon.flaticon-computer
-                      %span.m-menu__link-text Audience
-                      %i.m-menu__hor-arrow.la.la-angle-right
-                      %i.m-menu__ver-arrow.la.la-angle-right
-                    .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--right
-                      %span.m-menu__arrow
-                      %ul.m-menu__subnav
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-users
-                            %span.m-menu__link-text Active Users
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-interface-1
-                            %span.m-menu__link-text User Explorer
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-lifebuoy
-                            %span.m-menu__link-text Users Flows
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-graphic-1
-                            %span.m-menu__link-text Market Segments
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-graphic
-                            %span.m-menu__link-text User Reports
-                  %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-map
-                      %span.m-menu__link-text Marketing
-                  %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                    %a.m-menu__link{:href => "header/actions.html"}
-                      %i.m-menu__link-icon.flaticon-graphic-2
-                      %span.m-menu__link-title
-                        %span.m-menu__link-wrap
-                          %span.m-menu__link-text Campaigns
-                          %span.m-menu__link-badge
-                            %span.m-badge.m-badge--success 3
-                  %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "hover"}
-                    %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-                      %i.m-menu__link-icon.flaticon-infinity
-                      %span.m-menu__link-text Cloud Manager
-                      %i.m-menu__hor-arrow.la.la-angle-right
-                      %i.m-menu__ver-arrow.la.la-angle-right
-                    .m-menu__submenu.m-menu__submenu--classic.m-menu__submenu--left
-                      %span.m-menu__arrow
-                      %ul.m-menu__subnav
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-add
-                            %span.m-menu__link-title
-                              %span.m-menu__link-wrap
-                                %span.m-menu__link-text File Upload
-                                %span.m-menu__link-badge
-                                  %span.m-badge.m-badge--danger 3
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-signs-1
-                            %span.m-menu__link-text File Attributes
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-folder
-                            %span.m-menu__link-text Folders
-                        %li.m-menu__item{"aria-haspopup" => "true", "m-menu-link-redirect" => "1"}
-                          %a.m-menu__link{:href => "header/actions.html"}
-                            %i.m-menu__link-icon.flaticon-cogwheel-2
-                            %span.m-menu__link-text System Settings
+          - if current_user
+            %ul.m-menu__nav.m-menu__nav--submenu-arrow
+              %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
+                = link_to new_tournament_path, class: "m-menu__link", data: { confirm: t("tournaments.confirm_new") } do
+                  %i.m-menu__link-icon.flaticon-add
+                  %span.m-menu__link-text= t('tournaments.new')
+              - unless @tournament.title.nil? || @tournament.aasm_state == Tournament::TOURNAMENT_STATES.last.to_s # || @tournament.aasm_state != Tournament::TOURNAMENT_STATES[-2].to_s
+                - if @tournament.has_nil_scores?
+                  %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
+                    = link_to "#", onclick: "generate_random_scores('#{@tournament.id}')", class: "m-menu__link tournament_links" do
+                      %i.m-menu__link-icon.flaticon-app
+                      %span.m-menu__link-text= t('tournaments.generate_score')
+                - else
+                  - unless @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-1].to_s
+                    %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
+                      = form_tag("/tournaments/#{@tournament.id}/matches", method: :post, id: "form_random_scores", style: "display: none") do
+                        = submit_tag "To next round", class: "btn btn-primary", style: "visibility: hidden"
+                      = link_to "#", onclick: "$('#form_random_scores').submit()", class: "m-menu__link tournament_links" do
+                        %i.m-menu__link-icon.flaticon-map
+                        %span.m-menu__link-text= @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-2].to_s ? t('tournaments.play_final') : t('tournaments.to_next_round')
+
         / END: Horizontal Menu
         / BEGIN: Topbar
         #m_header_topbar.m-topbar.m-stack.m-stack--ver.m-stack--general.m-stack--fluid
@@ -330,121 +60,7 @@
             %ul.m-topbar__nav.m-nav.m-nav--inline
               %li#m_quicksearch.m-nav__item.m-dropdown.m-dropdown--large.m-dropdown--arrow.m-dropdown--align-center.m-dropdown--mobile-full-width.m-dropdown--skin-light.m-list-search.m-list-search--skin-light{"m-dropdown-persistent" => "1", "m-dropdown-toggle" => "click", "m-quicksearch-mode" => "dropdown"}
                 %a.m-nav__link.m-dropdown__toggle{:href => "#"}
-                  %span.m-nav__link-icon
-                    %i.flaticon-search-1
                 .m-dropdown__wrapper
-                  %span.m-dropdown__arrow.m-dropdown__arrow--center
-                  .m-dropdown__inner
-                    .m-dropdown__header
-                      %form.m-list-search__form
-                        .m-list-search__form-wrapper
-                          %span.m-list-search__form-input-wrapper
-                            %input#m_quicksearch_input.m-list-search__form-input{:autocomplete => "off", :name => "q", :placeholder => "Search...", :type => "text", :value => ""}
-                            %span#m_quicksearch_close.m-list-search__form-icon-close
-                              %i.la.la-remove
-                      .m-dropdown__body
-                        .m-dropdown__scrollable.m-scrollable{"data-height" => "300", "data-mobile-height" => "200", "data-scrollable" => "true"}
-                          .m-dropdown__content
-                %li.m-nav__item.m-topbar__notifications.m-topbar__notifications--img.m-dropdown.m-dropdown--large.m-dropdown--header-bg-fill.m-dropdown--arrow.m-dropdown--align-center.m-dropdown--mobile-full-width{"m-dropdown-persistent" => "1", "m-dropdown-toggle" => "click"}
-                  %a#m_topbar_notification_icon.m-nav__link.m-dropdown__toggle{:href => "#"}
-                    %span.m-nav__link-badge.m-badge.m-badge--dot.m-badge--dot-small.m-badge--danger
-                    %span.m-nav__link-icon
-                      %i.flaticon-music-2
-                  .m-dropdown__wrapper
-                    %span.m-dropdown__arrow.m-dropdown__arrow--center
-                    .m-dropdown__inner
-                      .m-dropdown__header.m--align-center#notification_bg_tag
-                        %span.m-dropdown__header-title 9 New
-                        %span.m-dropdown__header-subtitle User Notifications
-                      .m-dropdown__body
-                        .m-dropdown__content
-                          %ul.nav.nav-tabs.m-tabs.m-tabs-line.m-tabs-line--brand{:role => "tablist"}
-                            %li.nav-item.m-tabs__item
-                              %a.nav-link.m-tabs__link.active{"data-toggle" => "tab", :href => "#topbar_notifications_notifications", :role => "tab"}
-                                Alerts
-                            %li.nav-item.m-tabs__item
-                              %a.nav-link.m-tabs__link{"data-toggle" => "tab", :href => "#topbar_notifications_events", :role => "tab"} Events
-                            %li.nav-item.m-tabs__item
-                              %a.nav-link.m-tabs__link{"data-toggle" => "tab", :href => "#topbar_notifications_logs", :role => "tab"} Logs
-                          .tab-content
-                            #topbar_notifications_notifications.tab-pane.active{:role => "tabpanel"}
-                              .m-scrollable{"data-height" => "250", "data-mobile-height" => "200", "data-scrollable" => "true"}
-                                .m-list-timeline.m-list-timeline--skin-light
-                                  .m-list-timeline__items
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.-m-list-timeline__badge--state-success
-                                      %span.m-list-timeline__text 12 new users registered
-                                      %span.m-list-timeline__time Just now
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text
-                                        System shutdown
-                                        %span.m-badge.m-badge--success.m-badge--wide pending
-                                      %span.m-list-timeline__time 14 mins
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text New invoice received
-                                      %span.m-list-timeline__time 20 mins
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text
-                                        DB overloaded 80%
-                                        %span.m-badge.m-badge--info.m-badge--wide settled
-                                      %span.m-list-timeline__time 1 hr
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text
-                                        System error -
-                                        %a.m-link{:href => "#"} Check
-                                      %span.m-list-timeline__time 2 hrs
-                                    .m-list-timeline__item.m-list-timeline__item--read
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text{:href => ""}
-                                        New order received
-                                        %span.m-badge.m-badge--danger.m-badge--wide urgent
-                                      %span.m-list-timeline__time 7 hrs
-                                    .m-list-timeline__item.m-list-timeline__item--read
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text Production server down
-                                      %span.m-list-timeline__time 3 hrs
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge
-                                      %span.m-list-timeline__text Production server up
-                                      %span.m-list-timeline__time 5 hrs
-                            #topbar_notifications_events.tab-pane{:role => "tabpanel"}
-                              .m-scrollable{"data-height" => "250", "data-mobile-height" => "200", "data-scrollable" => "true"}
-                                .m-list-timeline.m-list-timeline--skin-light
-                                  .m-list-timeline__items
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-success
-                                      %a.m-list-timeline__text{:href => ""} New order received
-                                      %span.m-list-timeline__time Just now
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-danger
-                                      %a.m-list-timeline__text{:href => ""} New invoice received
-                                      %span.m-list-timeline__time 20 mins
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-success
-                                      %a.m-list-timeline__text{:href => ""} Production server up
-                                      %span.m-list-timeline__time 5 hrs
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-info
-                                      %a.m-list-timeline__text{:href => ""} New order received
-                                      %span.m-list-timeline__time 7 hrs
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-info
-                                      %a.m-list-timeline__text{:href => ""} System shutdown
-                                      %span.m-list-timeline__time 11 mins
-                                    .m-list-timeline__item
-                                      %span.m-list-timeline__badge.m-list-timeline__badge--state1-info
-                                      %a.m-list-timeline__text{:href => ""} Production server down
-                                      %span.m-list-timeline__time 3 hrs
-                            #topbar_notifications_logs.tab-pane{:role => "tabpanel"}
-                              .m-stack.m-stack--ver.m-stack--general{:style => "min-height: 180px;"}
-                                .m-stack__item.m-stack__item--center.m-stack__item--middle
-                                  %span
-                                    All caught up!
-                                    %br No new logs.
                   %li.m-nav__item.m-topbar__quick-actions.m-topbar__quick-actions--img.m-dropdown.m-dropdown--large.m-dropdown--header-bg-fill.m-dropdown--arrow.m-dropdown--align-right.m-dropdown--align-push.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
                     - if current_user
                       = link_to destroy_user_session_path, method: :delete, class: "m-nav__link" do
@@ -481,62 +97,43 @@
                                         = image_tag "flags/013-russia.svg", class: "m-topbar__language-img"
                                         -# %img.m-topbar__language-img{:src => "flags/015-china.svg"}/
                                         %span.m-nav__link-title.m-topbar__language-text.m-nav__link-text= t('ls.russia')
-                              %li.m-nav__item.m-topbar__user-profile.m-topbar__user-profile--img.m-dropdown.m-dropdown--medium.m-dropdown--arrow.m-dropdown--header-bg-fill.m-dropdown--align-right.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
-                                %a.m-nav__link.m-dropdown__toggle{:href => "#"}
-                                  %span.m-topbar__userpic
-                                    = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
-                                    -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
-                                  %span.m-topbar__username.m--hide Nick
-                                .m-dropdown__wrapper
-                                  %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
-                                  .m-dropdown__inner
-                                    .m-dropdown__header.m--align-center#user_profile_container{ style: 'background: transparent'}
-                                      - if current_user
-                                        .m-card-user.m-card-user--skin-dark
-                                          .m-card-user__pic
-                                            = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
-                                            -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
-                                            /
-                                              <span class="m-type m-type--lg m--bg-danger"><span class="m--font-light">S<span><span>
-                                          .m-card-user__details
-                                            %span.m-card-user__name.m--font-weight-500= "#{current_user.try(:first_name)} #{current_user.try(:last_name)}"
-                                            %span.m-card-user__email.m--font-weight-300.m-link= "#{current_user.try(:email)}"
-                                    .m-dropdown__body
-                                      .m-dropdown__content
-                                        %ul.m-nav.m-nav--skin-light
-                                          %li.m-nav__section.m--hide
-                                            %span.m-nav__section-text Section
-                                          %li.m-nav__item
-                                            = link_to edit_user_registration_path, class: 'm-nav__link' do
-                                              %i.m-nav__link-icon.flaticon-profile-1
-                                              %span.m-nav__link-title
-                                                %span.m-nav__link-wrap
-                                                  %span.m-nav__link-text My Profile
-                                                  %span.m-nav__link-badge
-                                                    %span.m-badge.m-badge--success 2
-                                          %li.m-nav__item
-                                            %a.m-nav__link{:href => "header/profile.html"}
-                                              %i.m-nav__link-icon.flaticon-share
-                                              %span.m-nav__link-text Activity
-                                          %li.m-nav__item
-                                            %a.m-nav__link{:href => "header/profile.html"}
-                                              %i.m-nav__link-icon.flaticon-chat-1
-                                              %span.m-nav__link-text Messages
-                                          %li.m-nav__separator.m-nav__separator--fit
-                                          %li.m-nav__item
-                                            %a.m-nav__link{:href => "header/profile.html"}
-                                              %i.m-nav__link-icon.flaticon-info
-                                              %span.m-nav__link-text FAQ
-                                          %li.m-nav__item
-                                            %a.m-nav__link{:href => "header/profile.html"}
-                                              %i.m-nav__link-icon.flaticon-lifebuoy
-                                              %span.m-nav__link-text Support
-                                          %li.m-nav__separator.m-nav__separator--fit
-                                          %li.m-nav__item
-                                            %a.btn.m-btn--pill.btn-secondary.m-btn.m-btn--custom.m-btn--label-brand.m-btn--bolder{:href => "snippets/pages/user/login-1.html"} Logout
-                              %li#m_quick_sidebar_toggle.m-nav__item
-                                %a.m-nav__link.m-dropdown__toggle{:href => "#"}
-                                  %span.m-nav__link-icon
-                                    %i.flaticon-grid-menu
+                              - if current_user
+                                %li.m-nav__item.m-topbar__user-profile.m-topbar__user-profile--img.m-dropdown.m-dropdown--medium.m-dropdown--arrow.m-dropdown--header-bg-fill.m-dropdown--align-right.m-dropdown--mobile-full-width.m-dropdown--skin-light{"m-dropdown-toggle" => "click"}
+                                  %a.m-nav__link.m-dropdown__toggle{:href => "#"}
+                                    %span.m-nav__link-icon
+                                      %i.flaticon-user
+                                  -# %a.m-nav__link.m-dropdown__toggle{:href => "#"}
+                                  -#   %span.m-topbar__userpic
+                                      -# image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
+                                      -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
+                                    %span.m-topbar__username.m--hide Nick
+                                  .m-dropdown__wrapper
+                                    %span.m-dropdown__arrow.m-dropdown__arrow--right.m-dropdown__arrow--adjust
+                                    .m-dropdown__inner
+                                      .m-dropdown__header.m--align-center#user_profile_container{ style: 'background: transparent'}
+                                        - if current_user
+                                          .m-card-user.m-card-user--skin-dark
+                                            .m-card-user__pic
+                                              = image_tag "users/user4.jpg", class: "m--img-rounded m--marginless"
+                                              -# %img.m--img-rounded.m--marginless{:alt => "", :src => "assets/app/media/img/users/user4.jpg"}/
+                                              /
+                                                <span class="m-type m-type--lg m--bg-danger"><span class="m--font-light">S<span><span>
+                                            .m-card-user__details
+                                              %span.m-card-user__name.m--font-weight-500= "#{current_user.try(:first_name)} #{current_user.try(:last_name)}"
+                                              %span.m-card-user__email.m--font-weight-300.m-link= "#{current_user.try(:email)}"
+                                        - else
+                                          %span
+                                      .m-dropdown__body
+                                        .m-dropdown__content
+                                          %ul.m-nav.m-nav--skin-light
+                                            %li.m-nav__section.m--hide
+                                              %span.m-nav__section-text Section
+                                            %li.m-nav__item
+                                              = link_to edit_user_registration_path, class: 'm-nav__link' do
+                                                %i.m-nav__link-icon.flaticon-profile-1
+                                                %span.m-nav__link-title
+                                                  %span.m-nav__link-wrap
+                                                    %span.m-nav__link-text My Profile
+
                         / END: Topbar
                 / END: Header

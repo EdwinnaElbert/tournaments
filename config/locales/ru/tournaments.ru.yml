@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    attributes:
+    errors:
+      models:
+        tournament:
+          attributes:
+            title:
+              blank: "Не может быть пустым"
+  tournaments:
+    new: "Новый турнир"
+    create: "Создать турнир"
+    generate_score: "Случайные очки"
+    to_next_round: "Следующий раунд"
+    welcome: "Удобное приложение для расчета результатов матчей"
+    help: "Создайте 16 команд с уникальными именами"
+    title: "Название турнира"
+    confirm_new: "Вы удалите все предыдущие турниры вместе с переходом на эту страницу"
+    play_final: "Определить победителя"
+    team_1: "Команда 1"
+    team_2: "Команда 2"
+    scores: "Счет"
+    winner: "Победитель "

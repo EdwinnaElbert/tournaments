@@ -54,8 +54,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    airbrussh (1.3.0)
-      sshkit (>= 1.6.1, != 1.7.0)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -65,25 +63,6 @@ GEM
     bootsnap (1.3.1)
       msgpack (~> 1.0)
     builder (3.2.3)
-    capistrano (3.11.0)
-      airbrussh (>= 1.0.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (>= 1.9.0)
-    capistrano-bundler (1.3.0)
-      capistrano (~> 3.1)
-      sshkit (~> 1.2)
-    capistrano-rails (1.4.0)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
-    capistrano-rails-console (2.3.0)
-      capistrano (>= 3.5.0, < 4.0.0)
-      sshkit-interactive (~> 0.3.0)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-    capistrano3-unicorn (0.2.1)
-      capistrano (~> 3.1, >= 3.1.0)
     capybara (3.6.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -182,9 +161,6 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (5.0.2)
     nexmo (5.3.0)
       jwt (~> 2)
     nio4r (2.3.1)
@@ -195,7 +171,6 @@ GEM
     parser (2.5.1.2)
       ast (~> 2.4.0)
     pg (1.0.0)
-    phonelib (0.6.24)
     powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -302,11 +277,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.17.0)
-      net-scp (>= 1.1.2)
-      net-ssh (>= 2.8.0)
-    sshkit-interactive (0.3.0)
-      sshkit (~> 1.12)
     temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
@@ -341,12 +311,6 @@ PLATFORMS
 DEPENDENCIES
   aasm
   bootsnap (>= 1.1.0)
-  capistrano (~> 3.11)
-  capistrano-bundler (~> 1.3)
-  capistrano-rails (~> 1.4)
-  capistrano-rails-console
-  capistrano-rvm
-  capistrano3-unicorn
   capybara (>= 2.15)
   chromedriver-helper
   client_side_validations
@@ -362,7 +326,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   nexmo
   pg (>= 0.18, < 2.0)
-  phonelib
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1)

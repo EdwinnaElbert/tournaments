@@ -37,7 +37,6 @@ gem "devise"
 gem "devise-i18n"
 gem "haml-rails"
 gem "nexmo"
-gem "phonelib"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 gem "unicorn"
@@ -53,12 +52,6 @@ group :development do
   gem "shoulda-matchers"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "capistrano", "~> 3.11", require: false
-  gem "capistrano-bundler", "~> 1.3"
-  gem "capistrano-rvm"
-  gem "capistrano-rails", "~> 1.4", require: false
-  gem "capistrano3-unicorn"
-  gem "capistrano-rails-console", require: false
 end
 
 group :development, :test do
@@ -69,13 +62,13 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker", git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem "rspec-rails"
-  # gem "selenium-webdriver"
+  gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
 
   gem "rubocop"
   gem "rubocop-rspec"
-  gem "selenium-webdriver"
+  # gem "selenium-webdriver"
   gem "pry-rails"
 end
 

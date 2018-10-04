@@ -1,7 +1,7 @@
 .form-group.m-form__group.has_danger
-  %label{:for => "example-text-input"}= t('activerecord.attributes.tournaments.title')
-  = f.text_field :title, class: "form-control m-input"
-%h1= "Team titles"
+  = f.text_field :title, class: "form-control m-input", placeholder: t('tournaments.title')
+.m-alert.m-alert--outline.alert.alert-info.alert-dismissible.show
+  = t("tournaments.help")
 .row
   .col-md-4.col-lg-4
     - 8.times do |i|

@@ -5,33 +5,26 @@ class TournamentsController < AppController
   before_action :set_tournament, only: [:show, :destroy]
 
   def new
+    # Tournament.update_all(active: false)
+    DestroyService.call
+    Tournament.destroy_all
     @tournament = Tournament.new()
   end
 
   def show
-    a_sql = "SELECT m.id,
-                    m.team_1_id,
-                    t_1.title AS team_1_title,
-                    COALESCE(s_1.score, 0) AS score_1,
-                    m.team_2_id,
-                    t_2.title AS team_2_title,
-                    COALESCE(s_2.score, 0) AS score_2
-             FROM matches m
-      INNER JOIN teams t_1 ON m.team_1_id = t_1.id
-      INNER JOIN teams t_2 ON m.team_2_id = t_2.id
-      LEFT JOIN scores s_1 ON s_1.team_id = t_1.id AND s_1.match_id = m.id
-      LEFT JOIN scores s_2 ON s_2.team_id = t_2.id AND s_2.match_id = m.id
-      WHERE m.group_id = $1"
-
-    @a_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 0).first.id]])
-    @b_matches = ActiveRecord::Base.connection.select_all(a_sql, 'SQL', [[nil, @tournament.groups.where(group_type: 1).first.id]])
-    binding.pry
+    @tournament.groups.each do |group|
+      self.instance_variable_set("@#{group.group_type}",
+                                 Match.where(group_id: group.id).includes([scores: :team])
+      )
+    end
   end
 
   def create
-    @tournament = Tournament.create(tournament_params)
-    if @tournament.present?
-      CreateGroupService.call(@tournament)
+    @tournament = Tournament.new(tournament_params)
+    if @tournament.valid?
+      @tournament.save
+      GroupsGenerator.call(@tournament)
+      @tournament.to_next_state!
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }
     else
       redirect_to new_tournament_path, flash: { errors: @tournament.errors.messages }

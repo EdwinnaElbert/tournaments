@@ -30,7 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  enough_divisions: "You have enough divisions for tournaments"
   ls:
     select_your_language: "Select your language"
     english:              "English"

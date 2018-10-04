@@ -1,0 +1,22 @@
+en:
+  activerecord:
+    attributes:
+      title: Название
+    errors:
+      models:
+        tournament:
+          attributes:
+  tournaments:
+    new: "New tournament"
+    create: "Create Tournament"
+    generate_score: "Generate scores"
+    to_next_round: "To next round"
+    welcome: "Welcome to amazing tournament calculation app"
+    help: "Create 16 teams with unique names"
+    title: "Tournament title"
+    confirm_new: "This will destroy all previous tournaments"
+    play_final: "Play Final"
+    team_1: "Team 1"
+    team_2: "Team 2"
+    scores: "Scores"
+    winner: "Winner "

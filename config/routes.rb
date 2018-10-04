@@ -2,13 +2,24 @@
 
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    authenticated do
+      resources :tournaments do
+        resources :matches
+      end
+      resources :scores do
+        post "generate_random", to: "scores#generate_random", on: :collection
+      end
 
-  authenticated :user do
-    resources :tournaments do
-      resources :games
+      if Tournament.where(active: true).any?
+        root to: "tournaments#show", id: Tournament.where(active: true).order(created_at: :desc).first.id
+      else
+        root to: "tournaments#new"
+      end
     end
-    resources :scores, only: :create
-    root to: "tournaments#new"
+
+    unauthenticated do
+      root "devise/sessions#new", as: 'unauthenticated_root'
+    end
   end
-  root "welcome#index"
 end

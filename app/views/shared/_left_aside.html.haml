@@ -6,31 +6,13 @@
   #m_ver_menu.m-aside-menu.m-aside-menu--skin-dark.m-aside-menu--submenu-skin-dark{"m-menu-dropdown-timeout" => "500", "m-menu-scrollable" => "1", "m-menu-vertical" => "1", :style => "position: relative;"}
     %ul.m-menu__nav.m-menu__nav--dropdown-submenu-arrow
       - if current_user
-        %li.m-menu__item.m-menu__item--active{"aria-haspopup" => "true"}
-          = link_to new_tournament_path, class: "m-menu__link" do
-            %i.m-menu__link-icon.flaticon-list-2
-            %span.m-menu__link-title
-              %span.m-menu__link-wrap
-                %span.m-menu__link-text= t('my_surveys')
-                -#  if current_user.surveys.count > 0
-                  %span.m-menu__link-badge
-                    %span.m-badge.m-badge--danger
-                      = current_user.surveys.count
-        %i.m-menu__section-icon.flaticon-more-v2
-      %li.m-menu__item.m-menu__item--submenu{"aria-haspopup" => "true"}
-        %a.m-menu__link.m-menu__toggle{:href => "javascript:;"}
-          %i.m-menu__link-icon.flaticon-exclamation
-          %span.m-menu__link-text= t('contacts')
-          %i.m-menu__ver-arrow.la.la-angle-right
-        .m-menu__submenu
-          %span.m-menu__arrow
-          %ul.m-menu__subnav
-            %li.m-menu__item.m-menu__item--parent{"aria-haspopup" => "true"}
-              %span.m-menu__link
-                %span.m-menu__link-text
-            %li.m-menu__item{"aria-haspopup" => "true"}
-              %a.m-menu__link{:href => "#"}
-                %i.m-menu__link-bullet.m-menu__link-bullet--dot
-                  %span
-                %span.m-menu__link-text= t('support')
+        - [@a, @b, @play_off_1_4, @play_off_1_2, @final].each_with_index do |group, i|
+          - if group && group.any?
+            %li.m-menu__item
+              -#.m-menu__item--active{"aria-haspopup" => "true"}
+              %a.m-menu__link{ href: "#table_#{i}"}
+                %span.m-menu__link-title
+                  %span.m-menu__link-wrap
+                    %span.m-menu__link-text= t("group.#{i}")
+
         .m-grid__item.m-grid__item--fluid.m-wrapper
