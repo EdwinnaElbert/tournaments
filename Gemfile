@@ -39,7 +39,6 @@ gem "haml-rails"
 gem "nexmo"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
-gem "unicorn"
 
 gem "rubyzip", ">= 1.2.2"
 group :development do
