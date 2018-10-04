@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: tournaments_development
+  user: postgres
+  host: localhost
+test:
+  <<: *default
+  database: tournaments_test
+  user: postgres
+  host: localhost
+production:
+  <<: *default
+  database: tournaments_production
+  username: tournaments
+  password: <%= ENV['SURVEYS_DATABASE_PASSWORD'] %>
