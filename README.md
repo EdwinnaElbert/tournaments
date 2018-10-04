@@ -10,4 +10,4 @@ Auto generation used for quick score insertion, but users also can update each s
 
 * Postgresql
 
-* Yarn install jQuery
+* Yarn add jQuery
