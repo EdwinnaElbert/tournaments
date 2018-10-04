@@ -5,6 +5,7 @@ class TournamentsController < AppController
   before_action :set_tournament, only: [:show, :destroy]
 
   def new
+    Tournament.update_all(active: false)
     @tournament = Tournament.new()
   end
 
@@ -17,9 +18,11 @@ class TournamentsController < AppController
   end
 
   def create
-    @tournament = Tournament.create(tournament_params)
-    if @tournament.present?
+    @tournament = Tournament.new(tournament_params)
+    if @tournament.valid?
+      @tournament.save
       GroupsGenerator.call(@tournament)
+      @tournament.to_next_state!
       redirect_to tournament_path(@tournament), flash: { success: "Teams #{@tournament.teams.map { |t| "'#{t.title}'" }.join(', ')} successfully created!" }
     else
       redirect_to new_tournament_path, flash: { errors: @tournament.errors.messages }

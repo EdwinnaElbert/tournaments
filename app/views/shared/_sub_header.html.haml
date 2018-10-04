@@ -1,12 +1,11 @@
 -# Subheader
-- if @tournament
-  .m-subheader
-    .d-flex.align-items-center
-      .mr-auto
-        %h3.m-subheader__title
-          = @tournament.title
-      %div
-        %span#m_dashboard_daterangepicker.m-subheader__daterange
-          %span.m-subheader__daterange-label
-            %span.m-subheader__daterange-title
-            %span.m-subheader__daterange-date.m--font-brand
+.m-subheader
+  .d-flex.align-items-center
+    .mr-auto
+      %h3.m-subheader__title
+        = @tournament.title.nil? ? t('tournaments.create') : @tournament.title
+    %div
+      %span#m_dashboard_daterangepicker.m-subheader__daterange
+        %span.m-subheader__daterange-label
+          %span.m-subheader__daterange-title
+          %span.m-subheader__daterange-date.m--font-brand

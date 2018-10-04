@@ -24,8 +24,8 @@ class Tournament < ApplicationRecord
     end
     event :to_next_state do
       transitions from: :final, to: :finished,            after: Proc.new { FinishTournamentService.new.call(self) }
-      transitions from: :play_off_1_2, to: :final,        after: Proc.new { PlayOffService.new.call(self) }
-      transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :play_off_1_2, to: :final,        after: Proc.new { PlayOffService.new.call(self);  }
+      transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { PlayOffService.new.call(self);  }
       transitions from: :first_tour, to: :play_off_1_4,   after: Proc.new { PlayOffService.new.call(self) }
       transitions from: :no_games, to: :first_tour,       after: Proc.new { FirstTourService.new.call(self) }
     end
@@ -42,5 +42,9 @@ class Tournament < ApplicationRecord
 
   def next_group_id
     groups.where("id > ?", current_groups.last).first.id || groups.last.id
+  end
+
+  def has_nil_scores?
+    Match.where("group_id IN (?)", current_groups).includes([scores: :team]).where(scores: { score: nil }).any?
   end
 end
