@@ -2,7 +2,7 @@
 
 class FinishTournamentService
   def self.call(tournament)
-    winners, loosers = DivideWinnersLoosersService.call(tournament, tournament.current_groups)
-    tournament.update_attributes(winner_id: winners.flatten![0])
+    scores = ScoresService.call(tournament.groups.last.id).flatten
+    tournament.update_attributes(winner_id: scores.first.team_id)
   end
 end

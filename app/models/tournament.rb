@@ -23,10 +23,10 @@ class Tournament < ApplicationRecord
       end
     end
     event :to_next_state do
-      transitions from: :final, to: :finished,            after: Proc.new { FinishTournamentService.new.call(self) }
+      transitions from: :final, to: :finished,            after: Proc.new { FinishTournamentService.call(self) }
       transitions from: :play_off_1_2, to: :final,        after: Proc.new { PlayOffService.new.call(self);  }
       transitions from: :play_off_1_4, to: :play_off_1_2, after: Proc.new { PlayOffService.new.call(self);  }
-      transitions from: :first_tour, to: :play_off_1_4,   after: Proc.new { PlayOffService.new.call(self) }
+      transitions from: :first_tour, to: :play_off_1_4,   after: Proc.new { ToPlayOffService.new.call(self) }
       transitions from: :no_games, to: :first_tour,       after: Proc.new { FirstTourService.new.call(self) }
     end
   end
@@ -37,7 +37,11 @@ class Tournament < ApplicationRecord
   end
 
   def current_groups
-    aasm_state.in?(["no_games", "first_tour"]) ? groups.limit(2).pluck(:id) : [groups[TOURNAMENT_STATES.index(aasm_state.to_sym)].id]
+    if aasm_state != TOURNAMENT_STATES[-1].to_s
+      aasm_state.in?(["no_games", "first_tour"]) ? groups.limit(2).pluck(:id) : [groups[TOURNAMENT_STATES.index(aasm_state.to_sym)].id]
+    else
+      [groups.last.id]
+    end
   end
 
   def next_group_id

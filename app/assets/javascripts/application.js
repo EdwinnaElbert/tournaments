@@ -49,3 +49,7 @@ function generate_random_scores(tournament_id) {
    }
   )
 }
+
+$(".tournament_links").click(function( evt ) {
+   evt.preventDefault();
+});

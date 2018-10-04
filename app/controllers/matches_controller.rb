@@ -5,7 +5,7 @@ class MatchesController < AppController
   before_action :set_tournament
 
   def create
-    @tournament.to_next_state! unless @tournament.aasm_state == "final"
+    @tournament.to_next_state! unless @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-1].to_s
     redirect_to tournament_path(@tournament)
   end
 

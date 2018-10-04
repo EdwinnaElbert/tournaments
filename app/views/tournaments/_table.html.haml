@@ -10,9 +10,13 @@
 
       %thead
         %tr
-          %th{ style: "text-align: center;", :title => "Team 1 title"} Team 1 title
-          %th{ style: "text-align: center;", :title => "Score"} Score
-          %th{ style: "text-align: center;", :title => "Team 2 title"} Team 2 title
+          %th{ style: "text-align: center;", :title => "Team 1 title"}= t('tournaments.team_1')
+          %th{ style: "text-align: center;", :title => "Score"}
+            .row
+              .col-md-4= t('tournaments.score')
+              .col-md-4
+              .col-md-4= t('tournaments.score')
+          %th{ style: "text-align: center;", :title => "Team 2 title"}= t('tournaments.team_1')
 
       -# TABLE BODY
 
