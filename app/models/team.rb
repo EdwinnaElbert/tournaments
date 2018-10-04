@@ -3,7 +3,6 @@
 class Team < ApplicationRecord
   has_and_belongs_to_many :tournaments
   belongs_to :group, required: false
-  has_and_belongs_to_many :teams
 
   has_many :scores
   has_many :matches, through: :scores

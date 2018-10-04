@@ -31,3 +31,7 @@
 
 en:
   enough_divisions: "You have enough divisions for tournaments"
+  ls:
+    select_your_language: "Select your language"
+    english:              "English"
+    russian:              "Russian"

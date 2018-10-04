@@ -5,7 +5,9 @@ class TournamentsController < AppController
   before_action :set_tournament, only: [:show, :destroy]
 
   def new
-    Tournament.update_all(active: false)
+    # Tournament.update_all(active: false)
+    DestroyService.call
+    Tournament.destroy_all
     @tournament = Tournament.new()
   end
 

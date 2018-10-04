@@ -27,10 +27,10 @@
             %td{ style: "text-align: center;" }
               .row
                 .col-md-4
-                  %input.form-control.m-input{ style: "text-align: center;", onchange: "set_score('#{match.teams.first.id}', '#{match.id}', this.value)", value: match.scores.first.score, type: 'number' }
+                  %input.form-control.m-input{ style: "text-align: center;", onchange: "set_score('#{match.teams.first.id}', '#{match.id}', this.value)", value: match.scores.first.score, type: 'number', disabled: !match.scores.first.score.nil? }
                 .col-md-4
                   %span{ style: "text-align: center" } &mdash;
                 .col-md-4
-                  %input.form-control.m-input{ style: "text-align: center;", onchange: "set_score('#{match.teams.last.id}', '#{match.id}', this.value)", value: match.scores.last.score, type: 'number' }
+                  %input.form-control.m-input{ style: "text-align: center;", onchange: "set_score('#{match.teams.last.id}', '#{match.id}', this.value)", value: match.scores.last.score, type: 'number', disabled: !match.scores.first.score.nil? }
             %td{ style: "text-align: center;" }= match.scores.second.team.title
     .col-lg-6.col-md-6

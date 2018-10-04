@@ -52,12 +52,6 @@ group :development do
   gem "shoulda-matchers"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "capistrano", "~> 3.11", require: false
-  gem "capistrano-bundler", "~> 1.3"
-  gem "capistrano-rvm"
-  gem "capistrano-rails", "~> 1.4", require: false
-  gem "capistrano3-unicorn"
-  gem "capistrano-rails-console", require: false
 end
 
 group :development, :test do
