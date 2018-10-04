@@ -7,3 +7,4 @@ en:
           attributes:
   tournaments:
     create: "Create Tournament"
+    welcome: "Welcome to amazing tournament calculation app"
