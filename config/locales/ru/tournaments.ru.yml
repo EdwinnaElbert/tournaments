@@ -8,4 +8,7 @@ ru:
             title:
               blank: "Не может быть пустым"
   tournaments:
+    new: "Новый турнир"
     create: "Создать турнир"
+    generate_score: "Случайные очки"
+    to_next_round: "Следующий раунд"
