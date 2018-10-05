@@ -35,3 +35,8 @@ en:
     select_your_language: "Select your language"
     english:              "English"
     russian:              "Russian"
+  activerecord:
+    attributes:
+      user:
+        password: Password
+        email: Email

@@ -8,3 +8,8 @@ ru:
     select_your_language: "Выберите язык"
     english:              "Английский"
     russian:              "Русский"
+  activerecord:
+    attributes:
+      user:
+        password: Пароль
+        email: Почта
