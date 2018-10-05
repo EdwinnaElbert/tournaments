@@ -40,6 +40,8 @@ gem "nexmo"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
+gem "faker", git: 'https://github.com/stympy/faker.git', branch: 'master'
+
 gem "rubyzip", ">= 1.2.2"
 group :development do
   # Access an interactive console on exception pages or by calling "console" anywhere in the code.
@@ -59,7 +61,6 @@ group :development, :test do
   # gem "capybara-webkit"
   gem "database_cleaner"
   gem "factory_bot_rails"
-  gem "faker", git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem "rspec-rails"
   gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome
