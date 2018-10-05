@@ -23,14 +23,21 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
 
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
-  config.action_mailer_default_url_options = {host: ""}
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer_smtp_settings = {
-    enable_starttls_auto: false,
-    openssl_verify_mode: "none"
-  }
-  # Compress JavaScripts and CSS.
+  config.action_mailer.default_url_options = { :host => 'stormy-headland-77506.herokuapp.com' }
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.perform_caching = false
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+     address: 'smtp.yandex.ru',
+     port: 465,
+     domain: 'stormy-headland-77506.herokuapp.com',
+     tls: true,
+     enable_starttls_auto: true,
+     user_name: 'xenialBlogger@yandex.ru',
+     password: 'xenialpwd',
+     openssl_verify_mode: 'none'
+   }  # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
   config.public_file_server.enabled = true
