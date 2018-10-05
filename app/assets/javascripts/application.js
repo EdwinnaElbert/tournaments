@@ -27,7 +27,7 @@ $.ajaxSetup({
 
 function set_score(team_id, match_id, score) {
   $.ajax({
-    url: `/scores`,
+    url: '/scores',
     method: 'POST',
     dataType: 'json',
     data: {
@@ -40,7 +40,7 @@ function set_score(team_id, match_id, score) {
 
 function generate_random_scores(tournament_id) {
   $.ajax({
-    url: `/scores/generate_random`,
+    url: '/scores/generate_random',
     method: 'POST',
     dataType: 'json',
     data: { tournament_id: tournament_id  }
