@@ -94,4 +94,5 @@ ActiveRecord::Schema.define(version: 2018_10_03_171231) do
   add_foreign_key "scores", "teams"
   add_foreign_key "teams_tournaments", "teams"
   add_foreign_key "teams_tournaments", "tournaments"
+  add_foreign_key "tournaments", "teams", column: "winner_id"
 end
