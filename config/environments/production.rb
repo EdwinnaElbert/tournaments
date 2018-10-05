@@ -22,9 +22,15 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
-  config.action_mailer_default_url_options = {host: "survey.toqomo.com"}
-  config.action_mailer.delivery_method = :sendmail
+
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
+
+  # config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  # config.action_mailer_default_url_options = {host: ""}
+  # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer_smtp_settings = {
   #   enable_starttls_auto: false,
   #   domain: "survey.toqomo.com",
