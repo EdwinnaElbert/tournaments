@@ -32,26 +32,26 @@
         %button#m_aside_header_menu_mobile_close_btn.m-aside-header-menu-mobile-close.m-aside-header-menu-mobile-close--skin-dark
           %i.la.la-close
         #m_header_menu.m-header-menu.m-aside-header-menu-mobile.m-aside-header-menu-mobile--offcanvas.m-header-menu--skin-light.m-header-menu--submenu-skin-light.m-aside-header-menu-mobile--skin-dark.m-aside-header-menu-mobile--submenu-skin-dark
-          - if current_user
-            %ul.m-menu__nav.m-menu__nav--submenu-arrow
-              %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-                = link_to new_tournament_path, class: "m-menu__link", data: { confirm: t("tournaments.confirm_new") } do
-                  %i.m-menu__link-icon.flaticon-add
-                  %span.m-menu__link-text= t('tournaments.new')
-              - unless @tournament.title.nil? || @tournament.aasm_state == Tournament::TOURNAMENT_STATES.last.to_s # || @tournament.aasm_state != Tournament::TOURNAMENT_STATES[-2].to_s
-                - if @tournament.has_nil_scores?
+          -# if current_user
+          %ul.m-menu__nav.m-menu__nav--submenu-arrow
+            %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
+              = link_to new_tournament_path, class: "m-menu__link", data: { confirm: t("tournaments.confirm_new") } do
+                %i.m-menu__link-icon.flaticon-add
+                %span.m-menu__link-text= t('tournaments.new')
+            - unless @tournament.title.nil? || @tournament.aasm_state == Tournament::TOURNAMENT_STATES.last.to_s # || @tournament.aasm_state != Tournament::TOURNAMENT_STATES[-2].to_s
+              - if @tournament.has_nil_scores?
+                %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
+                  = link_to "#", onclick: "generate_random_scores('#{@tournament.id}')", class: "m-menu__link tournament_links" do
+                    %i.m-menu__link-icon.flaticon-app
+                    %span.m-menu__link-text= t('tournaments.generate_score')
+              - else
+                - unless @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-1].to_s
                   %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-                    = link_to "#", onclick: "generate_random_scores('#{@tournament.id}')", class: "m-menu__link tournament_links" do
-                      %i.m-menu__link-icon.flaticon-app
-                      %span.m-menu__link-text= t('tournaments.generate_score')
-                - else
-                  - unless @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-1].to_s
-                    %li.m-menu__item.m-menu__item--submenu.m-menu__item--rel{"aria-haspopup" => "true", "m-menu-link-redirect" => "1", "m-menu-submenu-toggle" => "click"}
-                      = form_tag("/tournaments/#{@tournament.id}/matches", method: :post, id: "form_random_scores", style: "display: none") do
-                        = submit_tag "To next round", class: "btn btn-primary", style: "visibility: hidden"
-                      = link_to "#", onclick: "$('#form_random_scores').submit()", class: "m-menu__link tournament_links" do
-                        %i.m-menu__link-icon.flaticon-map
-                        %span.m-menu__link-text= @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-2].to_s ? t('tournaments.play_final') : t('tournaments.to_next_round')
+                    = form_tag("/tournaments/#{@tournament.id}/matches", method: :post, id: "form_random_scores", style: "display: none") do
+                      = submit_tag "To next round", class: "btn btn-primary", style: "visibility: hidden"
+                    = link_to "#", onclick: "$('#form_random_scores').submit()", class: "m-menu__link tournament_links" do
+                      %i.m-menu__link-icon.flaticon-map
+                      %span.m-menu__link-text= @tournament.aasm_state == Tournament::TOURNAMENT_STATES[-2].to_s ? t('tournaments.play_final') : t('tournaments.to_next_round')
 
         / END: Horizontal Menu
         / BEGIN: Topbar
