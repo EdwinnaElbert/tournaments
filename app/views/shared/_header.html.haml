@@ -122,18 +122,18 @@
                                               %span.m-card-user__name.m--font-weight-500= "#{current_user.try(:first_name)} #{current_user.try(:last_name)}"
                                               %span.m-card-user__email.m--font-weight-300.m-link= "#{current_user.try(:email)}"
                                         - else
-                                          %span
-                                      .m-dropdown__body
-                                        .m-dropdown__content
-                                          %ul.m-nav.m-nav--skin-light
-                                            %li.m-nav__section.m--hide
-                                              %span.m-nav__section-text Section
-                                            %li.m-nav__item
-                                              = link_to edit_user_registration_path, class: 'm-nav__link' do
-                                                %i.m-nav__link-icon.flaticon-profile-1
-                                                %span.m-nav__link-title
-                                                  %span.m-nav__link-wrap
-                                                    %span.m-nav__link-text My Profile
+                                      -#     %span
+                                      -# .m-dropdown__body
+                                      -#   .m-dropdown__content
+                                      -#     %ul.m-nav.m-nav--skin-light
+                                      -#       %li.m-nav__section.m--hide
+                                      -#         %span.m-nav__section-text Section
+                                      -#       %li.m-nav__item
+                                      -#         = link_to edit_user_registration_path, class: 'm-nav__link' do
+                                      -#           %i.m-nav__link-icon.flaticon-profile-1
+                                      -#           %span.m-nav__link-title
+                                      -#             %span.m-nav__link-wrap
+                                      -#               %span.m-nav__link-text My Profile
 
                         / END: Topbar
                 / END: Header
