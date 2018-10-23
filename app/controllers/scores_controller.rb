@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ScoresController < AppController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   respond_to :js
 
   def update

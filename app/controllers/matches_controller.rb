@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MatchesController < AppController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_tournament
 
   def create

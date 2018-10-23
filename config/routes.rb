@@ -2,8 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  devise_scope :user do
-    authenticated do
+  # devise_scope :user do
+  #  authenticated do
       resources :tournaments do
         resources :matches
       end
@@ -16,10 +16,10 @@ Rails.application.routes.draw do
       else
         root to: "tournaments#new"
       end
-    end
+  #  end
 
-    unauthenticated do
-      root "devise/sessions#new", as: 'unauthenticated_root'
-    end
-  end
+    # unauthenticated do
+    #   root "devise/sessions#new", as: 'unauthenticated_root'
+    # end
+  # end
 end
